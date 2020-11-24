@@ -14,5 +14,9 @@ namespace NextOne
         public Animator animator;
         public RawImage logo;
         #endregion
+
+        #region Buttons
+        public Button optionButton;
+        #endregion
     }
 }

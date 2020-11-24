@@ -12,6 +12,20 @@ namespace NextOne
         {
             Debug.Log("Title Entered");
             this.sm.ctx.logo.color = Color.blue;
+
+            this.sm.ctx.optionButton.onClick.AddListener(OnOptionButtonClicked);
+        }
+
+        public override void OnExit()
+        {
+            this.sm.ctx.optionButton.onClick.RemoveAllListeners();
+        }
+
+
+        // Option button callback
+        public void OnOptionButtonClicked()
+        {
+            this.sm.SwitchState((int)MenuStates.OptionState);
         }
     }
 }
