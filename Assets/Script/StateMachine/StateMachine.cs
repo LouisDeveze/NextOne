@@ -11,12 +11,12 @@ namespace NextOne
     /// </summary>
     abstract class State<Context> where Context : MonoBehaviour
     {
-        protected StateMachine<Context> stateMachine;
+        protected StateMachine<Context> sm;
         protected int id;
 
         public State(StateMachine<Context> stateMachine, int id)
         {
-            this.stateMachine = stateMachine;
+            this.sm = stateMachine;
             this.id = id;
         }
 
@@ -40,7 +40,7 @@ namespace NextOne
         /// <summary> this is the current state </summary>
         public State<Context> currentState;
 
-        public Context context = null;
+        public Context ctx = null;
         
         
         /// <summary> Constructor for the State Machine </summary>
