@@ -302,7 +302,7 @@ Animator:
   m_GameObject: {fileID: 333199246}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4b90bf071ef46ed4786a101ea14ad069, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -359,6 +359,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &619417610 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3269892180625932550, guid: 236855efa6ef64c4c99de74ecda8f9fa, type: 3}
+  m_PrefabInstance: {fileID: 3269892180513386271}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &653383658 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5267441368641688466, guid: 85d07fd49340dc64c9ef7119aefa0c8a, type: 3}
@@ -599,6 +610,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiManager: {fileID: 333199246}
   cameraManager: {fileID: 845310606}
+  animator: {fileID: 333199251}
+  logo: {fileID: 619417610}
 --- !u!114 &1098911930
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -611,7 +624,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a850a264b3e0db4b9cd1e216ac0fdd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  context: {fileID: 1098911929}
+  ctx: {fileID: 1098911929}
 --- !u!224 &1143827978 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3269892181657026837, guid: 236855efa6ef64c4c99de74ecda8f9fa, type: 3}
@@ -835,9 +848,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 333199250}
     m_Modifications:
+    - target: {fileID: 6959556808732159060, guid: dbbb6dc5b67e6dd4aa25946f67bcfb54, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7152571419791056716, guid: dbbb6dc5b67e6dd4aa25946f67bcfb54, type: 3}
       propertyPath: m_Name
       value: Overlay
+      objectReference: {fileID: 0}
+    - target: {fileID: 7152571419791056716, guid: dbbb6dc5b67e6dd4aa25946f67bcfb54, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8838006047558020795, guid: dbbb6dc5b67e6dd4aa25946f67bcfb54, type: 3}
       propertyPath: m_LocalPosition.x
@@ -983,7 +1004,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 664930108523396252, guid: 13bad73ce3004ec448e4912397c38881, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: -0.014709473
       objectReference: {fileID: 0}
     - target: {fileID: 664930108523396252, guid: 13bad73ce3004ec448e4912397c38881, type: 3}
       propertyPath: m_AnchoredPosition.y
