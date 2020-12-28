@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Impact03Add
+  m_Name: Shockwave01Add 1
   m_Shader: {fileID: -6465566751694194690, guid: 4162261ea9c062e46a1aa55015400940, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -22,7 +22,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - Texture2D_B20475E:
-        m_Texture: {fileID: 2800000, guid: facdc88c90829564cbf5c43f971ca21e, type: 3}
+        m_Texture: {fileID: 2800000, guid: 2e73c75c44973224db259396074c2372, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats: []
