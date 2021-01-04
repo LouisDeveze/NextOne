@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 9103929910944675501}
   - component: {fileID: 2697501891113377667}
   - component: {fileID: 5986781542355131014}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ParticlesVertical
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4881,7 +4881,7 @@ GameObject:
   - component: {fileID: 2116539570770471572}
   - component: {fileID: 8780458102254657541}
   - component: {fileID: 6918450436969103578}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BeamImpactAB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9751,7 +9751,7 @@ GameObject:
   - component: {fileID: 5927421207317394335}
   - component: {fileID: 2268074579665463337}
   - component: {fileID: 9007061507588460403}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14621,7 +14621,7 @@ GameObject:
   - component: {fileID: 4051463580874783438}
   - component: {fileID: 3232219584588270247}
   - component: {fileID: 4231280390110209483}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19491,7 +19491,7 @@ GameObject:
   - component: {fileID: 6976803170224246016}
   - component: {fileID: 9067737330525311742}
   - component: {fileID: 5947105699415997251}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ParticlesIn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24301,13 +24301,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4977012835923811720}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: vfxAoEBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4977012835923811720
 Transform:
   m_ObjectHideFlags: 0
@@ -24335,7 +24335,7 @@ GameObject:
   - component: {fileID: 5945358591887572383}
   - component: {fileID: 7760153469675316970}
   - component: {fileID: 8179614072936424067}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Beam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29205,7 +29205,7 @@ GameObject:
   - component: {fileID: 9194383750100260683}
   - component: {fileID: 6473957253838896232}
   - component: {fileID: 5878746249199592999}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BeamImpact
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34083,7 +34083,7 @@ GameObject:
   - component: {fileID: 5265227139218139370}
   - component: {fileID: 7598498043836435147}
   - component: {fileID: 2218147539900259044}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BeamGroundAB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38953,7 +38953,7 @@ GameObject:
   - component: {fileID: 6196864191232458438}
   - component: {fileID: 8166254851205784244}
   - component: {fileID: 1711505162821155152}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Shockwave
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43823,7 +43823,7 @@ GameObject:
   - component: {fileID: 4375001289577901196}
   - component: {fileID: 6376189122855903182}
   - component: {fileID: 988657153476585862}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Impact
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48693,7 +48693,7 @@ GameObject:
   - component: {fileID: 6639631216997898937}
   - component: {fileID: 5253870797089005163}
   - component: {fileID: 2720076828646794666}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: CrackAB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53563,7 +53563,7 @@ GameObject:
   - component: {fileID: 3643114907843367279}
   - component: {fileID: 2275593700212535176}
   - component: {fileID: 3390823646790924483}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ParticlesOut
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58433,7 +58433,7 @@ GameObject:
   - component: {fileID: 4862734100070259053}
   - component: {fileID: 3746202267012218489}
   - component: {fileID: 780853955436580879}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BeamGround
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63306,7 +63306,7 @@ GameObject:
   - component: {fileID: 2800265258706755288}
   - component: {fileID: 3168508070194484486}
   - component: {fileID: 2678459022037005737}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Crack
   m_TagString: Untagged
   m_Icon: {fileID: 0}

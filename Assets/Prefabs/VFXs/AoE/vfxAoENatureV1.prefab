@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 197448329}
   - component: {fileID: 197448331}
   - component: {fileID: 197448330}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: LeavesIn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4823,7 +4823,7 @@ GameObject:
   - component: {fileID: 444566449}
   - component: {fileID: 444566451}
   - component: {fileID: 444566450}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: LeavesOut
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9693,7 +9693,7 @@ GameObject:
   - component: {fileID: 6201064885686136618}
   - component: {fileID: 3658468738192890984}
   - component: {fileID: 7422444180180052512}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Impact
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14563,7 +14563,7 @@ GameObject:
   - component: {fileID: 3009069966047517387}
   - component: {fileID: 6432429769661644255}
   - component: {fileID: 6948945783988376489}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BeamGround
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19437,7 +19437,7 @@ GameObject:
   - component: {fileID: 6356631185782592201}
   - component: {fileID: 8443461773886630958}
   - component: {fileID: 5023514638296644453}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ParticlesOut
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24307,7 +24307,7 @@ GameObject:
   - component: {fileID: 5504860803176045950}
   - component: {fileID: 4702169898182530720}
   - component: {fileID: 5733776789787276815}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Crack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29178,7 +29178,7 @@ GameObject:
   - component: {fileID: 3935317864798738719}
   - component: {fileID: 2472692188477857229}
   - component: {fileID: 5694270253921576460}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: CrackAB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34048,7 +34048,7 @@ GameObject:
   - component: {fileID: 1522419637429163245}
   - component: {fileID: 3702422908936896462}
   - component: {fileID: 4263848125579486593}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BeamImpact
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38929,7 +38929,7 @@ GameObject:
   - component: {fileID: 4559354697389800800}
   - component: {fileID: 2012517855584362770}
   - component: {fileID: 9041476762678164214}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Shockwave
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43799,7 +43799,7 @@ GameObject:
   - component: {fileID: 2569413510115437388}
   - component: {fileID: 273297224896465261}
   - component: {fileID: 8390710480955218242}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BeamGroundAB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48667,7 +48667,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3434097076191796782}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: vfxAoENatureV1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48701,7 +48701,7 @@ GameObject:
   - component: {fileID: 4051994970806337081}
   - component: {fileID: 74346371973506380}
   - component: {fileID: 1961995486109606181}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Beam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53571,7 +53571,7 @@ GameObject:
   - component: {fileID: 1508164719502685451}
   - component: {fileID: 5753006004645338149}
   - component: {fileID: 4155953573351627040}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ParticlesVertical
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58441,7 +58441,7 @@ GameObject:
   - component: {fileID: 8639819778242259250}
   - component: {fileID: 1397188772000703395}
   - component: {fileID: 773209367702029180}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BeamImpactAB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63311,7 +63311,7 @@ GameObject:
   - component: {fileID: 5944764151827790184}
   - component: {fileID: 5071789032302905601}
   - component: {fileID: 5764955854089135725}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -68181,7 +68181,7 @@ GameObject:
   - component: {fileID: 8883419594209886409}
   - component: {fileID: 1694450495646336045}
   - component: {fileID: 3528273681625582247}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: LinesOut 180
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73051,7 +73051,7 @@ GameObject:
   - component: {fileID: 6004111835098350536}
   - component: {fileID: 7097739361298095695}
   - component: {fileID: 4499825264074923257}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: LinesOut
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -77921,7 +77921,7 @@ GameObject:
   - component: {fileID: 750744694024818342}
   - component: {fileID: 1688472563355767128}
   - component: {fileID: 4049271292257827045}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ParticlesIn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -82733,7 +82733,7 @@ GameObject:
   - component: {fileID: 4106110748438556729}
   - component: {fileID: 8484898274860297103}
   - component: {fileID: 1605033464710909141}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}

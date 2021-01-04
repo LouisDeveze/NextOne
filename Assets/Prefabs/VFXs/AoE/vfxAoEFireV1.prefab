@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3344352495202776445}
   - component: {fileID: 461242449961301568}
   - component: {fileID: 7168321097132430401}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4881,7 +4881,7 @@ GameObject:
   - component: {fileID: 5024035242216720849}
   - component: {fileID: 5098804168774262105}
   - component: {fileID: 8719968170087355305}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BeamGround
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9755,7 +9755,7 @@ GameObject:
   - component: {fileID: 6213543206871758161}
   - component: {fileID: 1111845624627621564}
   - component: {fileID: 7799720313230510055}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BeamImpactAB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14625,7 +14625,7 @@ GameObject:
   - component: {fileID: 5859586577904815707}
   - component: {fileID: 7387352369618281887}
   - component: {fileID: 5170200698493598609}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Beam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19495,7 +19495,7 @@ GameObject:
   - component: {fileID: 5837025592138167104}
   - component: {fileID: 4103101780910704396}
   - component: {fileID: 8903655310434993941}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Shockwave
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24365,7 +24365,7 @@ GameObject:
   - component: {fileID: 9036749846118687253}
   - component: {fileID: 8954501934861000903}
   - component: {fileID: 3261325240270891377}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ParticlesIn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29177,7 +29177,7 @@ GameObject:
   - component: {fileID: 6180742040471872131}
   - component: {fileID: 5228335137207560656}
   - component: {fileID: 6706662479618595558}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ParticlesOut
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34047,7 +34047,7 @@ GameObject:
   - component: {fileID: 60374507955285683}
   - component: {fileID: 7970556306559699628}
   - component: {fileID: 1272984424085300326}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38917,7 +38917,7 @@ GameObject:
   - component: {fileID: 4748933476841290743}
   - component: {fileID: 4246512318987476671}
   - component: {fileID: 9098834970863274062}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BeamImpact
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43796,7 +43796,7 @@ GameObject:
   - component: {fileID: 6905950556569687161}
   - component: {fileID: 3272839072688760154}
   - component: {fileID: 3996265905237725345}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Impact
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48666,7 +48666,7 @@ GameObject:
   - component: {fileID: 3574173478597342056}
   - component: {fileID: 5388467910204491937}
   - component: {fileID: 3941121533796727146}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ParticlesVertical
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53534,8 +53534,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6949640707065965024}
-  m_Layer: 0
-  m_Name: vfxAoEFire
+  m_Layer: 9
+  m_Name: vfxAoEFireV1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -53568,7 +53568,7 @@ GameObject:
   - component: {fileID: 2018889441538979405}
   - component: {fileID: 1279178677311184176}
   - component: {fileID: 8184663221421872756}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: FireIn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58380,7 +58380,7 @@ GameObject:
   - component: {fileID: 1207991720036133078}
   - component: {fileID: 1324231356342044821}
   - component: {fileID: 454112376292968331}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: CrackAB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63250,7 +63250,7 @@ GameObject:
   - component: {fileID: 8369106245374119055}
   - component: {fileID: 5055132745476525467}
   - component: {fileID: 4514290459930393454}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: FireOut
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -68120,7 +68120,7 @@ GameObject:
   - component: {fileID: 8286053724189881432}
   - component: {fileID: 9152045079145405591}
   - component: {fileID: 1980932830403172842}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BeamGroundAB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72990,7 +72990,7 @@ GameObject:
   - component: {fileID: 264976730435525281}
   - component: {fileID: 6925977167955330812}
   - component: {fileID: 1883402182847049273}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Crack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
