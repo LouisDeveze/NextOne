@@ -18,5 +18,9 @@ namespace NextOne
         #region Buttons
         public Button optionButton;
         #endregion
+
+        #region Elevator
+        public float elevatorSpeed = 1;
+        #endregion
     }
 }

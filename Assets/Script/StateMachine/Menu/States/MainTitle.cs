@@ -10,9 +10,6 @@ namespace NextOne
 
         public override void OnEnter()
         {
-            Debug.Log("Title Entered");
-            this.sm.ctx.logo.color = Color.blue;
-
             this.sm.ctx.optionButton.onClick.AddListener(OnOptionButtonClicked);
         }
 
