@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Gradient02Tweaked
+  m_Shader: {fileID: -6465566751694194690, guid: 4162261ea9c062e46a1aa55015400940, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap:
+    MotionVector: User
+  disabledShaderPasses:
+  - MOTIONVECTORS
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_B20475E:
+        m_Texture: {fileID: 2800000, guid: f7c7893c4e1d27b4a8d61171fb4e4c3d, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_54DC1057: 10
+    - Vector1_D31F91C1: 0
+    m_Colors:
+    - Color_6B19AD4F: {r: 1.4980392, g: 1.4980392, b: 1.4980392, a: 1}
+    - Vector2_62858327: {r: 0, g: 0, b: 0, a: 0}
+    - Vector2_75FF5B75: {r: 0, g: 0, b: 0, a: 0}
+  m_BuildTextureStacks: []
