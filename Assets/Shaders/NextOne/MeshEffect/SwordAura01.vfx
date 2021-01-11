@@ -17,10 +17,10 @@ MonoBehaviour:
   categories: []
   uiBounds:
     serializedVersion: 2
-    x: 1189
+    x: 1110
     y: 227
-    width: 2496
-    height: 1857
+    width: 2575
+    height: 1706
 --- !u!114 &114350483966674976
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -81,57 +81,6 @@ MonoBehaviour:
         m_SerializableType: UnityEngine.Vector2, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
       m_SerializableObject: '{"x":0.009999999776482582,"y":0.05000000074505806}'
-    min: -Infinity
-    max: Infinity
-    descendantCount: 0
-  - name: New Transform
-    path: 
-    tooltip: 
-    sheetType: 
-    realType: Transform
-    defaultValue:
-      m_Type:
-        m_SerializableType: 
-      m_SerializableObject: 
-    min: -Infinity
-    max: Infinity
-    descendantCount: 3
-  - name: position
-    path: New Transform_position
-    tooltip: Sets the transform position.
-    sheetType: m_Vector3f
-    realType: Vector3
-    defaultValue:
-      m_Type:
-        m_SerializableType: UnityEngine.Vector3, UnityEngine.CoreModule, Version=0.0.0.0,
-          Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"x":0.0,"y":0.0,"z":0.0}'
-    min: -Infinity
-    max: Infinity
-    descendantCount: 0
-  - name: angles
-    path: New Transform_angles
-    tooltip: Sets the euler angles of the transform.
-    sheetType: m_Vector3f
-    realType: Vector3
-    defaultValue:
-      m_Type:
-        m_SerializableType: UnityEngine.Vector3, UnityEngine.CoreModule, Version=0.0.0.0,
-          Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"x":0.0,"y":0.0,"z":0.0}'
-    min: -Infinity
-    max: Infinity
-    descendantCount: 0
-  - name: scale
-    path: New Transform_scale
-    tooltip: Sets the scale of the transform along each axis.
-    sheetType: m_Vector3f
-    realType: Vector3
-    defaultValue:
-      m_Type:
-        m_SerializableType: UnityEngine.Vector3, UnityEngine.CoreModule, Version=0.0.0.0,
-          Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"x":1.0,"y":1.0,"z":1.0}'
     min: -Infinity
     max: Infinity
     descendantCount: 0
@@ -4064,7 +4013,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Parent: {fileID: 114350483966674976}
   m_Children: []
-  m_UIPosition: {x: 1778, y: 1473}
+  m_UIPosition: {x: 1699, y: 1322}
   m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_InputSlots: []
@@ -4257,7 +4206,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Parent: {fileID: 114350483966674976}
   m_Children: []
-  m_UIPosition: {x: 2066, y: 1487}
+  m_UIPosition: {x: 1987, y: 1336}
   m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_InputSlots:
@@ -5129,7 +5078,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Parent: {fileID: 114350483966674976}
   m_Children: []
-  m_UIPosition: {x: 1292, y: 1567}
+  m_UIPosition: {x: 1213, y: 1416}
   m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_InputSlots:
@@ -5499,7 +5448,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Parent: {fileID: 114350483966674976}
   m_Children: []
-  m_UIPosition: {x: 1530, y: 1568}
+  m_UIPosition: {x: 1451, y: 1417}
   m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_InputSlots:
@@ -5646,7 +5595,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Parent: {fileID: 114350483966674976}
   m_Children: []
-  m_UIPosition: {x: 1866, y: 1674}
+  m_UIPosition: {x: 1787, y: 1523}
   m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_InputSlots:
@@ -5818,7 +5767,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Parent: {fileID: 114350483966674976}
   m_Children: []
-  m_UIPosition: {x: 1626, y: 1745}
+  m_UIPosition: {x: 1547, y: 1594}
   m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_InputSlots:
@@ -6007,7 +5956,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Parent: {fileID: 114350483966674976}
   m_Children: []
-  m_UIPosition: {x: 1634, y: 1916}
+  m_UIPosition: {x: 1555, y: 1765}
   m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_InputSlots:
@@ -6197,7 +6146,7 @@ MonoBehaviour:
   m_Parent: {fileID: 114350483966674976}
   m_Children: []
   m_UIPosition: {x: 0, y: 0}
-  m_UICollapsed: 0
+  m_UICollapsed: 1
   m_UISuperCollapsed: 0
   m_InputSlots: []
   m_OutputSlots:
@@ -6227,7 +6176,7 @@ MonoBehaviour:
       inputSlot: {fileID: 8926484042661615789}
     - outputSlot: {fileID: 8926484042661615787}
       inputSlot: {fileID: 8926484042661615792}
-    position: {x: 1189, y: 1850}
+    position: {x: 1110, y: 1699}
     expandedSlots:
     - {fileID: 8926484042661615785}
     expanded: 1
@@ -6351,7 +6300,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Parent: {fileID: 114350483966674976}
   m_Children: []
-  m_UIPosition: {x: 1427, y: 1828}
+  m_UIPosition: {x: 1348, y: 1677}
   m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_InputSlots:
@@ -6445,7 +6394,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Parent: {fileID: 114350483966674976}
   m_Children: []
-  m_UIPosition: {x: 1431, y: 1924}
+  m_UIPosition: {x: 1352, y: 1773}
   m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_InputSlots:

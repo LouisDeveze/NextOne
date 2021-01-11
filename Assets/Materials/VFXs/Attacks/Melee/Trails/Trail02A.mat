@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Gradient02
-  m_Shader: {fileID: -6465566751694194690, guid: 4162261ea9c062e46a1aa55015400940, type: 3}
+  m_Name: Trail02A
+  m_Shader: {fileID: -6465566751694194690, guid: 1428b91802984bc4fb9a276d3357c3b2, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -21,15 +21,23 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - Texture2D_A420F17C:
+        m_Texture: {fileID: 10300, guid: 0000000000000000f000000000000000, type: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - Texture2D_B20475E:
-        m_Texture: {fileID: 2800000, guid: c4e2e7f7e6c009e49af81d305f99bbd1, type: 3}
+        m_Texture: {fileID: 2800000, guid: 9d2652b10fb1ef341ac47235fdac0e31, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Vector1_54DC1057: 10
-    - Vector1_D31F91C1: 0
+    - Vector1_396D1237: 0
+    - Vector1_54DC1057: 7
+    - Vector1_704CD3B3: 0.5
+    - Vector1_99BE0DF2: 50
+    - Vector1_D31F91C1: 0.1
+    - Vector1_F6458812: 15
     m_Colors:
-    - Color_6B19AD4F: {r: 1.4980392, g: 1.4980392, b: 1.4980392, a: 1}
-    - Vector2_62858327: {r: 0, g: 0, b: 0, a: 0}
+    - Color_6B19AD4F: {r: 8.47419, g: 8.47419, b: 8.47419, a: 1}
+    - Vector2_62858327: {r: 0.25, g: 0.25, b: 0, a: 0}
     - Vector2_75FF5B75: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
