@@ -8,12 +8,6 @@ namespace NextOne
         // Constructor taking the state machine + the state id
         public FadeInTitle(StateMachine<MenuContext> stateMachine) : base(stateMachine, (int)MenuStates.FadeInTitle) { }
 
-
-        public override void OnEnter()
-        {
-            base.OnEnter();
-        }
-
         public override void OnUpdate()
         {
             // If the starting animation hasn't ended keep going
@@ -22,11 +16,6 @@ namespace NextOne
                 this.sm.ctx.animator.SetTrigger("FadeInToMainTitle");
                 this.sm.SwitchState((int)MenuStates.MainTitle);
             }   
-        }
-
-        public override void OnExit()
-        {
-            base.OnExit();
         }
     }
 }
