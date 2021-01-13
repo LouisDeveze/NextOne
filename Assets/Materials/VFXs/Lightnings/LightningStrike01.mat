@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Lighthning01Blue
+  m_Name: LightningStrike01
   m_Shader: {fileID: -6465566751694194690, guid: e1968aa835ada904e91babfde7f41e71, type: 3}
   m_ShaderKeywords: _NORMALMAP_TANGENT_SPACE
   m_LightmapFlags: 4
@@ -119,18 +119,18 @@ Material:
     - Height_: 3
     - NoisePower_: 1.5
     - NoiseScale_: 40
-    - OutlineThickness_: 0.1
+    - OutlineThickness_: 0.05
     - Vector1_2D509D0E: 0.1
     - Vector1_34AEE7C3: 0.5
     - Vector1_35009BDC: 0.5
     - Vector1_43896968: 2
     - Vector1_54D34F23: 1
     - Vector1_84F8C2EE: 1
-    - Vector1_9FBB032F: 8
+    - Vector1_9FBB032F: 0.8
     - Vector1_C37F167A: 1.2
-    - VertexDisplacementScale_: 11
+    - VertexDisplacementScale_: 1.2
     - VertexDisplacementSpeed_: 0.5
-    - Width_: 0.05
+    - Width_: 0.025
     - _AORemapMax: 1
     - _AORemapMin: 0
     - _ATDistance: 1
@@ -252,10 +252,10 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - Color_25627E3E: {r: 0.1254902, g: 1.7383, b: 8, a: 0}
-    - LightningColor_: {r: 1.1607844, g: 1.8980392, b: 2.9960785, a: 1}
+    - LightningColor_: {r: 2.9960785, g: 1.9937406, b: 1.1607842, a: 1}
     - NoiseSpeed_: {r: 1, g: 0.7, b: 0, a: 0}
     - Offset_: {r: -0.7, g: -0.5, b: 0, a: 0}
-    - OutlineColor_: {r: 0.09253944, g: 0.061276253, b: 0.254717, a: 1}
+    - OutlineColor_: {r: 0.8962264, g: 0.57418877, b: 0.029592399, a: 1}
     - Vector2_434A276D: {r: 0.1, g: 0.5, b: 0, a: 0}
     - Vector2_8133E723: {r: 0.1, g: 0.5, b: 0, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
