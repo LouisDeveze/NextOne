@@ -1,9 +1,29 @@
 fileFormatVersion: 2
-guid: 69dc7c234a339a44987b673ccb4c10c3
+guid: 7dbe754be2e21c347a01faca505e56b0
 ModelImporter:
   serializedVersion: 20101
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Basic Metal
+    second: {fileID: -5549637594268355073, guid: 07aea497b56d1774f84bd6bd35259b32, type: 3}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Bois
+    second: {fileID: 5286673721406747786, guid: 07aea497b56d1774f84bd6bd35259b32, type: 3}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: DangerZone
+    second: {fileID: 2100000, guid: ee7fa9bc2dac1494398817b234f2001d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Industrial
+    second: {fileID: -3824400892278560510, guid: 84f61f96dee3e5a47be152511d4903da, type: 3}
   materials:
     materialImportMode: 1
     materialName: 0
