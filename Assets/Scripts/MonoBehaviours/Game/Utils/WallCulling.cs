@@ -32,7 +32,7 @@ public class WallCulling : MonoBehaviour
         vVector.y = 0;
         vVector.Normalize();
         Vector2 viewVector = new Vector2(vVector.x, vVector.z);
-        Debug.Log(viewVector);
+        //Debug.Log(viewVector);
         // Calculate the dot product of the view and the normal vector to see
         // if the wall is seen from behind
         float dotProduct = Vector2.Dot(viewVector, normal);
