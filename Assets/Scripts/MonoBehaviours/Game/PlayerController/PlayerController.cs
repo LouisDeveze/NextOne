@@ -6,8 +6,10 @@ public class PlayerController : MonoBehaviour
 {
     Rigidbody rb;
     public float speed;
-    public float mH;
-    public float mV;
+
+    private float mH;
+    private float mV;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
