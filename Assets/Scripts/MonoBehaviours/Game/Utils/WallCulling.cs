@@ -14,7 +14,7 @@ public class WallCulling : MonoBehaviour
 
     // Treshold = 1.0 for no backface culling
     // Treshold = 0.0 for full backface culling
-    public static float treshold = 0f;
+    public static float treshold = 0.1f;
 
 
     private void Start()

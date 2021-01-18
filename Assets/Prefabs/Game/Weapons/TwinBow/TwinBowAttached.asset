@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de9f6513fa6b0fb41b6411ca06b80af4, type: 3}
+  m_Name: TwinBowAttached
+  m_EditorClassIdentifier: 
+  Name: TwinBowAttached
+  MainSpell: {fileID: 0}
+  SecondarySpell: {fileID: 0}
+  BasicAttack: {fileID: 0}
+  idleAnimation: 
+  prefab: {fileID: 4340028580142527672, guid: 11e21b0dfb6afe84fa2e3c47898f892c, type: 3}

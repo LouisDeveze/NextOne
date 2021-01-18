@@ -6,7 +6,7 @@ public class CameraTracer : MonoBehaviour
 {
     public Transform target;
 
-    public float smoothSpeed = 0.5f;
+    public float smoothSpeed = 0.8f;
     private Vector3 offset;
     public float distance;
 
