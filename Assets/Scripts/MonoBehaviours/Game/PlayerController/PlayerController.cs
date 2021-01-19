@@ -2,51 +2,82 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
-// Tuto : https://www.youtube.com/watch?v=_QajrabyTJc
-
-
-public class PlayerController : MonoBehaviour
+namespace NextOne
 {
-    /*
-    // Start is called before the first frame update
-    void Start()
+    public class PlayerController : MonoBehaviour
     {
 
-    }
-    */
+        public Weapon weapon;
+        
+        public Transform RightHand;
+        public Transform LeftHand;
 
-    public CharacterController controller;
+        Rigidbody rb;
+        // Movement Speed;
+        public float speed = 6;
+        private float animationSpeed;
 
-    public float speed = 12f;
-    public float gravity = -9.81f;
 
-    public Transform groundCheck;
-    public float groundDistance = 0.4f;
-    public LayerMask groundMask;
+        public float angularSpeed = 360;
+        public float angularTreshold = 2;
 
-    Vector3 velocity;
-    bool isGrounded;
+        // Utils for rotation
+        private float distanceFromCamera = 0;
+        private Plane plane = new Plane(Vector3.up, new Vector3(0, 0, 0));
 
-    // Update is called once per frame
-    void Update()
-    {
-        /*
-        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
-        if (isGrounded && velocity.y < 0)
+        private float mH;
+        private float mV;
+
+        void Start()
         {
-            velocity.y = -2f;
+            rb = GetComponent<Rigidbody>();
+            weapon.Create(this.RightHand, this.LeftHand);
         }
-        //*/
-        float x = Input.GetAxis("Horizontal");
-        float z = Input.GetAxis("Vertical");
 
-        Vector3 move = transform.right * x + transform.forward * z;
-        controller.Move(move * speed * Time.deltaTime);
 
-        /*
-        velocity.y += gravity * Time.deltaTime;
-        controller.Move(velocity * Time.deltaTime);
-        //*/
+        void FixedUpdate()
+        {
+            // Give directional smoothed velocity
+            rb.velocity = new Vector3(mH * speed, rb.velocity.y, mV * speed);
+        }
+
+        private void Update()
+        {
+            #region Movement
+            // Retrieve Movement Input
+            mH = Input.GetAxisRaw("Horizontal");
+            mV = Input.GetAxisRaw("Vertical");
+            float sumOfMovement = Mathf.Abs(mH) + Mathf.Abs(mV);
+            if (mH != 0 && mV != 0)
+            {
+                mH *= Mathf.Sqrt(2) / 2;
+                mV *= Mathf.Sqrt(2) / 2;
+            }
+            #endregion
+
+            #region Rotation
+            //Get the Screen positions of the object
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            if (plane.Raycast(ray, out distanceFromCamera))
+            {
+                Vector3 worldPosition = ray.GetPoint(distanceFromCamera);
+                Vector3 toMouse = worldPosition - this.transform.position;
+                float angle = Vector3.SignedAngle(toMouse, this.transform.forward, Vector3.up);
+
+                // Calculate Variation Angle
+                float variationAngle = angle > 0 ? Time.deltaTime * angularSpeed : -Time.deltaTime * angularSpeed;
+                variationAngle = Mathf.Abs(variationAngle) > Mathf.Abs(angle) ? angle : variationAngle;
+                variationAngle = Mathf.Abs(angle) > angularTreshold ? variationAngle : 0;
+
+                // Finally Rotate the model
+                this.transform.Rotate(Vector3.up, -variationAngle);
+
+            }
+            #endregion
+
+        }
+
+
     }
+
 }
