@@ -20,20 +20,24 @@ namespace NextOne
         // The animator of the model
         Animator animator;
 
-        // Movement Speed;
-        public float speed = 6;
-        private float animationSpeed;
-
-
+        #region Rotation / Movement fields
+        // Hyper Parameters
+        public float speed = 7;
         public float angularSpeed = 360;
-        private float angularTreshold = 5;
+        private bool canMove = true;
 
         // Utils for rotation
         private float distanceFromCamera = 0;
         private Plane plane = new Plane(Vector3.up, new Vector3(0, 0, 0));
-        // Utils for movements
-        private float mH;
-        private float mV;
+        private float angularTreshold = 5;
+        // Movement in world space
+        private Vector3 movement;
+        // Movement in model Space
+        private Vector3 modelMovement;
+        // Time in second to stop or get full speed of the player
+        private float movementSmoother = .4f;
+        private float prevMagnitude =0;
+        #endregion
 
         void Start()
         {
@@ -47,21 +51,31 @@ namespace NextOne
         void FixedUpdate()
         {
             // Give directional smoothed velocity
-            this.rigidbd.velocity = new Vector3(mH * speed, rigidbd.velocity.y, mV * speed);
+            if(canMove)
+                this.rigidbd.velocity = movement * speed;
         }
 
         private void Update()
         {
             #region Movement
             // Retrieve Movement Input
-            mH = Input.GetAxisRaw("Horizontal");
-            mV = Input.GetAxisRaw("Vertical");
-            float sumOfMovement = Mathf.Abs(mH) + Mathf.Abs(mV);
-            if (mH != 0 && mV != 0)
-            {
-                mH *= Mathf.Sqrt(2) / 2;
-                mV *= Mathf.Sqrt(2) / 2;
-            }
+            float mH = Input.GetAxisRaw("Horizontal");
+            float mV = Input.GetAxisRaw("Vertical");
+
+            // Calculate absolute movement
+            float absoluteMovement = Mathf.Max(Mathf.Abs(mH), Mathf.Abs(mV));
+            // Calculate smoothed movement
+            float magnitude = 0f;
+            if (absoluteMovement > prevMagnitude)
+                magnitude = Mathf.Min(1.0f, prevMagnitude + Time.deltaTime / movementSmoother);
+            else if (absoluteMovement < prevMagnitude)
+                magnitude = Mathf.Max(0f, prevMagnitude - Time.deltaTime / movementSmoother);
+            else
+                magnitude = absoluteMovement;
+            
+            this.prevMagnitude = magnitude;
+            // Computing movement in world space
+            movement = Vector3.ClampMagnitude(new Vector3(mH, 0, mV), 1.0f) * magnitude;
             #endregion
 
             #region Rotation with mouse
@@ -80,10 +94,17 @@ namespace NextOne
 
                 // Finally Rotate the model
                 this.model.transform.Rotate(Vector3.up, -variationAngle);
-
             }
             #endregion
 
+
+            #region Model Space Movement Animation
+            modelMovement = model.transform.InverseTransformDirection(movement);
+
+            Debug.Log(movement + " " + modelMovement);
+            if (canMove)
+                this.weapon.AnimateMovement(animator, model, modelMovement);
+            #endregion
         }
 
 
