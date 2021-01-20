@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.CombatScripts.Skills.Trigger
 {
+    [CreateAssetMenu(fileName = "Skill Trigger Key", menuName = "Next One/Skills/Skill Trigger Key")]
     public class SkillTriggerKey : SkillTrigger
     {
         public KeyCode KeyCode;
@@ -10,18 +11,6 @@ namespace Assets.Scripts.CombatScripts.Skills.Trigger
         public override bool IsTriggered()
         {
             return Input.GetKeyDown(KeyCode);
-        }
-
-        [MenuItem("Assets/Create/Skills/Trigger/Skill Trigger Key")]
-        public static void CreateSkillTriggerKeyAsset()
-        {
-            SkillTriggerKey asset = ScriptableObject.CreateInstance<SkillTriggerKey>();
-            AssetDatabase.CreateAsset(asset, "Assets/NewSkillTriggerKeyObject.asset");
-            AssetDatabase.SaveAssets();
-
-            EditorUtility.FocusProjectWindow();
-
-            Selection.activeObject = asset;
         }
     }
 }

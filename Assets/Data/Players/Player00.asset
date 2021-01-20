@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5aaa13c7b01ddbe448f2fa5f90caa74d, type: 3}
+  m_Name: Player00
+  m_EditorClassIdentifier: 
+  PlayerId: 0
+  PlayerName: default
+  PlayerDescription: default description
+  PlayerModel: {fileID: 8218000798580720992, guid: b555d74007551644392a5ce4bb007cb3, type: 3}
+  PlayerHealth: 1
+  PlayerVelocity: 1
+  WeaponsHolder: {fileID: 11400000, guid: 7141bdee9c58d5a41a208755b7764ce3, type: 2}

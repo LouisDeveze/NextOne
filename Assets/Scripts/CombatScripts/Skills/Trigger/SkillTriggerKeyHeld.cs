@@ -3,23 +3,12 @@ using UnityEngine;
 
 namespace Assets.Scripts.CombatScripts.Skills.Trigger
 {
+    [CreateAssetMenu(fileName = "Skill Trigger Key Held", menuName = "Next One/Skills/Skill Trigger Key Held")]
     public class SkillTriggerKeyHeld : SkillTriggerKey
     {
         public override bool IsTriggered()
         {
             return Input.GetKey(KeyCode);
-        }
-
-        [MenuItem("Assets/Create/Skills/Trigger/Skill Trigger Key Held")]
-        public static void CreateSkillTriggerKeyHeldAsset()
-        {
-            SkillTriggerKeyHeld asset = ScriptableObject.CreateInstance<SkillTriggerKeyHeld>();
-            AssetDatabase.CreateAsset(asset, "Assets/NewSkillTriggerKeyHeldObject.asset");
-            AssetDatabase.SaveAssets();
-
-            EditorUtility.FocusProjectWindow();
-
-            Selection.activeObject = asset;
         }
     }
 }

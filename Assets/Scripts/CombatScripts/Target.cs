@@ -3,16 +3,19 @@ using Vector3 = UnityEngine.Vector3;
 
 namespace Assets.Scripts.CombatScripts
 {
+
     public abstract class Target
     {
+        public GameObject Origin;
     }
 
     public class GameObjectTarget : Target
     {
         public GameObject[] GameObjects;
 
-        public GameObjectTarget(GameObject[] _gameObjects)
+        public GameObjectTarget(GameObject _origin, GameObject[] _gameObjects)
         {
+            
             GameObjects = _gameObjects;
         }
     }
@@ -21,9 +24,18 @@ namespace Assets.Scripts.CombatScripts
     {
         public Vector3 Position;
 
-        public Vector3Target(Transform _transform)
+        public Vector3Target(GameObject _origin, Transform _transform)
         {
+            Origin = _origin;
             Position = _transform.position;
+        }
+    }
+
+    public class SelfTarget : Target
+    {
+        public SelfTarget(GameObject _origin)
+        {
+            Origin = _origin;
         }
     }
 }

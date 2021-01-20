@@ -9,12 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b3d3ed96510aa84aafd4c1a50c141ce, type: 3}
-  m_Name: Skill00
+  m_Script: {fileID: 11500000, guid: 1b8197bd8679ab74c98c280021166c09, type: 3}
+  m_Name: MorphingSkill00
   m_EditorClassIdentifier: 
-  SkillName: Test
-  SkillDescription: Test Description
-  SkillAim: {fileID: 11400000, guid: 505aad2b476796840a5cba834da17a8f, type: 2}
+  SkillId: 0
+  SkillName: default
+  SkillDescription: default description
+  SkillAim: {fileID: 11400000, guid: 727480f6f0dbe894e95ee8790276e552, type: 2}
   SkillTrigger: {fileID: 11400000, guid: 508dbffac2efe8a43a685d2f3f5378f2, type: 2}
-  PrefabToSpawn: {fileID: 0}
-  Velocity: 0

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Assets.Script.Utility
+namespace Assets.Scripts.Utility
 {
     public class Targetable : MonoBehaviour
     {
