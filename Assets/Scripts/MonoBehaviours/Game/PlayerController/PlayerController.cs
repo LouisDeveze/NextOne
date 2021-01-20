@@ -6,39 +6,48 @@ namespace NextOne
 {
     public class PlayerController : MonoBehaviour
     {
-
-        public Weapon weapon;
-        
+        // The model and his hands
+        public GameObject model;
         public Transform RightHand;
         public Transform LeftHand;
 
-        Rigidbody rb;
+        // The weapon to use
+        public Weapon weapon;
+        
+        // The Rigidbody use for physics
+        Rigidbody rigidbd;
+
+        // The animator of the model
+        Animator animator;
+
         // Movement Speed;
         public float speed = 6;
         private float animationSpeed;
 
 
         public float angularSpeed = 360;
-        public float angularTreshold = 2;
+        private float angularTreshold = 5;
 
         // Utils for rotation
         private float distanceFromCamera = 0;
         private Plane plane = new Plane(Vector3.up, new Vector3(0, 0, 0));
-
+        // Utils for movements
         private float mH;
         private float mV;
 
         void Start()
         {
-            rb = GetComponent<Rigidbody>();
-            weapon.Create(this.RightHand, this.LeftHand);
+            this.rigidbd = model.GetComponent<Rigidbody>();
+            this.animator = model.GetComponent<Animator>();
+            // Weapon is created and sets the runtime animator controller to use
+            weapon.Create(this.animator, this.RightHand, this.LeftHand);
         }
 
-
+        // Update RigidBody inside Fixed Update for physics
         void FixedUpdate()
         {
             // Give directional smoothed velocity
-            rb.velocity = new Vector3(mH * speed, rb.velocity.y, mV * speed);
+            this.rigidbd.velocity = new Vector3(mH * speed, rigidbd.velocity.y, mV * speed);
         }
 
         private void Update()
@@ -55,14 +64,14 @@ namespace NextOne
             }
             #endregion
 
-            #region Rotation
+            #region Rotation with mouse
             //Get the Screen positions of the object
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (plane.Raycast(ray, out distanceFromCamera))
             {
                 Vector3 worldPosition = ray.GetPoint(distanceFromCamera);
-                Vector3 toMouse = worldPosition - this.transform.position;
-                float angle = Vector3.SignedAngle(toMouse, this.transform.forward, Vector3.up);
+                Vector3 toMouse = worldPosition - this.model.transform.position;
+                float angle = Vector3.SignedAngle(toMouse, this.model.transform.forward, Vector3.up);
 
                 // Calculate Variation Angle
                 float variationAngle = angle > 0 ? Time.deltaTime * angularSpeed : -Time.deltaTime * angularSpeed;
@@ -70,7 +79,7 @@ namespace NextOne
                 variationAngle = Mathf.Abs(angle) > angularTreshold ? variationAngle : 0;
 
                 // Finally Rotate the model
-                this.transform.Rotate(Vector3.up, -variationAngle);
+                this.model.transform.Rotate(Vector3.up, -variationAngle);
 
             }
             #endregion

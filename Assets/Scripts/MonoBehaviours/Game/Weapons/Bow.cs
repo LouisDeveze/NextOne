@@ -8,9 +8,10 @@ namespace NextOne
     public class Bow : Weapon
     {
 
-        public GameObject prefab;
+        public GameObject bowModel;
 
         private GameObject bow = null;
+
 
         /// <summary>
         /// Creates the bow and parent it to the left Hand
@@ -18,9 +19,11 @@ namespace NextOne
         /// <param name="rightHand"></param>
         /// <param name="leftHand"></param>
         /// <returns>Hte prefab of the Bow</returns>
-        public override void Create(Transform rightHand, Transform leftHand)
+        public override void Create(Animator animator, Transform rightHand, Transform leftHand)
         {
-            this.bow = GameObject.Instantiate(prefab, leftHand);
+            animator.runtimeAnimatorController = this.weaponAnimator;
+
+            this.bow = GameObject.Instantiate(bowModel, leftHand);
 
             // Resolve Tranform Problems
             this.bow.transform.localPosition = new Vector3(-0.0001f, 0.001f, 0.0008f);
