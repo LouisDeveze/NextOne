@@ -17,6 +17,20 @@ namespace NextOne
         public static string TertiaryAction = "Tertiary Action";
         public static string Stunned = "Stunned";
         public static string GettingUp = "Getting Up";
-        
+        public static string Dodge = "Dodge";
+
+
+        /// <summary>
+        /// Utils function to delete
+        /// </summary>
+        /// <param name="animator"></param>
+        public static void ResetTriggers(Animator animator)
+        {
+            foreach (AnimatorControllerParameter parameter in animator.parameters)
+            {
+                if (parameter.type == AnimatorControllerParameterType.Trigger)
+                    animator.ResetTrigger(parameter.name);
+            }
+        }
     }
 }

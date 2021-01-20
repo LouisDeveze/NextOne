@@ -22,11 +22,9 @@ namespace NextOne
         // This function should be overrided to destroy the prebabs of the weapon
         public virtual void Destroy() { }
 
-        public void AnimateMovement(Animator animator, GameObject model, Vector3 movement) {
+        public void AnimateMovement(Animator animator, GameObject model, Vector3 movement, float angle) {
 
             string trigger = Animations.Idle; ;
-            // Idle triggered when there are no movement
-            if(movement.magnitude == 0) { trigger=Animations.Idle; }
 
             // If movement in right is superior to the Strafe treshold, Strafe Right
             if (movement.x > tresholdStrafe) { trigger = Animations.StrafeRight; }
@@ -36,11 +34,13 @@ namespace NextOne
             else if (movement.z > 0) { trigger = Animations.RunFront; }
             // Else check the movement in Z to now if player is running backward or frontward
             else if (movement.z < 0) { trigger = Animations.RunBack; }
+            // Else if idle and turning a lot
+            else if(movement.magnitude == 0 && angle > 10) { trigger = Animations.TurnLeft; }
+            else if(movement.magnitude == 0 && angle < -10) { trigger = Animations.TurnRight; }
+            // Idle triggered when there are no movement
+            else { trigger = Animations.Idle; }
 
-            foreach (AnimatorControllerParameter parameter in animator.parameters){
-                if(parameter.type == AnimatorControllerParameterType.Trigger)
-                    animator.ResetTrigger(parameter.name);
-            }
+            Animations.ResetTriggers(animator);
             animator.SetTrigger(trigger);
 
         }

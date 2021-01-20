@@ -23,13 +23,14 @@ namespace NextOne
         #region Rotation / Movement fields
         // Hyper Parameters
         public float speed = 7;
-        public float angularSpeed = 360;
+        public float angularSpeed = 270;
         private bool canMove = true;
 
         // Utils for rotation
         private float distanceFromCamera = 0;
         private Plane plane = new Plane(Vector3.up, new Vector3(0, 0, 0));
         private float angularTreshold = 5;
+        private float angle;
         // Movement in world space
         private Vector3 movement;
         // Movement in model Space
@@ -46,14 +47,7 @@ namespace NextOne
             // Weapon is created and sets the runtime animator controller to use
             weapon.Create(this.animator, this.RightHand, this.LeftHand);
         }
-
-        // Update RigidBody inside Fixed Update for physics
-        void FixedUpdate()
-        {
-            // Give directional smoothed velocity
-            if(canMove)
-                this.rigidbd.velocity = movement * speed;
-        }
+        
 
         private void Update()
         {
@@ -85,7 +79,7 @@ namespace NextOne
             {
                 Vector3 worldPosition = ray.GetPoint(distanceFromCamera);
                 Vector3 toMouse = worldPosition - this.model.transform.position;
-                float angle = Vector3.SignedAngle(toMouse, this.model.transform.forward, Vector3.up);
+                angle = Vector3.SignedAngle(toMouse, this.model.transform.forward, Vector3.up);
 
                 // Calculate Variation Angle
                 float variationAngle = angle > 0 ? Time.deltaTime * angularSpeed : -Time.deltaTime * angularSpeed;
@@ -98,16 +92,41 @@ namespace NextOne
             #endregion
 
 
+            #region Special Move / Spells
+            // If special animation was triggered, wait until it ends
+            if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.7f)
+            {
+                // Reactivate the velocity
+                canMove = true;
+            }
+
+            // Special Input Animation
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                canMove = false;
+                Animations.ResetTriggers(this.animator);
+                this.animator.SetTrigger(Animations.Dodge);
+            }
+            #endregion
+
+
             #region Model Space Movement Animation
             modelMovement = model.transform.InverseTransformDirection(movement);
 
-            Debug.Log(movement + " " + modelMovement);
             if (canMove)
-                this.weapon.AnimateMovement(animator, model, modelMovement);
+                this.weapon.AnimateMovement(animator, model, modelMovement, angle);
             #endregion
+
+            Debug.Log(canMove);
         }
 
+        private void FixedUpdate()
+        {
 
+            // Give directional smoothed velocity
+            if (canMove)
+                this.rigidbd.velocity = movement * speed;
+        }
     }
 
 }

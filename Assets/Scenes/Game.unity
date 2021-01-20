@@ -297,7 +297,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 373192179}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 62a26e8b63a3f2e44a6f004b3406e651, type: 3}
   m_Name: 
@@ -305,9 +305,9 @@ MonoBehaviour:
   model: {fileID: 6185160093758314020}
   RightHand: {fileID: 4690949251125964370}
   LeftHand: {fileID: 5311932510515670511}
-  weapon: {fileID: 11400000, guid: 21bf1eb9f855f6d4ea86211d5b946eee, type: 2}
+  weapon: {fileID: 11400000, guid: 53b53030542cf804aa710c76020b5537, type: 2}
   speed: 7
-  angularSpeed: 360
+  angularSpeed: 270
 --- !u!4 &373192181
 Transform:
   m_ObjectHideFlags: 0
@@ -559,7 +559,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 6817828582271913118}
   smoothSpeed: 0.8
-  distance: 15
+  distance: 12
+  angle: 30
 --- !u!1 &1793256836
 GameObject:
   m_ObjectHideFlags: 0
@@ -1353,18 +1354,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 373192181}
     m_Modifications:
-    - target: {fileID: 1676808469, guid: 45e92dc35d017684288b5ebdcfd00667, type: 3}
-      propertyPath: model
-      value: 
-      objectReference: {fileID: 6185160093758314020}
-    - target: {fileID: 1676808469, guid: 45e92dc35d017684288b5ebdcfd00667, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1676808469, guid: 45e92dc35d017684288b5ebdcfd00667, type: 3}
-      propertyPath: weapon
-      value: 
-      objectReference: {fileID: 11400000, guid: 53b53030542cf804aa710c76020b5537, type: 2}
     - target: {fileID: 611898208408850360, guid: 45e92dc35d017684288b5ebdcfd00667, type: 3}
       propertyPath: m_ApplyRootMotion
       value: 1
