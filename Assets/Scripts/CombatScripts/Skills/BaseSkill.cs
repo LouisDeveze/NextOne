@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.CombatScripts.Skills.Trigger;
+using Assets.Scripts.Utility;
 using UnityEditor;
 using UnityEngine;
 
@@ -26,7 +27,7 @@ namespace Assets.Scripts.CombatScripts.Skills
             //
         }*/
         
-        public override void AttachComponentTo(GameObject _gameObjectToAttachTo)
+        public override ISkill AttachComponentTo(GameObject _gameObjectToAttachTo)
         {
             throw new System.NotImplementedException();
         }

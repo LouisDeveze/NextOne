@@ -25,11 +25,14 @@ namespace Assets.Scripts.CombatScripts.Skills.WeaponSkill.MorphingSkill
             PlayEffect();
         }
 
+        public void Detach()
+        {
+            Destroy(this);
+        }
+
         private void PlayEffect()
         {
-            
             //TODO: Implement VFX
-            
         }
     }
 }

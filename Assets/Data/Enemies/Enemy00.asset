@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abeac62f37391c8419f03b0b3cec2448, type: 3}
   m_Name: Enemy00
   m_EditorClassIdentifier: 
-  Id: 0
+  EId: 0
   EnemyName: default
   EnemyDescription: default description
-  EnemyModel: {fileID: 0}
+  EnemyModel: {fileID: 3641678398877113495, guid: 3528a7a9ce6589f4b9cd53ca9a9cdc97, type: 3}
   EnemyHealth: 1
-  EnemySpeed: 1
+  EnemyVelocity: 1
   EnemyDamage: 1
-  DetectRange: 1
+  EDetectRange: 10

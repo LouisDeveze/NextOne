@@ -1,9 +1,10 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using Assets.Scripts.CombatScripts.Enemies;
+using UnityEngine;
 using Vector3 = UnityEngine.Vector3;
 
 namespace Assets.Scripts.CombatScripts
 {
-
     public abstract class Target
     {
         public GameObject Origin;
@@ -11,13 +12,15 @@ namespace Assets.Scripts.CombatScripts
 
     public class GameObjectTarget : Target
     {
-        public GameObject[] GameObjects;
+        private EnemyController[] TTargets;
 
         public GameObjectTarget(GameObject _origin, GameObject[] _gameObjects)
         {
-            
-            GameObjects = _gameObjects;
+            //TODO: Target Logic
+            //TTargets = _gameObjects;
         }
+
+        public EnemyController[] Targets => TTargets;
     }
 
     public class Vector3Target : Target
@@ -29,6 +32,36 @@ namespace Assets.Scripts.CombatScripts
             Origin = _origin;
             Position = _transform.position;
         }
+    }
+
+    public class EnemyTarget : Target
+    {
+        public List<EnemyController> TargetEnemies;
+
+        public EnemyTarget(GameObject _origin, List<EnemyController> _enemies)
+        {
+            TargetEnemies = _enemies;
+            Origin = _origin;
+        }
+
+        public EnemyTarget(GameObject _origin)
+        {
+            TargetEnemies = new List<EnemyController>();
+            Origin = _origin;
+        }
+
+        public EnemyTarget(GameObject _origin, EnemyController _enemy)
+        {
+            TargetEnemies = new List<EnemyController>() {_enemy};
+            Origin = _origin;
+        }
+
+        public void AddTarget(EnemyController _enemy)
+        {
+            TargetEnemies.Add(_enemy);
+        }
+
+        public List<EnemyController> Enemies => TargetEnemies;
     }
 
     public class SelfTarget : Target

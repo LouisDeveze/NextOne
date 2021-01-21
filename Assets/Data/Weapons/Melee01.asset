@@ -27,3 +27,4 @@ MonoBehaviour:
   WeaponCooldownMultiplier: 1
   WeaponSkills:
   - {fileID: 11400000, guid: 3a0f9d5283af6f743a45a95ee7b6a2b8, type: 2}
+  - {fileID: 11400000, guid: 67696a88f2917884b85237ad84493e9b, type: 2}

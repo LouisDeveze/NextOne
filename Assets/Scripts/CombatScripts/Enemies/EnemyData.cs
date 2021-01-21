@@ -6,14 +6,31 @@ namespace Assets.Scripts.CombatScripts.Enemies
     public class EnemyData : ScriptableObject
     {
         //TODO: Make it unique
-        public int Id = 0;
-        public string EnemyName = "default";
-        public string EnemyDescription = "default description";
-        public GameObject EnemyModel;
-        
-        public int EnemyHealth = 1;
-        public float EnemySpeed = 1f;
-        public int EnemyDamage = 1;
-        public float DetectRange = 10f;
+        [SerializeField] private int EId = 0;
+        [SerializeField] private string EnemyName = "default";
+        [SerializeField] private string EnemyDescription = "default description";
+        [SerializeField] private GameObject EnemyModel;
+
+        [SerializeField] private int EnemyHealth = 1;
+        [SerializeField] private float EnemyVelocity = 1f;
+        [SerializeField] private int EnemyDamage = 1;
+        [SerializeField] private float EDetectRange = 10f;
+
+
+        public int Id => EId;
+
+        public string Name => EnemyName;
+
+        public string Description => EnemyDescription;
+
+        public GameObject Model => EnemyModel;
+
+        public int Health => EnemyHealth;
+
+        public float Velocity => EnemyVelocity;
+
+        public int Damage => EnemyDamage;
+
+        public float DetectRange => EDetectRange;
     }
 }

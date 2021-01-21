@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Assets.Scripts.CombatScripts.Skills;
 using Assets.Scripts.CombatScripts.Skills.Aim;
+using Assets.Scripts.CombatScripts.Skills.Trigger;
 using Assets.Scripts.CombatScripts.Weapons;
 using Assets.Scripts.Utility;
 using UnityEngine;
@@ -24,6 +25,9 @@ namespace Assets.Scripts.CombatScripts.Player
         private int CurrentWeapon = 0;
         private bool IsCasting = false;
 
+        //Skills Script References
+        private List<ISkill> Skills = new List<ISkill>();
+
         private void Start()
         {
             if (PlayerData != null)
@@ -38,6 +42,8 @@ namespace Assets.Scripts.CombatScripts.Player
             model.transform.localPosition = Vector3.zero;
             model.transform.rotation = Quaternion.identity;
 
+            //Attach Component
+            AttachComponents();
 
             //Set Weapon Stats
             CurrentWeapon = _playerData.WeaponHolder.DefaultWeapon;
@@ -50,25 +56,40 @@ namespace Assets.Scripts.CombatScripts.Player
                     baseWeaponData.DamageMultiplier));*/
             }
 
+            //Set Weapon & Skill
             ActivateCurrentWeapon();
-
-            //Set SKills
-            AttachInitialSkills();
-
 
             HealthPoint = _playerData.Health;
             Velocity = _playerData.Velocity;
         }
 
 
+        //COMPONENT RELATED
+        private void AttachComponents()
+        {
+            gameObject.AddComponent<Targetable>();
+        }
+
+
         //SKILL RELATED
-        private void AttachInitialSkills()
+        private void AttachSkills()
         {
             foreach (var skill in PlayerData.WeaponHolder.GetWeaponDataAt(CurrentWeapon).Skills)
             {
-                skill.AttachComponentTo(gameObject);
+                Skills.Add(skill.AttachComponentTo(gameObject));
             }
         }
+
+        private void DetachSkills()
+        {
+            foreach (var skill in Skills)
+            {
+                skill.Detach();
+            }
+
+            Skills.Clear();
+        }
+
 
         //Check if all unique
         private bool CheckSkillTrigger()
@@ -80,8 +101,8 @@ namespace Assets.Scripts.CombatScripts.Player
         private void AttemptSkill(int _index)
         {
             //TODO: check cooldown
-            var skillParams = new SkillUseParams();
-            PlayerData.WeaponHolder.GetWeaponDataAt(CurrentWeapon).Skills[_index].Use(skillParams);
+            var skillParams = new SkillUseParams {Origin = gameObject};
+            Skills[_index].Use(skillParams);
         }
 
         //WEAPON RELATED
@@ -92,6 +113,8 @@ namespace Assets.Scripts.CombatScripts.Player
             {
                 weapon.SetActive(true);
             }
+
+            AttachSkills();
         }
 
         private void DeactivateUnfocusedWeapon()
@@ -115,6 +138,8 @@ namespace Assets.Scripts.CombatScripts.Player
             {
                 weapon.SetActive(false);
             }
+
+            DetachSkills();
         }
 
         private void SafeIndent()

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.Utility;
+using UnityEngine;
 
 namespace Assets.Scripts.CombatScripts.Skills
 {
@@ -28,7 +29,7 @@ namespace Assets.Scripts.CombatScripts.Skills
         public GameObject CastEffect => MovingCastEffect;
 
         public GameObject HitEffect => MovingHitEffect;
-        public override void AttachComponentTo(GameObject _gameObjectToAttachTo)
+        public override ISkill AttachComponentTo(GameObject _gameObjectToAttachTo)
         {
             throw new System.NotImplementedException();
         }

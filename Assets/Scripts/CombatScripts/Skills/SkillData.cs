@@ -16,13 +16,18 @@ namespace Assets.Scripts.CombatScripts.Skills
 
         protected ISkill Behavior;
 
-        public abstract void AttachComponentTo(GameObject _gameObjectToAttachTo);
+        public abstract ISkill AttachComponentTo(GameObject _gameObjectToAttachTo);
+
+        public void Detach()
+        {
+            Behavior.Detach();
+        }
 
         public void Use(SkillUseParams _useParams)
         {
             Behavior.Use(_useParams);
         }
-        
+
         public string Name => SkillName;
 
         public string Description => SkillDescription;

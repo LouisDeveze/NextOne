@@ -5,20 +5,19 @@ using UnityEngine;
 namespace Assets.Scripts.CombatScripts.Skills.Aim
 {
     [CreateAssetMenu(fileName = "NewSkillAimOverlap", menuName = "Next One/Aim/Skill Aim Overlap")]
-    public class SkillAimOverlap : SkillAimPhysics
+    public class SkillAimOverlap : SkillAimParams
     {
         public float radius;
 
-        public override Target GetTarget(GameObject _origin)
+        public override void GetTarget(SkillUseParams _params)
         {
-            var colliders = Physics.OverlapSphere(_origin.transform.position, radius, LayerMask);
+            var colliders = Physics.OverlapSphere(_params.Origin.transform.position, radius, LayerMask);
             foreach (var collider in colliders)
             {
                 var targetable = collider.GetComponent<Targetable>();
-                if (targetable != null) return new Vector3Target(_origin,targetable.transform);
+                if (targetable != null)
+                    _params.Target = new Vector3Target(_params.Origin, targetable.transform);
             }
-
-            return null;
         }
     }
 }

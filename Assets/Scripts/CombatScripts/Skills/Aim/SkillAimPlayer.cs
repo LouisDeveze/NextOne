@@ -5,9 +5,9 @@ namespace Assets.Scripts.CombatScripts.Skills.Aim
     [CreateAssetMenu(fileName = "SkillAimPlayer", menuName = "Next One/Aim/Skill Aim Player")]
     public class SkillAimPlayer : SkillAim
     {
-        public override Target GetTarget(GameObject _origin)
+        public override void GetTarget(SkillUseParams _useParams)
         {
-            return new SelfTarget(_origin);
+            _useParams.Target = new SelfTarget(_useParams.Origin);
         }
     }
 }
