@@ -71,4 +71,17 @@ namespace Assets.Scripts.CombatScripts
             Origin = _origin;
         }
     }
+
+    public class ForwardTarget : Target
+    {
+        private Vector3 TargetDirection;
+
+        public ForwardTarget(GameObject _origin)
+        {
+            Origin = _origin;
+            TargetDirection = _origin.transform.forward;
+        }
+
+        public Vector3 Direction => TargetDirection;
+    }
 }

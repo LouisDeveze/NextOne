@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbb8115bc665b514e94607bf34db8fa0, type: 3}
+  m_Name: RangedSkill00
+  m_EditorClassIdentifier: 
+  SkillId: 0
+  SkillName: default
+  SkillDescription: default description
+  SkillAim: {fileID: 11400000, guid: 7d595482430ed304a89e68c2fcc53e13, type: 2}
+  SkillTrigger: {fileID: 11400000, guid: 506ba550f14a1954f81a00b6fd8abce3, type: 2}
+  SkillProjectilePrefab: {fileID: 3811656209286473422, guid: 5d4a273e9f0ccb2478c3f6a63a62dca1, type: 3}
+  SkillMuzzlePrefab: {fileID: 3465633234476848454, guid: fb0d81665e7a3874cb9c6ff66c29170c, type: 3}
+  SkillHitPrefab: {fileID: 1160433202427606645, guid: 9375cabc3108b034dab73ffe6f0a41c0, type: 3}
+  SkillVelocity: 500
+  NumberOfProjectile: 1
+  ProjectileDamage: 10
+  ProjectileDelay: 0

@@ -9693,7 +9693,6 @@ GameObject:
   - component: {fileID: 3811656209286473421}
   - component: {fileID: 3529133810874879323}
   - component: {fileID: 3529133810874879316}
-  - component: {fileID: 3529133810874879317}
   m_Layer: 9
   m_Name: vfxProjectileElectric01
   m_TagString: Untagged
@@ -9709,7 +9708,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3811656209286473422}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3811656209086755661}
@@ -9749,29 +9748,8 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.8
-  m_Center: {x: 0, y: 1, z: -0.8}
---- !u!114 &3529133810874879317
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3811656209286473422}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1654797978a2f7245b46c131905225c4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 15
-  accuracy: 100
-  fireRate: 1
-  muzzlePrefab: {fileID: 3465633234476848454, guid: fb0d81665e7a3874cb9c6ff66c29170c, type: 3}
-  hitPrefab: {fileID: 1160433202427606645, guid: 9375cabc3108b034dab73ffe6f0a41c0, type: 3}
-  castSFX: {fileID: 0}
-  hitSFX: {fileID: 0}
-  trails:
-  - {fileID: 2831304482559325897}
+  m_Radius: 0.1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5624823490219641994
 GameObject:
   m_ObjectHideFlags: 0

@@ -17,11 +17,8 @@ namespace Assets.Scripts.CombatScripts.Skills.Aim
                 out raycastHit, MaxDistance,
                 LayerMask))
             {
-                var targetable = raycastHit.collider.GetComponent<Targetable>();
-                if (targetable)
-                {
-                    _useParams.Target = new Vector3Target(_useParams.Origin, targetable.transform);
-                }
+                Debug.Log(raycastHit.transform.name);
+                _useParams.Target = new Vector3Target(_useParams.Origin, raycastHit.transform);
             }
         }
     }

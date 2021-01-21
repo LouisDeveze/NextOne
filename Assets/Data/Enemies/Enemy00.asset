@@ -16,7 +16,7 @@ MonoBehaviour:
   EnemyName: default
   EnemyDescription: default description
   EnemyModel: {fileID: 3641678398877113495, guid: 3528a7a9ce6589f4b9cd53ca9a9cdc97, type: 3}
-  EnemyHealth: 1
+  EnemyHealth: 100
   EnemyVelocity: 1
   EnemyDamage: 1
   EDetectRange: 10

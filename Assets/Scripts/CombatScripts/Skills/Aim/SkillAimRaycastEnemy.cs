@@ -25,9 +25,7 @@ namespace Assets.Scripts.CombatScripts.Skills.Aim
             Debug.Log(targetable.gameObject.name);
 
             if (!targetable) return;
-
-            Debug.Log("Here");
-
+            
             var enemyHit = targetable.GetComponent<EnemyController>();
             if (enemyHit)
             {

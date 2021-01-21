@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: WeaponHolder00
   m_EditorClassIdentifier: 
   BaseWeaponsData:
-  - {fileID: 11400000, guid: 2ff5a7abd170b754781cc3cd12464b5c, type: 2}
+  - {fileID: 11400000, guid: 434b2ef05c9c1404484d8ef9f1f70f2f, type: 2}
   - {fileID: 11400000, guid: 6021f4827ede5ad48b95643022a88a32, type: 2}
   DefaultHolderWeapon: 0
   WeaponSwitchCooldown: 1
