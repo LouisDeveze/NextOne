@@ -9,12 +9,13 @@ public class CameraTracer : MonoBehaviour
     public float smoothSpeed = 0.8f;
     private Vector3 offset;
     public float distance;
+    public float angle;
 
     //SmoothLookAt à ameliorer
     void LateUpdate()
     {
-        offset.y = Mathf.Sqrt(Mathf.Pow(distance, 2) / 2);
-        offset.z = Mathf.Sqrt(Mathf.Pow(distance, 2) / 2) * -1;
+        offset.y = Mathf.Sin(Mathf.Deg2Rad*angle)*distance;
+        offset.z = -Mathf.Cos(Mathf.Deg2Rad*angle)*distance;
         Vector3 desiredPosition = target.position + offset;
         Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
         transform.position = smoothedPosition;
