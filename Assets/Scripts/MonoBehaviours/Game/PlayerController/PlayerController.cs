@@ -116,8 +116,7 @@ namespace NextOne
             if (canMove)
                 this.weapon.AnimateMovement(animator, model, modelMovement, angle);
             #endregion
-
-            Debug.Log(canMove);
+            
         }
 
         private void FixedUpdate()

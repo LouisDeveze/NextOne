@@ -532,6 +532,7 @@ MonoBehaviour:
   target: {fileID: 0}
   smoothSpeed: 0.8
   distance: 10
+  angle: 0
 --- !u!1 &1443496291
 GameObject:
   m_ObjectHideFlags: 0
@@ -572,8 +573,8 @@ MonoBehaviour:
   corridorTL: {fileID: 7320369848423641232, guid: 2412190781a186d4a890f2f1c0e3e039, type: 3}
   corridorTLR: {fileID: 3820220837525110579, guid: 38e9e85fb43a1cb42b8a6b2a2b628b20, type: 3}
   corridorLR: {fileID: 479371404632869484, guid: e26e575ffd821184ba8b674a545a2203, type: 3}
-  mapSize: 25
-  spawningAttempt: 5
+  mapSize: 50
+  spawningAttempt: 20
   roomsPrefabs:
   - {fileID: 3026831949748329839, guid: 889e831e6ac40b54eb2a6a9c0b6c06a9, type: 3}
   roomsSpawned: []

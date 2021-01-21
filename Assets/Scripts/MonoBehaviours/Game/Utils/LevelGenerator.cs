@@ -91,12 +91,11 @@ public class LevelGenerator : MonoBehaviour
             for(int j = 0; j<5; j++)
             {
                 wasPlaced = CheckPlacement(roomRandom, myPosition);
-                Debug.Log(wasPlaced);
                 if (wasPlaced) break;
                 myPosition = new Vector3(Random.Range(0, mapSize) * 4, 0, Random.Range(0, mapSize) * 4);
                 roomRandom.transform.position = myPosition;
             }
-            if (!wasPlaced) GameObject.Destroy(roomRandom);
+            if (!wasPlaced) GameObject.Destroy(roomRandom.gameObject);
         }
     }
 
@@ -114,17 +113,9 @@ public class LevelGenerator : MonoBehaviour
 
     private void Start()
     {
+        
         CreateMap();
         RoomSpawner();
-        for (int x = 0; x < mapSize; x++)
-        {
-            string str = "";
-            for (int z = 0; z < mapSize; z++)
-            {
-                str += Map[x, z] + " ";
-            }
-            Debug.Log(str);
-        }
         CorridorSpawner();
     }
 }

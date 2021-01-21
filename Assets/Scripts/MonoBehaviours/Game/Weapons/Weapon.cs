@@ -2,7 +2,7 @@
 
 namespace NextOne
 {
-    
+
     public class Weapon : ScriptableObject
     {
 
@@ -18,7 +18,7 @@ namespace NextOne
             // Set the animator
             animator.runtimeAnimatorController = this.weaponAnimator;
         }
-        
+
         // This function should be overrided to destroy the prebabs of the weapon
         public virtual void Destroy() { }
 
@@ -35,16 +35,17 @@ namespace NextOne
             // Else check the movement in Z to now if player is running backward or frontward
             else if (movement.z < 0) { trigger = Animations.RunBack; }
             // Else if idle and turning a lot
-            else if(movement.magnitude == 0 && angle > 10) { trigger = Animations.TurnLeft; }
-            else if(movement.magnitude == 0 && angle < -10) { trigger = Animations.TurnRight; }
+            else if (movement.magnitude == 0 && angle > 10) { trigger = Animations.TurnLeft; }
+            else if (movement.magnitude == 0 && angle < -10) { trigger = Animations.TurnRight; }
             // Idle triggered when there are no movement
             else { trigger = Animations.Idle; }
 
             Animations.ResetTriggers(animator);
             animator.SetTrigger(trigger);
 
+            
         }
-
-
     }
+
+    
 }

@@ -12,7 +12,6 @@ public class AddRoom : MonoBehaviour
 
     public void RoomMapping()
     {
-        Debug.Log(this.transform.position);
         /*
         templates = GameObject.FindGameObjectWithTag("Rooms").GetComponent<RoomTemplates>();
         templates.rooms.Add(this.gameObject);
@@ -41,14 +40,12 @@ public class AddRoom : MonoBehaviour
             if (T.localPosition.x / 4 > maxZ) { maxZ = T.localPosition.z / 4; }
 
         }
-        Debug.Log(minX + " " + minZ + " " + maxX + " " + maxZ);
         size = new Vector2Int((int)maxX - (int)minX + 3, (int)maxZ - (int)minZ + 3);
         map = new bool[size.x, size.y];
         foreach (Transform T in childrenTransforms)
         {
             Vector2Int P = new Vector2Int((int)T.localPosition.x / 4, (int)T.localPosition.z / 4);
             map[P.x, P.y] = true;
-            //Debug.Log(P + " " + T.gameObject.name);
         }
         List<Vector2Int> border = new List<Vector2Int>();
 
