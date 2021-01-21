@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 5048745166258668270}
   - component: {fileID: 8905004088341112111}
   - component: {fileID: 140896858712771548}
-  - component: {fileID: 36396303172612565}
   - component: {fileID: -551815879053985725}
   m_Layer: 0
   m_Name: Standard_Wall_Outer_Angle_Left_90
@@ -91,20 +90,6 @@ MeshRenderer:
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!114 &140896858712771548
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2623275848731488202}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78084811e713ef44f96e738669ef3454, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  meshRenderer: {fileID: 8905004088341112111}
-  normal: {x: 1, y: -1}
---- !u!114 &36396303172612565
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

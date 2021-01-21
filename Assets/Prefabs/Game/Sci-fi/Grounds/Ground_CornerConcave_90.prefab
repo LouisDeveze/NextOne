@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 9037604133061495020}
   m_Layer: 0
   m_Name: Ground_CornerConcave_90
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

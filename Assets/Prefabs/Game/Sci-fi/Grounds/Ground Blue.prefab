@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3456131415469790722}
   m_Layer: 0
   m_Name: Ground Blue
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

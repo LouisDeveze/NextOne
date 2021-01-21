@@ -11,4 +11,19 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Game.unity
     guid: cbfe36cfddfde964d9dfce63a355d5dd
+  - enabled: 1
+    path: Assets/Scenes/FirstSeason/Start.unity
+    guid: e2b93921e2488904da7b87051fc6aadf
+  - enabled: 1
+    path: Assets/Scenes/FirstSeason/Maze.unity
+    guid: 84f4a88c9dc4c254597955958a341f58
+  - enabled: 1
+    path: Assets/Scenes/FirstSeason/Hist.unity
+    guid: 0372900b5f9265a49a006b6bd72129c2
+  - enabled: 1
+    path: Assets/Scenes/FirstSeason/BigFight.unity
+    guid: a979557a7bc6b5a46acd12f0bbf18fdc
+  - enabled: 1
+    path: Assets/Scenes/FirstSeason/Arena.unity
+    guid: 70113a442d55435409c7d2694f752bb7
   m_configObjects: {}

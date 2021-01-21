@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2643933147304380772}
   m_Layer: 0
   m_Name: Ground_Corner_270
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
