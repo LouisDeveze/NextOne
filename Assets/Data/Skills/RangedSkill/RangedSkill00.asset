@@ -21,8 +21,11 @@ MonoBehaviour:
   SkillMuzzlePrefab: {fileID: 3465633234476848454, guid: fb0d81665e7a3874cb9c6ff66c29170c, type: 3}
   SkillHitPrefab: {fileID: 1160433202427606645, guid: 9375cabc3108b034dab73ffe6f0a41c0, type: 3}
   SkillTrailsPrefab: []
-  SkillVelocity: 500
-  SkillMaxCollision: 1
+  SkillCastSFX: {fileID: 0}
+  SkillHitSFX: {fileID: 0}
+  SkillVelocity: 20
+  SkillAccuracy: 100
+  SkillMaxCollision: 2
   NumberOfProjectile: 1
   ProjectileDamage: 10
   ProjectileDelay: 0.1
