@@ -133,8 +133,8 @@ public class ProjectileMove : MonoBehaviour
             //Instantiate hit effect if applicable !
             if (hitPrefab != null)
             {
-                var hitVFX = Instantiate(hitPrefab, pos - new Vector3(-.5f,+1,0), rotation) as GameObject;
-    
+                var hitVFX = Instantiate(hitPrefab, pos - new Vector3(-.5f, +1, 0), rotation) as GameObject;
+
                 var ps = hitVFX.GetComponent<ParticleSystem>();
                 if (ps == null)
                 {

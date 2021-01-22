@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Utility;
+﻿using System.Collections.Generic;
+using Assets.Scripts.Utility;
 using UnityEngine;
 
 namespace Assets.Scripts.CombatScripts.Skills.WeaponSkill.RangedSkill
@@ -9,8 +10,11 @@ namespace Assets.Scripts.CombatScripts.Skills.WeaponSkill.RangedSkill
         [SerializeField] private GameObject SkillProjectilePrefab;
         [SerializeField] private GameObject SkillMuzzlePrefab;
         [SerializeField] private GameObject SkillHitPrefab;
+        [SerializeField] private List<GameObject> SkillTrailsPrefab;
+
 
         [SerializeField] private float SkillVelocity = 10f;
+        [SerializeField] private int SkillMaxCollision = 1;
         [SerializeField] private int NumberOfProjectile = 1;
         [SerializeField] private int ProjectileDamage = 1;
         [SerializeField] private float ProjectileDelay = 0.01f;
@@ -30,7 +34,10 @@ namespace Assets.Scripts.CombatScripts.Skills.WeaponSkill.RangedSkill
 
         public GameObject HitPrefab => SkillHitPrefab;
 
+        public List<GameObject> TrailsPrefab => SkillTrailsPrefab;
         public float Velocity => SkillVelocity;
+
+        public int MaxCollision => SkillMaxCollision;
 
         public int Projectiles => NumberOfProjectile;
 

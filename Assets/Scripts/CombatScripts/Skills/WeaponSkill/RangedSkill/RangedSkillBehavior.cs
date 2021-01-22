@@ -31,18 +31,31 @@ namespace Assets.Scripts.CombatScripts.Skills.WeaponSkill.RangedSkill
                 _useParams.Origin.transform.position, Quaternion.identity);
             newProjectile.AddComponent<Projectile>();
 
-            //Use FirePoint
+            //TODO: Use FirePoint
             Projectile projectile = newProjectile.GetComponent<Projectile>();
             projectile.Source = _useParams.Origin;
             projectile.Damage = RangedSkillData.Damage;
             projectile.DestroyDelay = RangedSkillData.Delay;
+            projectile.Hit = RangedSkillData.HitPrefab;
+            projectile.Trails = RangedSkillData.TrailsPrefab;
+            projectile.MaxCollision = RangedSkillData.MaxCollision;
 
-            /*Projectile projectile = new Projectile(gameObject, RangedSkillData.Damage,
-                RangedSkillData.Delay);*/
+            if (RangedSkillData.MuzzlePrefab)
+            {
+                var MuzzleVFX = Instantiate(RangedSkillData.MuzzlePrefab,
+                    _useParams.Origin.transform.position, Quaternion.identity);
+                var ps = MuzzleVFX.GetComponent<ParticleSystem>();
+                if (ps)
+                    Destroy(MuzzleVFX, ps.main.duration);
+                else
+                {
+                    var psChild = MuzzleVFX.transform.GetChild(0).GetComponent<ParticleSystem>();
+                    Destroy(MuzzleVFX, psChild.main.duration);
+                }
+            }
 
             //Set Motion
             projectile.GetComponent<Rigidbody>().AddForce(direction.Direction * RangedSkillData.Velocity);
-            //projectile.GetComponent<Rigidbody>().velocity = direction.Direction * RangedSkillData.Velocity;
         }
 
         public void Detach()
