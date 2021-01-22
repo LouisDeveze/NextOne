@@ -4,10 +4,7 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - SpawnPoint
-  - Rooms
-  - Floor
-  - Door
+  - ZoomCamera
   layers:
   - Default
   - TransparentFX
@@ -18,10 +15,10 @@ TagManager:
   - 
   - 
   - PostProcessing
-  - 
-  - 
-  - 
-  - 
+  - VFX
+  - Enemy
+  - Player
+  - Weapons
   - 
   - 
   - 
