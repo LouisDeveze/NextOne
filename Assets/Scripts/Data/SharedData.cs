@@ -10,7 +10,7 @@ public class SharedData : MonoBehaviour
 
 
     #region Shared Data
-    
+    ScriptableObject playerSelected;
     #endregion
 
     #region Awake instance

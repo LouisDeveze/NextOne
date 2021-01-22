@@ -73,20 +73,5 @@ public class AddRoom : MonoBehaviour
             Vector2Int temp = border[i];
             map[temp.x, temp.y] = true;
         }
-        /*
-        for (int x = 0; x < size.x; x++)
-        {
-            string str = "";
-            for (int z = 0; z < size.y; z++)
-            {
-                str += map[x, z] + " ";
-            }
-            Debug.Log(str);
-        }
-        //*/
-    }
-    public void Start()
-    {
-        RoomMapping();
     }
 }

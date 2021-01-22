@@ -20,6 +20,11 @@ namespace NextOne
             this.states.Add((int)MenuStates.MainTitle, new MainTitle(this));
             this.states.Add((int)MenuStates.OptionState, new OptionState(this));
 
+        }
+
+        public void Start()
+        {
+
             this.SwitchState((int)MenuStates.FadeInTitle);
         }
     }

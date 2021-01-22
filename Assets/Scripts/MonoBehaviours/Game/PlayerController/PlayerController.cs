@@ -7,6 +7,7 @@ namespace NextOne
     public class PlayerController : MonoBehaviour
     {
         // The model and his hands
+        public GameObject prefab;
         public GameObject model;
         public Transform RightHand;
         public Transform LeftHand;
@@ -42,6 +43,7 @@ namespace NextOne
 
         void Start()
         {
+            this.model = Instantiate(prefab, this.transform);
             this.rigidbd = model.GetComponent<Rigidbody>();
             this.animator = model.GetComponent<Animator>();
             // Weapon is created and sets the runtime animator controller to use
