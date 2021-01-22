@@ -18,6 +18,8 @@ namespace Assets.Scripts.CombatScripts.Skills.WeaponSkill.RangedSkill
         [SerializeField] private List<GameObject> ProjectileTrails;
 
         [SerializeField] private int ProjectileMaxCollision;
+        [SerializeField] private AudioClip ProjectileHitSfx;
+
         private int CurrentCollisionNumber = 0;
 
         private bool EndOfLife = false;
@@ -48,18 +50,21 @@ namespace Assets.Scripts.CombatScripts.Skills.WeaponSkill.RangedSkill
                 Quaternion rotation = Quaternion.FromToRotation(Vector3.up, contactPoint.normal);
                 Vector3 position = contactPoint.point;
 
-                var HitVFX = Instantiate(Hit, position, rotation) as GameObject;
+                var hitVfx = Instantiate(Hit, position, rotation) as GameObject;
 
-                var ps = HitVFX.GetComponent<ParticleSystem>();
+                var ps = hitVfx.GetComponent<ParticleSystem>();
                 //If NO PS directly attached
                 if (!ps)
                 {
-                    var psChild = HitVFX.transform.GetChild(0).GetComponent<ParticleSystem>();
-                    Destroy(HitVFX, psChild.main.duration);
+                    var psChild = hitVfx.transform.GetChild(0).GetComponent<ParticleSystem>();
+                    Destroy(hitVfx, psChild.main.duration);
                 }
                 else
-                    Destroy(HitVFX, ps.main.duration);
+                    Destroy(hitVfx, ps.main.duration);
             }
+
+            if (HitSfx)
+                PlaySfx(HitSfx);
 
             DamageIfDamageable(_collision);
 
@@ -114,6 +119,11 @@ namespace Assets.Scripts.CombatScripts.Skills.WeaponSkill.RangedSkill
             Destroy(gameObject, DestroyDelay);
         }
 
+        public void PlaySfx(AudioClip _audioClip)
+        {
+            GetComponent<AudioSource>().PlayOneShot(_audioClip);
+        }
+
         public GameObject Source
         {
             get => PSource;
@@ -148,6 +158,12 @@ namespace Assets.Scripts.CombatScripts.Skills.WeaponSkill.RangedSkill
         {
             get => ProjectileMaxCollision;
             set => ProjectileMaxCollision = value;
+        }
+
+        public AudioClip HitSfx
+        {
+            get => ProjectileHitSfx;
+            set => ProjectileHitSfx = value;
         }
     }
 }

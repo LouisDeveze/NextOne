@@ -12,6 +12,9 @@ namespace Assets.Scripts.CombatScripts.Skills.WeaponSkill.RangedSkill
         [SerializeField] private GameObject SkillHitPrefab;
         [SerializeField] private List<GameObject> SkillTrailsPrefab;
 
+        [SerializeField] private AudioClip SkillCastSFX;
+        [SerializeField] private AudioClip SkillHitSFX;
+
 
         [SerializeField] private float SkillVelocity = 10f;
         [SerializeField] private int SkillMaxCollision = 1;
@@ -44,5 +47,9 @@ namespace Assets.Scripts.CombatScripts.Skills.WeaponSkill.RangedSkill
         public int Damage => ProjectileDamage;
 
         public float Delay => ProjectileDelay;
+
+        public AudioClip CastSfx => SkillCastSFX;
+
+        public AudioClip HitSfx => SkillHitSFX;
     }
 }

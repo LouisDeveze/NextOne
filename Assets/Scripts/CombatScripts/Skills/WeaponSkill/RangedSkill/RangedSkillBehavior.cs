@@ -7,10 +7,6 @@ namespace Assets.Scripts.CombatScripts.Skills.WeaponSkill.RangedSkill
     {
         private RangedSkillData RangedSkillData = null;
 
-        void Start()
-        {
-        }
-
         public void SetData(RangedSkillData _rangedSkillData)
         {
             this.RangedSkillData = _rangedSkillData;
@@ -39,19 +35,27 @@ namespace Assets.Scripts.CombatScripts.Skills.WeaponSkill.RangedSkill
             projectile.Hit = RangedSkillData.HitPrefab;
             projectile.Trails = RangedSkillData.TrailsPrefab;
             projectile.MaxCollision = RangedSkillData.MaxCollision;
+            projectile.gameObject.AddComponent<AudioSource>();
+            projectile.HitSfx = RangedSkillData.HitSfx;
+
 
             if (RangedSkillData.MuzzlePrefab)
             {
-                var MuzzleVFX = Instantiate(RangedSkillData.MuzzlePrefab,
+                var muzzleVfx = Instantiate(RangedSkillData.MuzzlePrefab,
                     _useParams.Origin.transform.position, Quaternion.identity);
-                var ps = MuzzleVFX.GetComponent<ParticleSystem>();
+                var ps = muzzleVfx.GetComponent<ParticleSystem>();
                 if (ps)
-                    Destroy(MuzzleVFX, ps.main.duration);
+                    Destroy(muzzleVfx, ps.main.duration);
                 else
                 {
-                    var psChild = MuzzleVFX.transform.GetChild(0).GetComponent<ParticleSystem>();
-                    Destroy(MuzzleVFX, psChild.main.duration);
+                    var psChild = muzzleVfx.transform.GetChild(0).GetComponent<ParticleSystem>();
+                    Destroy(muzzleVfx, psChild.main.duration);
                 }
+            }
+
+            if (RangedSkillData.CastSfx)
+            {
+                projectile.PlaySfx(RangedSkillData.CastSfx);
             }
 
             //Set Motion
