@@ -1,7 +1,6 @@
-﻿using Assets.Scripts.Utility;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Assets.Scripts.CombatScripts.Skills
+namespace NextOne
 {
     [CreateAssetMenu(fileName = "MovingSkill", menuName = "Next One/Skills/MovingSkill")]
     public class MovingSkill : SkillData

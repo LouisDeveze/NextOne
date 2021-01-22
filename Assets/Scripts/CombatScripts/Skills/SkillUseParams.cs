@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Assets.Scripts.CombatScripts.Skills
+namespace NextOne
 {
     public class SkillUseParams
     {

@@ -1,9 +1,6 @@
-﻿using Assets.Scripts.CombatScripts.Enemies;
-using Assets.Scripts.Utility;
-using UnityEditor;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Assets.Scripts.CombatScripts.Skills.Aim
+namespace NextOne
 {
     [CreateAssetMenu(fileName = "NewSkillAimForward", menuName = "Next One/Aim/Skill Aim Forward")]
     public class SkillAimForward : SkillAimParams

@@ -1,9 +1,7 @@
 ﻿using System.Collections.Generic;
-using Assets.Scripts.CombatScripts.Skills;
-using Assets.Scripts.CombatScripts.Skills.Trigger;
 using UnityEngine;
 
-namespace Assets.Scripts.CombatScripts.Weapons
+namespace NextOne
 {
     [CreateAssetMenu(fileName = "BaseWeapon", menuName = "Next One/Weapons/Base Weapon Data")]
     public abstract class BaseWeaponData : ScriptableObject

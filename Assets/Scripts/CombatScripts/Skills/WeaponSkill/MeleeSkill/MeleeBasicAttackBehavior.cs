@@ -1,9 +1,6 @@
-﻿using Assets.Scripts.CombatScripts.Enemies;
-using Assets.Scripts.CombatScripts.Skills.Aim;
-using Assets.Scripts.Utility;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Assets.Scripts.CombatScripts.Skills.WeaponSkill.MeleeSkill
+namespace NextOne
 {
     public class MeleeBasicAttackBehavior : MonoBehaviour, ISkill
     {

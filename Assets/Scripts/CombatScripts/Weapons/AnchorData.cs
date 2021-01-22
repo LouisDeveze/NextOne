@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Assets.Scripts.CombatScripts.Weapons
+namespace NextOne
 {
     [CreateAssetMenu(fileName = "Anchor", menuName = "Next One/Anchor/Anchor Data")]
     public class AnchorData : ScriptableObject

@@ -1,7 +1,6 @@
-﻿using Assets.Scripts.Utility;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Assets.Scripts.CombatScripts.Skills.WeaponSkill.MeleeSkill
+namespace NextOne
 {
     [CreateAssetMenu(fileName = "MeleeSkill", menuName = "Next One/Skills/Melee Skill")]
     public class MeleeBasicAttackData : SkillData

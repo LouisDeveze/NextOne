@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Assets.Scripts.Utility
+namespace NextOne
 {
     public class Targetable : MonoBehaviour
     {

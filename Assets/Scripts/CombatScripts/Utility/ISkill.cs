@@ -1,6 +1,4 @@
-﻿using Assets.Scripts.CombatScripts.Skills;
-
-namespace Assets.Scripts.Utility
+﻿namespace NextOne
 {
     public interface ISkill
     {

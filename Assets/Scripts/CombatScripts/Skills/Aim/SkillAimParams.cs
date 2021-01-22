@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
-using Assets.Scripts.CombatScripts.Enemies;
 using UnityEngine;
 
-namespace Assets.Scripts.CombatScripts.Skills.Aim
+namespace NextOne
 {
     public abstract class SkillAimParams : SkillAim
     {

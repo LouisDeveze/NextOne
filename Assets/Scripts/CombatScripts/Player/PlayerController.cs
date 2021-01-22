@@ -1,13 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using Assets.Scripts.CombatScripts.Skills;
-using Assets.Scripts.CombatScripts.Skills.Aim;
-using Assets.Scripts.CombatScripts.Skills.Trigger;
-using Assets.Scripts.CombatScripts.Weapons;
-using Assets.Scripts.Utility;
 using UnityEngine;
 
-namespace Assets.Scripts.CombatScripts.Player
+namespace NextOne
 {
     public class PlayerController : MonoBehaviour, IDamageable
     {

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Assets.Scripts.CombatScripts.Weapons
+namespace NextOne
 {
     public class WeaponController : MonoBehaviour
     {

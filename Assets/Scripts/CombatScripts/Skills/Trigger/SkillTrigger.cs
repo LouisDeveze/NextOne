@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Assets.Scripts.CombatScripts.Skills.Trigger
+namespace NextOne
 {
     public abstract class SkillTrigger : ScriptableObject
     {

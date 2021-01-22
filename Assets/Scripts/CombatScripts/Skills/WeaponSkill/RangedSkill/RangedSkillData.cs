@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
-using Assets.Scripts.Utility;
 using UnityEngine;
 
-namespace Assets.Scripts.CombatScripts.Skills.WeaponSkill.RangedSkill
+namespace NextOne
 {
     [CreateAssetMenu(fileName = "RangedSkill", menuName = "Next One/Skills/Ranged Skill")]
     public class RangedSkillData : SkillData

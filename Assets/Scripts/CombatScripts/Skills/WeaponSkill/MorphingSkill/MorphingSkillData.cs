@@ -1,7 +1,6 @@
-﻿using Assets.Scripts.Utility;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Assets.Scripts.CombatScripts.Skills.WeaponSkill.MorphingSkill
+namespace NextOne
 {
     [CreateAssetMenu(fileName = "MorphingSkill", menuName = "Next One/Skills/Morphing Skill")]
     public class MorphingSkillData : SkillData

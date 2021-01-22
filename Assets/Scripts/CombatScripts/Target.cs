@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
-using Assets.Scripts.CombatScripts.Enemies;
 using UnityEngine;
 using Vector3 = UnityEngine.Vector3;
 
-namespace Assets.Scripts.CombatScripts
+namespace NextOne
 {
     public abstract class Target
     {

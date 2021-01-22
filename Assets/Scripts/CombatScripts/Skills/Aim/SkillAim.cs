@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Assets.Scripts.CombatScripts.Skills.Aim
+namespace NextOne
 {
     public abstract class SkillAim : ScriptableObject
     {

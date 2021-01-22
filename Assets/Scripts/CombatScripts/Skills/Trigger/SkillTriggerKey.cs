@@ -1,7 +1,7 @@
 ﻿using UnityEditor;
 using UnityEngine;
 
-namespace Assets.Scripts.CombatScripts.Skills.Trigger
+namespace NextOne
 {
     [CreateAssetMenu(fileName = "Skill Trigger Key", menuName = "Next One/Skills/Skill Trigger Key")]
     public class SkillTriggerKey : SkillTrigger

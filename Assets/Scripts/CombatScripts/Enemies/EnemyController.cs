@@ -1,11 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using Assets.Scripts.CombatScripts.Player;
-using Assets.Scripts.Utility;
-using UnityEditor;
 using UnityEngine;
 
-namespace Assets.Scripts.CombatScripts.Enemies
+namespace NextOne
 {
     public class EnemyController : MonoBehaviour, IDamageable
     {

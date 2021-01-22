@@ -1,7 +1,6 @@
-﻿using Assets.Scripts.Utility;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Assets.Scripts.CombatScripts.Skills.WeaponSkill.RangedSkill
+namespace NextOne
 {
     public class RangedSkillBehavior : MonoBehaviour, ISkill
     {

@@ -1,10 +1,8 @@
 ﻿using System.Collections.Generic;
-using Assets.Scripts.CombatScripts.Skills;
-using UnityEditor.PackageManager;
 using UnityEngine;
 
 //LE SKILL POUR CHANGER
-namespace Assets.Scripts.CombatScripts.Weapons
+namespace NextOne
 {
     [CreateAssetMenu(fileName = "WeaponHolder", menuName = "Next One/Weapons/Weapon Holder")]
     public class WeaponHolder : ScriptableObject

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Assets.Scripts.CombatScripts.Skills.Aim
+namespace NextOne
 {
     [CreateAssetMenu(fileName = "SkillAimPlayer", menuName = "Next One/Aim/Skill Aim Player")]
     public class SkillAimPlayer : SkillAim

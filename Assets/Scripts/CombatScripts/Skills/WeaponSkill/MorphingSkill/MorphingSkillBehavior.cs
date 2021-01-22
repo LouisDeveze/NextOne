@@ -1,8 +1,6 @@
-﻿using Assets.Scripts.CombatScripts.Player;
-using Assets.Scripts.Utility;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Assets.Scripts.CombatScripts.Skills.WeaponSkill.MorphingSkill
+namespace NextOne
 {
     public class MorphingSkillBehavior : MonoBehaviour, ISkill
     {

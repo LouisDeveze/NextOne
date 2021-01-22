@@ -1,10 +1,7 @@
 ﻿using System;
-using Assets.Scripts.CombatScripts.Skills.Aim;
-using Assets.Scripts.CombatScripts.Skills.Trigger;
-using Assets.Scripts.Utility;
 using UnityEngine;
 
-namespace Assets.Scripts.CombatScripts.Skills
+namespace NextOne
 {
     public abstract class SkillData : ScriptableObject
     {

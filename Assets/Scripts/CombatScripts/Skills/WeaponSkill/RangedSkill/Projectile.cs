@@ -1,10 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using Assets.Scripts.CombatScripts.Enemies;
-using Assets.Scripts.Utility;
 using UnityEngine;
 
-namespace Assets.Scripts.CombatScripts.Skills.WeaponSkill.RangedSkill
+namespace NextOne
 {
     public class Projectile : MonoBehaviour
     {

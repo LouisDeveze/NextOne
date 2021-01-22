@@ -1,7 +1,6 @@
-﻿using Assets.Scripts.CombatScripts.Weapons;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Assets.Scripts.CombatScripts.Player
+namespace NextOne
 {
     [CreateAssetMenu(fileName = "PlayerData", menuName = "Next One/Player Data")]
     public class PlayerData : ScriptableObject

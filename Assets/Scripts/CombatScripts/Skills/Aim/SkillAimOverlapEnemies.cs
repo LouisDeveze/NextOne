@@ -1,9 +1,6 @@
-﻿using Assets.Scripts.CombatScripts.Enemies;
-using Assets.Scripts.Utility;
-using UnityEditor;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Assets.Scripts.CombatScripts.Skills.Aim
+namespace NextOne
 {
     [CreateAssetMenu(fileName = "NewSkillAimOverlapEnemy", menuName = "Next One/Aim/Skill Aim Overlap Enemy")]
     public class SkillAimRayCastEnemy : SkillAimParams
