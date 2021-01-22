@@ -37,7 +37,9 @@ namespace Assets.Scripts.CombatScripts.Skills.WeaponSkill.RangedSkill
             projectile.MaxCollision = RangedSkillData.MaxCollision;
             projectile.gameObject.AddComponent<AudioSource>();
             projectile.HitSfx = RangedSkillData.HitSfx;
-
+            projectile.Velocity = RangedSkillData.Velocity;
+            projectile.Accuracy = RangedSkillData.Accuracy;
+            projectile.Direction = direction.Direction;
 
             if (RangedSkillData.MuzzlePrefab)
             {
@@ -59,7 +61,7 @@ namespace Assets.Scripts.CombatScripts.Skills.WeaponSkill.RangedSkill
             }
 
             //Set Motion
-            projectile.GetComponent<Rigidbody>().AddForce(direction.Direction * RangedSkillData.Velocity);
+            //projectile.GetComponent<Rigidbody>().AddForce(direction.Direction * RangedSkillData.Velocity);
         }
 
         public void Detach()

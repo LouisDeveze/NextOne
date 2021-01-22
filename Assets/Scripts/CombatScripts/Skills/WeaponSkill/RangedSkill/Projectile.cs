@@ -17,11 +17,17 @@ namespace Assets.Scripts.CombatScripts.Skills.WeaponSkill.RangedSkill
 
         [SerializeField] private List<GameObject> ProjectileTrails;
 
+        [SerializeField] private float ProjectileVelocity;
+        [SerializeField] private float ProjectileAccuracy;
+
         [SerializeField] private int ProjectileMaxCollision;
         [SerializeField] private AudioClip ProjectileHitSfx;
+        [SerializeField] private Vector3 ProjectileDirection;
+
+
+        private Vector3 offset;
 
         private int CurrentCollisionNumber = 0;
-
         private bool EndOfLife = false;
 
         public Projectile(GameObject _source, int _projectileDamage,
@@ -33,16 +39,53 @@ namespace Assets.Scripts.CombatScripts.Skills.WeaponSkill.RangedSkill
             Hit = _projectileHit;
         }
 
+
+        public void OnStart()
+        {
+            var rb = GetComponent<Rigidbody>();
+            rb.constraints = RigidbodyConstraints.FreezeRotation;
+
+            if (!(Accuracy < 100f)) return;
+            Accuracy = 1 - (Accuracy / 100);
+
+            for (int i = 0; i < 2; i++)
+            {
+                var val = 1 * Random.Range(-Accuracy, Accuracy);
+                var index = Random.Range(0, 2);
+                if (i == 0)
+                {
+                    offset = index == 0 ? new Vector3(0, -val, 0) : new Vector3(0, val, 0);
+                }
+                else
+                {
+                    offset = index == 0 ? new Vector3(0, offset.y, -val) : new Vector3(0, offset.y, val);
+                }
+            }
+        }
+
+        public void FixedUpdate()
+        {
+            transform.LookAt(Vector3.Normalize(Direction));
+
+            if (Velocity != 0 && transform != null)
+                transform.position += (Direction + offset) * Velocity * Time.deltaTime;
+        }
+
         void OnCollisionEnter(Collision _collision)
         {
             var layerCollidedWith = _collision.gameObject.transform.parent.gameObject.layer;
             if (!Source || layerCollidedWith == Source.layer ||
-                layerCollidedWith == LayerMask.NameToLayer("VFX")) return;
+                layerCollidedWith == LayerMask.NameToLayer("VFX") ||
+                layerCollidedWith == LayerMask.NameToLayer("Weapons")) return;
 
             CurrentCollisionNumber++;
 
             if (CurrentCollisionNumber == MaxCollision)
+            {
                 EndOfLife = true;
+                Velocity = 0;
+                GetComponent<Rigidbody>().isKinematic = true;
+            }
 
             if (Hit)
             {
@@ -164,6 +207,24 @@ namespace Assets.Scripts.CombatScripts.Skills.WeaponSkill.RangedSkill
         {
             get => ProjectileHitSfx;
             set => ProjectileHitSfx = value;
+        }
+
+        public float Velocity
+        {
+            get => ProjectileVelocity;
+            set => ProjectileVelocity = value;
+        }
+
+        public float Accuracy
+        {
+            get => ProjectileAccuracy;
+            set => ProjectileAccuracy = value;
+        }
+
+        public Vector3 Direction
+        {
+            get => ProjectileDirection;
+            set => ProjectileDirection = value;
         }
     }
 }

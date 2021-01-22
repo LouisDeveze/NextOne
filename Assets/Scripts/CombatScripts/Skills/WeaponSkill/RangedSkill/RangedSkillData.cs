@@ -17,6 +17,7 @@ namespace Assets.Scripts.CombatScripts.Skills.WeaponSkill.RangedSkill
 
 
         [SerializeField] private float SkillVelocity = 10f;
+        [SerializeField] private float SkillAccuracy = 100f;
         [SerializeField] private int SkillMaxCollision = 1;
         [SerializeField] private int NumberOfProjectile = 1;
         [SerializeField] private int ProjectileDamage = 1;
@@ -51,5 +52,7 @@ namespace Assets.Scripts.CombatScripts.Skills.WeaponSkill.RangedSkill
         public AudioClip CastSfx => SkillCastSFX;
 
         public AudioClip HitSfx => SkillHitSFX;
+
+        public float Accuracy => SkillAccuracy;
     }
 }
