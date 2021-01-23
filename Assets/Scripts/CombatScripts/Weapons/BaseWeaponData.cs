@@ -3,6 +3,16 @@ using UnityEngine;
 
 namespace NextOne
 {
+    public enum EWeaponAnimation
+    {
+        None = 0,
+        OneHandedMelee = 1,
+        TwoHandedMelee = 2,
+        OneHandedRanged = 3,
+        TwoHandedRanged = 4,
+        TwoHandedMix = 5
+    }
+
     [CreateAssetMenu(fileName = "BaseWeapon", menuName = "Next One/Weapons/Base Weapon Data")]
     public abstract class BaseWeaponData : ScriptableObject
     {
@@ -11,11 +21,17 @@ namespace NextOne
         [SerializeField] private string WeaponDescription = "default description";
         [SerializeField] private Sprite WeaponIcon;
         [SerializeField] private List<GameObject> WeaponsModel = new List<GameObject>();
+        [SerializeField] private List<int> WeaponDamages = new List<int>();
+        [SerializeField] private bool UniformWeaponDamage = false;
 
-        [SerializeField] private List<AnchorData> WeaponsAnchor = new List<AnchorData>();
-        //[SerializeField] private GameObject WeaponModel;
+        // [SerializeField] private List<AnchorData> WeaponsAnchor = new List<AnchorData>();
 
-        //[SerializeField] private Transform WeaponAttachmentPoint;
+        [SerializeField] private EWeaponAnimation WeaponAnimationType;
+
+        [SerializeField] private AnimatorOverrideController WeaponAnimator;
+
+        // Angle in degrees before running animation becomes strafe
+        private float tresholdStrafe = .5f;
 
         [SerializeField] private float WeaponDamageMultiplier = 1f;
         [SerializeField] private float WeaponAttackRateMultiplier = 1f;
@@ -24,21 +40,22 @@ namespace NextOne
         [SerializeField] private List<SkillData> WeaponSkills = new List<SkillData>();
 
         //public GameObject InstantiateWeapon(Transform _parent, Transform _weaponAnchorPoint)
-        public List<WeaponController> InstantiateWeapon(Transform _parent)
+        public WeaponController InstantiateWeapon(Animator _animator, List<WeaponAnchors> _weaponAnchorsList)
         {
-            var models = new List<WeaponController>();
+            _animator.runtimeAnimatorController = WeaponAnimator;
+
+            var models = new List<Weapon>();
 
             for (var i = 0; i < Models.Count; i++)
             {
-                var model = Instantiate(Models[i]);
-                model.transform.SetParent(_parent);
-                model.transform.localPosition = Anchors[i].Position;
-                model.transform.rotation = Quaternion.identity;
+                var model = Instantiate(Models[i], _weaponAnchorsList[i].transform);
                 model.SetActive(false);
-                models.Add(new WeaponController(model, DamageMultiplier));
+                models.Add(UniformDamage
+                    ? new Weapon(model, Damages[0])
+                    : new Weapon(model, Damages[i]));
             }
-            
-            return models;
+
+            return new WeaponController(models,WeaponAnimation);
         }
 
         public int Id => WeaponId;
@@ -52,7 +69,7 @@ namespace NextOne
         //public GameObject Model => WeaponModel;
 
         public List<GameObject> Models => WeaponsModel;
-        public List<AnchorData> Anchors => WeaponsAnchor;
+        //  public List<AnchorData> Anchors => WeaponsAnchor;
 
         //public Transform AttachmentPoint => WeaponAttachmentPoint;
 
@@ -63,5 +80,13 @@ namespace NextOne
         public float CooldownMultiplier => WeaponCooldownMultiplier;
 
         public List<SkillData> Skills => WeaponSkills;
+
+        public AnimatorOverrideController Animator => WeaponAnimator;
+
+        public EWeaponAnimation WeaponAnimation => WeaponAnimationType;
+
+        public List<int> Damages => WeaponDamages;
+
+        public bool UniformDamage => UniformWeaponDamage;
     }
 }

@@ -11,6 +11,9 @@ namespace NextOne
         [SerializeField] private SkillAim SkillAim;
         [SerializeField] private SkillTrigger SkillTrigger;
 
+        [SerializeField] private float SkillAnimationTime;
+        [SerializeField] private string SkillAnimationName;
+
         protected ISkill Behavior;
 
         public abstract ISkill AttachComponentTo(GameObject _gameObjectToAttachTo);
@@ -34,5 +37,9 @@ namespace NextOne
         public SkillAim Aim => SkillAim;
 
         public SkillTrigger Trigger => SkillTrigger;
+
+        public float AnimationTime => SkillAnimationTime;
+
+        public string AnimationName => SkillAnimationName;
     }
 }

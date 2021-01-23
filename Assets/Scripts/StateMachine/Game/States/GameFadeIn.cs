@@ -17,9 +17,7 @@ namespace NextOne
             //tracer.target = this.sm.ctx
             tracer.transform.localRotation = Quaternion.identity;
             //
-            Debug.Log("Coucou");
-            Debug.Log(this.sm.ctx.playerController.model.transform);
-            tracer.target = this.sm.ctx.playerController.model.transform;
+            tracer.target = this.sm.ctx.playerController.Model.transform;
 
         }
     }

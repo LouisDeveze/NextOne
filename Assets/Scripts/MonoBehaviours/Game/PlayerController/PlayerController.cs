@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace NextOne
 {
-    public class PlayerController : MonoBehaviour
+    public class PlayerControllerOld : MonoBehaviour
     {
         // The model and his hands
         public GameObject prefab;
@@ -54,7 +54,7 @@ namespace NextOne
         private void Update()
         {
             #region Movement
-            // Retrieve Movement Input
+            //Retrieve Movement Input
             float mH = Input.GetAxisRaw("Horizontal");
             float mV = Input.GetAxisRaw("Vertical");
 
@@ -98,25 +98,26 @@ namespace NextOne
             // If special animation was triggered, wait until it ends
             if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.7f)
             {
-                // Reactivate the velocity
+                // Reactivate the RB
                 canMove = true;
             }
 
             // Special Input Animation
             if (Input.GetKeyDown(KeyCode.Space))
             {
+                //Deactivate RB
                 canMove = false;
                 Animations.ResetTriggers(this.animator);
                 this.animator.SetTrigger(Animations.Dodge);
             }
             #endregion
 
-
+    //TODO: AFFFFFFFFFFINIIIIIR
             #region Model Space Movement Animation
             modelMovement = model.transform.InverseTransformDirection(movement);
 
-            if (canMove)
-                this.weapon.AnimateMovement(animator, model, modelMovement, angle);
+           /* if (canMove) //?
+                this.weapon.AnimateMovement(animator, model, modelMovement, angle);*/
             #endregion
             
         }

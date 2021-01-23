@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.PlayerLoop;
 
 namespace NextOne
 {
@@ -12,6 +13,15 @@ namespace NextOne
             Player = GetComponent<PlayerController>();
         }
 
+        void Update()
+        {
+            if (Player.IsAnimationEnded(MorphingSkillData.AnimationTime))
+            {
+                Player.CanMove(true);
+                Player.ResetTriggersAnimator();
+            }
+        }
+
         public void SetData(MorphingSkillData _morphingSkillDataToSet)
         {
             this.MorphingSkillData = _morphingSkillDataToSet;
@@ -19,8 +29,11 @@ namespace NextOne
 
         public void Use(SkillUseParams _useParams)
         {
-            Player.ChangeWeapon();
+            Player.CanMove(false);
+            Player.ResetTriggersAnimator();
+            Player.SetTriggerAnimator(MorphingSkillData.AnimationName);
             PlayEffect();
+            Player.ChangeWeapon();
         }
 
         public void Detach()

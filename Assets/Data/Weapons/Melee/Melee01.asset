@@ -19,9 +19,10 @@ MonoBehaviour:
   WeaponsModel:
   - {fileID: 1000011335475624, guid: 128f20fd9fec12b4e9587d7fd19322b7, type: 3}
   - {fileID: 2384716183005555711, guid: 29767c603de539542ad440916a34c816, type: 3}
-  WeaponsAnchor:
-  - {fileID: 11400000, guid: 7cb2ad418ec6c7843b44c27068a4f883, type: 2}
-  - {fileID: 11400000, guid: f958d06b58fd1a142a2ba4910d6a369d, type: 2}
+  WeaponDamages: 0a000000
+  UniformWeaponDamage: 1
+  WeaponAnimationType: 1
+  WeaponAnimator: {fileID: 0}
   WeaponDamageMultiplier: 1
   WeaponAttackRateMultiplier: 1
   WeaponCooldownMultiplier: 1

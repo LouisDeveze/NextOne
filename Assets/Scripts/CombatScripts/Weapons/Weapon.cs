@@ -1,27 +1,55 @@
-﻿using System;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace NextOne
 {
-    public class WeaponController : MonoBehaviour
+    public class Weapon : MonoBehaviour
     {
-        private List<Weapon> WeaponsModel = new List<Weapon>();
-        private float WeaponDamage;
-        private EWeaponAnimation EWeaponAnimation;
+        private GameObject WeaponModel;
+        private int WeaponDamage;
 
-        // Angle in degrees before running animation becomes strafe
-        private float thresholdStrafe = .5f;
-
-        public WeaponController(List<Weapon> _weapons, EWeaponAnimation _weaponAnimation)
+        public Weapon(GameObject _weaponModel, int _weaponDamage)
         {
-            Weapons = _weapons;
-            EWeaponAnimation = _weaponAnimation;
+            WeaponModel = _weaponModel;
+            WeaponDamage = _weaponDamage;
+        }
+        
+        //TODO: ON COLLISION 
+
+        public void OnStart()
+        {
+            
         }
 
-        public void AnimateMovement(Animator _animator ,Vector3 _movement, float _angle)
+        public void Update()
         {
-            switch (WeaponAnimation)
+            
+        }
+        
+        public GameObject Model => WeaponModel;
+        public int Damage => WeaponDamage;
+
+        // J'ai laissé uniquement ce que j'utilise Clément
+        public AnimatorOverrideController weaponAnimator;
+
+        // Angle in degrees before running animation becomes strafe
+        private float tresholdStrafe = .5f;
+
+        ///TODO: ADD UI ?
+        public virtual void Create(Animator animator, Transform rightHand, Transform leftHand)
+        {
+            // Set the animator
+            animator.runtimeAnimatorController = this.weaponAnimator;
+        }
+
+        // This function should be overrided to destroy the prebabs of the weapon
+        public virtual void Destroy()
+        {
+        }
+
+        public void AnimateMovement(Animator animator, GameObject model, Vector3 movement, float angle,
+            EWeaponAnimation _weaponAnimation)
+        {
+            switch (_weaponAnimation)
             {
                 case EWeaponAnimation.None:
                     None();
@@ -30,7 +58,7 @@ namespace NextOne
                     OneHandedMelee();
                     break;
                 case EWeaponAnimation.TwoHandedMelee:
-                    TwoHandedMelee(_animator,_movement,_angle);
+                    TwoHandedMelee();
                     break;
                 case EWeaponAnimation.OneHandedRanged:
                     OneHandedRanged();
@@ -47,15 +75,6 @@ namespace NextOne
             }
         }
 
-        public void SetActive(bool _active)
-        {
-            foreach (var weapon in Weapons)
-            {
-                weapon.Model.SetActive(_active);
-            }
-        }
-
-
         private void None()
         {
         }
@@ -64,36 +83,36 @@ namespace NextOne
         {
         }
 
-        private void TwoHandedMelee(Animator _animator ,Vector3 _movement, float _angle)
+        private void TwoHandedMelee()
         {
-            string trigger = Animations.Idle;
+            /*string trigger = Animations.Idle;
 
             // If movement in right is superior to the Strafe threshold, Strafe Right
-            if (_movement.x > thresholdStrafe)
+            if (movement.x > tresholdStrafe)
             {
                 trigger = Animations.StrafeRight;
             }
             // If movement in Left is superior to the Strafe threshold, Strafe Left
-            else if (_movement.x < -thresholdStrafe)
+            else if (movement.x < -tresholdStrafe)
             {
                 trigger = Animations.StrafeLeft;
             }
             // Else check the movement in Z to now if player is running backward or frontward
-            else if (_movement.z > 0)
+            else if (movement.z > 0)
             {
                 trigger = Animations.RunFront;
             }
             // Else check the movement in Z to now if player is running backward or frontward
-            else if (_movement.z < 0)
+            else if (movement.z < 0)
             {
                 trigger = Animations.RunBack;
             }
             // Else if idle and turning a lot
-            else if (_movement.magnitude == 0 && _angle > 10)
+            else if (movement.magnitude == 0 && angle > 10)
             {
                 trigger = Animations.TurnLeft;
             }
-            else if (_movement.magnitude == 0 && _angle < -10)
+            else if (movement.magnitude == 0 && angle < -10)
             {
                 trigger = Animations.TurnRight;
             }
@@ -103,8 +122,8 @@ namespace NextOne
                 trigger = Animations.Idle;
             }
 
-            Animations.ResetTriggers(_animator);
-            _animator.SetTrigger(trigger);
+            Animations.ResetTriggers(animator);
+            animator.SetTrigger(trigger);*/
         }
 
         private void OneHandedRanged()
@@ -118,20 +137,5 @@ namespace NextOne
         private void TwoHandedMix()
         {
         }
-
-        public Weapon Weapon(int _index)
-        {
-            if (WeaponsModel.Count < _index)
-                throw new IndexOutOfRangeException();
-            return Weapons[_index];
-        }
-
-        public List<Weapon> Weapons
-        {
-            get => WeaponsModel;
-            set => WeaponsModel = value;
-        }
-
-        public EWeaponAnimation WeaponAnimation => EWeaponAnimation;
     }
 }

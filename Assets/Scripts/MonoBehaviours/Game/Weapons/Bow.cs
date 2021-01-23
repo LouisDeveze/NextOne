@@ -5,7 +5,7 @@ using UnityEngine;
 namespace NextOne
 {
     [CreateAssetMenu(fileName = "Data", menuName = "ScriptObj/Weapons/Bow", order = 1)]
-    public class Bow : Weapon
+    public class Bow : MonoBehaviour
     {
 
         public GameObject bowModel;
@@ -19,9 +19,9 @@ namespace NextOne
         /// <param name="rightHand"></param>
         /// <param name="leftHand"></param>
         /// <returns>Hte prefab of the Bow</returns>
-        public override void Create(Animator animator, Transform rightHand, Transform leftHand)
+        public  void Create(Animator animator, Transform rightHand, Transform leftHand)
         {
-            animator.runtimeAnimatorController = this.weaponAnimator;
+           // animator.runtimeAnimatorController = this.weaponAnimator;
 
             this.bow = GameObject.Instantiate(bowModel, leftHand);
 

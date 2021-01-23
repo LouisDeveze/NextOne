@@ -5,7 +5,7 @@ using UnityEngine;
 namespace NextOne
 {
     [CreateAssetMenu(fileName = "Data", menuName = "ScriptObj/Weapons/SwordShield", order = 1)]
-    public class SwordShield : Weapon
+    public class SwordShield : MonoBehaviour
     {
 
         public GameObject swordModel;
@@ -14,21 +14,21 @@ namespace NextOne
         private GameObject sword = null;
         private GameObject shield = null;
         
-        ///</summary> Creates the sword / shield and parent it to the left Hand </summary>
-        public override void Create(Animator animator, Transform rightHand, Transform leftHand)
+        ///<summary> Creates the sword / shield and parent it to the left Hand </summary>
+        public  void Create(Animator animator, Transform rightHand, Transform leftHand)
         {
-            base.Create(animator, rightHand, leftHand);
+            Create(animator, rightHand, leftHand);
 
             this.sword = GameObject.Instantiate(swordModel, rightHand);
             this.shield = GameObject.Instantiate(shieldModel, leftHand);
             
         }
 
-        ///</summary> Destroys the game Objects </summary>
-        public override void Destroy()
+        ///<summary> Destroys the game Objects </summary>
+        public  void Destroy()
         {
-            Destroy(this.sword);
-            Destroy(this.shield);
+            Destroy(sword);
+            Destroy(shield);
         }
     }
 }
