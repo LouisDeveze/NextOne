@@ -13,6 +13,7 @@ namespace NextOne
         // Angle in degrees before running animation becomes strafe
         private float thresholdStrafe = .5f;
 
+        /// T'as pas le droit de faire un  constructor, utilise start ou une fonction Init
         public WeaponController(List<Weapon> _weapons, EWeaponAnimation _weaponAnimation)
         {
             Weapons = _weapons;

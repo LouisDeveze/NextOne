@@ -7,7 +7,6 @@ namespace NextOne
         protected SkillData SkillData = null;
         protected PlayerController Player = null;
         protected bool SkillInUse = false;
-        protected int Framecount = 0;
 
         public void SetData(SkillData _skillData)
         {
@@ -16,7 +15,6 @@ namespace NextOne
 
         void Start()
         {
-            Debug.Log("ON START: " + this.GetInstanceID());
             Player = GetComponent<PlayerController>();
         }
 

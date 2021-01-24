@@ -8,8 +8,8 @@ namespace NextOne
     {
         //TODO: Game Logic
 
-        [SerializeField] private PlayerData PlayerData;
-        [SerializeField] private Transform CastAnchorPoint;
+        [SerializeField] private PlayerData PlayerData = null;
+        [SerializeField] private Transform CastAnchorPoint = null;
 
         //Player Stats
         private int HealthPoint;
@@ -302,16 +302,22 @@ namespace NextOne
             Animations.ResetTriggers(PlayerAnimator);
         }
 
-        public bool IsAnimationEnded(float _animationTime)
+        public bool IsAnimationLastAtLeast(float _animationTime, int layer)
         {
-            return (PlayerAnimator.GetCurrentAnimatorStateInfo(0)
-                .normalizedTime >= _animationTime);
+
+            return (PlayerAnimator.GetCurrentAnimatorStateInfo(layer).normalizedTime >= _animationTime);
+        }
+
+        public bool hasAnimatorPlaying(EAnimation animation, int layer)
+        {
+            return PlayerAnimator.GetCurrentAnimatorStateInfo(layer).IsName(Animations.GetStringEquivalent(animation));
         }
 
         public void SetTriggerAnimator(EAnimation _animationName)
         {
             PlayerAnimator.SetTrigger(Animations.GetStringEquivalent(_animationName));
         }
+        
 
         //GETTER SETTER
         public GameObject Model => PlayerModel;

@@ -6,15 +6,17 @@ namespace NextOne
     {
         void Update()
         {
-            if (SkillInUse)
-                Framecount++;
-            if (!Player.IsAnimationEnded(SkillData.AnimationTime) || !SkillInUse || !(Framecount > 1)) return;
+            // If skill is not in use
+            if (!SkillInUse) return;
+            // If Animation currently running has not yet transitioned to the Skill One
+            if (!Player.hasAnimatorPlaying(SkillData.AnimationName, 0)) return;
+            // Checking Animation Ended
+            if (!Player.IsAnimationLastAtLeast(SkillData.AnimationTime, 0)) return;
             OnEffectEnd();
         }
 
         public override void Use(SkillUseParams _useParams)
         {
-            Framecount = 0;
             SkillInUse = true;
             Player.CanMove(false);
             OnEffectStart();

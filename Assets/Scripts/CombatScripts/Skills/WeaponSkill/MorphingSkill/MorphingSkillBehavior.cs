@@ -7,28 +7,34 @@ namespace NextOne
     {
         void Update()
         {
-            if (SkillInUse)
-            {
-                Framecount++;
-                Debug.Log(Framecount);
-                Debug.Log(this.GetInstanceID());
-            }
+            // If skill is not in use
+            if (!SkillInUse) return;
+            // If Animation currently running has not yet transitioned to the Skill One
+            if (!Player.hasAnimatorPlaying(SkillData.AnimationName, 0)) return;
 
-            if (!Player.IsAnimationEnded(SkillData.AnimationTime) || !SkillInUse || !(Framecount > 1)) return;
+            //if(Player.IsAnimationLastAtLeast(0.5f,0))
+            //Player.ChangeWeapon();
+
+            // Checking Animation Ended
+            if (!Player.IsAnimationLastAtLeast(SkillData.AnimationTime, 0)) return;
             OnEffectEnd();
-            Debug.Log("Update 2");
         }
 
         public override void Use(SkillUseParams _useParams)
         {
-            Debug.Log("Update 0");
-            Debug.Log("Instance ID:" + this.GetInstanceID());
-            Debug.Log("Framecount: " + Framecount);
+            // If the Animator is still playing animation from previous weapon
+            if (Player.hasAnimatorPlaying(this.SkillData.AnimationName, 0))
+            {
+                Player.SkillInUse = false;
+                SkillInUse = false;
+                
+                return;
+            }
+
             SkillInUse = Player.AttemptWeaponChange();
 
             if (!SkillInUse) return;
-
-            Framecount = 0;
+            
             Player.CanMove(false);
             OnEffectStart();
         }
@@ -39,6 +45,7 @@ namespace NextOne
             //Animation Related
             Player.ResetTriggersAnimator();
             Player.SetTriggerAnimator(SkillData.AnimationName);
+
         }
 
         protected override void OnEffectEnd()
