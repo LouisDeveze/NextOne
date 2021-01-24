@@ -108,7 +108,7 @@ namespace NextOne
                 //Deactivate RB
                 canMove = false;
                 Animations.ResetTriggers(this.animator);
-                this.animator.SetTrigger(Animations.Dodge);
+               // this.animator.SetTrigger(Animations.Dodge);
             }
             #endregion
 

@@ -16,6 +16,7 @@ namespace NextOne
         private float Velocity;
         private float AngularVelocity;
         private bool PlayerCanMove = true;
+        public bool SkillInUse = false;
 
         //Weapon Stats
         private List<WeaponController> Weapons = new List<WeaponController>();
@@ -43,7 +44,9 @@ namespace NextOne
         private Vector3 modelMovement;
 
         private const float movementSmoother = .4f;
+
         private float prevMagnitude = 0;
+        // public bool UsingSkill;
 
         private void Start()
         {
@@ -127,11 +130,16 @@ namespace NextOne
 
         private void AttemptSkill(int _index)
         {
+            if (SkillInUse)
+                return;
+
+
             //TODO: check cooldown
 
             //IF CASTING
 
             var skillParams = new SkillUseParams {Origin = gameObject};
+            SkillInUse = true;
             Skills[_index].Use(skillParams);
         }
 
@@ -165,6 +173,11 @@ namespace NextOne
             if (CurrentWeapon + 1 < Weapons.Count)
                 CurrentWeapon += 1;
             else CurrentWeapon = 0;
+        }
+
+        public bool AttemptWeaponChange()
+        {
+            return Weapons.Count >= 2;
         }
 
         public void ChangeWeapon()
@@ -295,9 +308,9 @@ namespace NextOne
                 .normalizedTime >= _animationTime);
         }
 
-        public void SetTriggerAnimator(string _animationName)
+        public void SetTriggerAnimator(EAnimation _animationName)
         {
-            PlayerAnimator.SetTrigger(_animationName);
+            PlayerAnimator.SetTrigger(Animations.GetStringEquivalent(_animationName));
         }
 
         //GETTER SETTER

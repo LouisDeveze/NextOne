@@ -63,6 +63,9 @@ namespace NextOne
         public List<EnemyController> Enemies => TargetEnemies;
     }
 
+    public class NoTarget : Target
+    { }
+
     public class SelfTarget : Target
     {
         public SelfTarget(GameObject _origin)

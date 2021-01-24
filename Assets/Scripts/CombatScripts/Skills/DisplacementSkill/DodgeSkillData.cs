@@ -2,12 +2,12 @@
 
 namespace NextOne
 {
-    [CreateAssetMenu(fileName = "MorphingSkill", menuName = "Next One/Skills/Morphing Skill")]
-    public class MorphingSkillData : SkillData
+    [CreateAssetMenu(fileName = "DodgeSkill", menuName = "Next One/Skills/Dodge Skill")]
+    public class DodgeSkillData : SkillData
     {
         public override ISkill AttachComponentTo(GameObject _gameObjectToAttachTo)
         {
-            var behaviorComponent = _gameObjectToAttachTo.AddComponent<MorphingSkillBehavior>();
+            var behaviorComponent = _gameObjectToAttachTo.AddComponent<DodgeSkillBehavior>();
             behaviorComponent.SetData(this);
             Behavior = behaviorComponent;
 

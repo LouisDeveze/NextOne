@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2860e8b85494ea249bb135f1aa386fa8, type: 3}
+  m_Name: MeleeTest
+  m_EditorClassIdentifier: 
+  WeaponId: 0
+  WeaponName: Test Melee
+  WeaponDescription: Test Melee Weapon
+  WeaponIcon: {fileID: 0}
+  WeaponsModel:
+  - {fileID: 1000011335475624, guid: 128f20fd9fec12b4e9587d7fd19322b7, type: 3}
+  WeaponDamages: 0a000000
+  UniformWeaponDamage: 1
+  WeaponAnimationType: 2
+  WeaponAnimator: {fileID: 22100000, guid: e603151a235eda740a4b59ed1f81a1f9, type: 2}
+  WeaponDamageMultiplier: 1
+  WeaponAttackRateMultiplier: 1
+  WeaponCooldownMultiplier: 1
+  WeaponSkills:
+  - {fileID: 11400000, guid: 3a0f9d5283af6f743a45a95ee7b6a2b8, type: 2}
+  - {fileID: 11400000, guid: 5d874f23842bddc479b5a07ae2d3e3ed, type: 2}

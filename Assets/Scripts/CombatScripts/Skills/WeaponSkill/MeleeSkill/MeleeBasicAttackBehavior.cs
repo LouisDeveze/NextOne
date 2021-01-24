@@ -2,22 +2,17 @@
 
 namespace NextOne
 {
-    public class MeleeBasicAttackBehavior : MonoBehaviour, ISkill
+    public class MeleeBasicAttackBehavior : BaseSkillBehavior
     {
-        private MeleeBasicAttackData MeleeBasicAttackData = null;
-
         void Start()
         {
         }
 
-        public void SetData(MeleeBasicAttackData _meleeBasicAttackData)
+        public override void Use(SkillUseParams _useParams)
         {
-            this.MeleeBasicAttackData = _meleeBasicAttackData;
-        }
+            MeleeBasicAttackData meleeBasicAttackData = (MeleeBasicAttackData) this.SkillData;
 
-        public void Use(SkillUseParams _useParams)
-        {
-            MeleeBasicAttackData.Aim.GetTarget(_useParams);
+            meleeBasicAttackData.Aim.GetTarget(_useParams);
 
             if (!(_useParams.Target is EnemyTarget targets))
             {
@@ -28,20 +23,20 @@ namespace NextOne
             foreach (var target in targets.Enemies)
             {
                 Debug.Log(target.EnemyData.Name + " targeted");
-                target.TakeDamage(MeleeBasicAttackData.Damage);
-                Debug.Log(" Take " + MeleeBasicAttackData.Damage +
+                target.TakeDamage(meleeBasicAttackData.Damage);
+                Debug.Log(" Take " + meleeBasicAttackData.Damage +
                           " has now " + target.EnemyHealth);
             }
         }
 
-        public void Detach()
-        {
-            Destroy(this);
-        }
-
-        private void PlayEffect()
+        protected override void OnEffectStart()
         {
             //TODO: Implement VFX
+        }
+
+        protected override void OnEffectEnd()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

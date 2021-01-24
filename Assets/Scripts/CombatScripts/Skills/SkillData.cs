@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.UIElements.Experimental;
 
 namespace NextOne
 {
@@ -12,7 +13,7 @@ namespace NextOne
         [SerializeField] private SkillTrigger SkillTrigger;
 
         [SerializeField] private float SkillAnimationTime;
-        [SerializeField] private string SkillAnimationName;
+        [SerializeField] private EAnimation SkillAnimationName;
 
         protected ISkill Behavior;
 
@@ -40,6 +41,6 @@ namespace NextOne
 
         public float AnimationTime => SkillAnimationTime;
 
-        public string AnimationName => SkillAnimationName;
+        public EAnimation AnimationName => SkillAnimationName;
     }
 }

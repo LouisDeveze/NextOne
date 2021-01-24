@@ -2,19 +2,12 @@
 
 namespace NextOne
 {
-    public class RangedSkillBehavior : MonoBehaviour, ISkill
+    public class RangedSkillBehavior : BaseSkillBehavior
     {
-        private RangedSkillData RangedSkillData = null;
-
-        public void SetData(RangedSkillData _rangedSkillData)
-        {
-            this.RangedSkillData = _rangedSkillData;
-        }
-
-        public void Use(SkillUseParams _useParams)
+        public override void Use(SkillUseParams _useParams)
         {
             //Get The Direction Where To Shoot !
-            RangedSkillData.Aim.GetTarget(_useParams);
+            SkillData.Aim.GetTarget(_useParams);
 
             if (!(_useParams.Target is ForwardTarget direction))
             {
@@ -22,27 +15,29 @@ namespace NextOne
                 return;
             }
 
-            GameObject newProjectile = Instantiate(RangedSkillData.ProjectilePrefab,
+            RangedSkillData rangedSkillData = (RangedSkillData) this.SkillData;
+
+            GameObject newProjectile = Instantiate(rangedSkillData.ProjectilePrefab,
                 _useParams.Origin.transform.position, Quaternion.identity);
             newProjectile.AddComponent<Projectile>();
 
             //TODO: Use FirePoint
             Projectile projectile = newProjectile.GetComponent<Projectile>();
             projectile.Source = _useParams.Origin;
-            projectile.Damage = RangedSkillData.Damage;
-            projectile.DestroyDelay = RangedSkillData.Delay;
-            projectile.Hit = RangedSkillData.HitPrefab;
-            projectile.Trails = RangedSkillData.TrailsPrefab;
-            projectile.MaxCollision = RangedSkillData.MaxCollision;
+            projectile.Damage = rangedSkillData.Damage;
+            projectile.DestroyDelay = rangedSkillData.Delay;
+            projectile.Hit = rangedSkillData.HitPrefab;
+            projectile.Trails = rangedSkillData.TrailsPrefab;
+            projectile.MaxCollision = rangedSkillData.MaxCollision;
             projectile.gameObject.AddComponent<AudioSource>();
-            projectile.HitSfx = RangedSkillData.HitSfx;
-            projectile.Velocity = RangedSkillData.Velocity;
-            projectile.Accuracy = RangedSkillData.Accuracy;
+            projectile.HitSfx = rangedSkillData.HitSfx;
+            projectile.Velocity = rangedSkillData.Velocity;
+            projectile.Accuracy = rangedSkillData.Accuracy;
             projectile.Direction = direction.Direction;
 
-            if (RangedSkillData.MuzzlePrefab)
+            if (rangedSkillData.MuzzlePrefab)
             {
-                var muzzleVfx = Instantiate(RangedSkillData.MuzzlePrefab,
+                var muzzleVfx = Instantiate(rangedSkillData.MuzzlePrefab,
                     _useParams.Origin.transform.position, Quaternion.identity);
                 var ps = muzzleVfx.GetComponent<ParticleSystem>();
                 if (ps)
@@ -54,22 +49,22 @@ namespace NextOne
                 }
             }
 
-            if (RangedSkillData.CastSfx)
+            if (rangedSkillData.CastSfx)
             {
-                projectile.PlaySfx(RangedSkillData.CastSfx);
+                projectile.PlaySfx(rangedSkillData.CastSfx);
             }
 
             //Set Motion
             //projectile.GetComponent<Rigidbody>().AddForce(direction.Direction * RangedSkillData.Velocity);
         }
 
-        public void Detach()
+        protected override void OnEffectStart()
         {
-            Destroy(this);
         }
 
-        private void PlayEffect()
+        protected override void OnEffectEnd()
         {
+            throw new System.NotImplementedException();
         }
     }
 }

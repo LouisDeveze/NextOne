@@ -19,7 +19,7 @@ namespace NextOne
             EWeaponAnimation = _weaponAnimation;
         }
 
-        public void AnimateMovement(Animator _animator ,Vector3 _movement, float _angle)
+        public void AnimateMovement(Animator _animator, Vector3 _movement, float _angle)
         {
             switch (WeaponAnimation)
             {
@@ -30,7 +30,7 @@ namespace NextOne
                     OneHandedMelee();
                     break;
                 case EWeaponAnimation.TwoHandedMelee:
-                    TwoHandedMelee(_animator,_movement,_angle);
+                    TwoHandedMelee(_animator, _movement, _angle);
                     break;
                 case EWeaponAnimation.OneHandedRanged:
                     OneHandedRanged();
@@ -64,43 +64,44 @@ namespace NextOne
         {
         }
 
-        private void TwoHandedMelee(Animator _animator ,Vector3 _movement, float _angle)
+        private void TwoHandedMelee(Animator _animator, Vector3 _movement, float _angle)
         {
-            string trigger = Animations.Idle;
+            string trigger = Animations.GetStringEquivalent(EAnimation.Idle);
+
 
             // If movement in right is superior to the Strafe threshold, Strafe Right
             if (_movement.x > thresholdStrafe)
             {
-                trigger = Animations.StrafeRight;
+                trigger = Animations.GetStringEquivalent(EAnimation.StrafeRight);
             }
             // If movement in Left is superior to the Strafe threshold, Strafe Left
             else if (_movement.x < -thresholdStrafe)
             {
-                trigger = Animations.StrafeLeft;
+                trigger = Animations.GetStringEquivalent(EAnimation.StrafeLeft);
             }
             // Else check the movement in Z to now if player is running backward or frontward
             else if (_movement.z > 0)
             {
-                trigger = Animations.RunFront;
+                trigger = Animations.GetStringEquivalent(EAnimation.RunFront);
             }
             // Else check the movement in Z to now if player is running backward or frontward
             else if (_movement.z < 0)
             {
-                trigger = Animations.RunBack;
+                trigger = Animations.GetStringEquivalent(EAnimation.RunBack);
+            }
+            else if (_movement.magnitude == 0 && _angle < -10)
+            {
+                trigger = Animations.GetStringEquivalent(EAnimation.TurnRight);
             }
             // Else if idle and turning a lot
             else if (_movement.magnitude == 0 && _angle > 10)
             {
-                trigger = Animations.TurnLeft;
-            }
-            else if (_movement.magnitude == 0 && _angle < -10)
-            {
-                trigger = Animations.TurnRight;
+                trigger = Animations.GetStringEquivalent(EAnimation.TurnLeft);
             }
             // Idle triggered when there are no movement
             else
             {
-                trigger = Animations.Idle;
+                trigger = Animations.GetStringEquivalent(EAnimation.Idle);
             }
 
             Animations.ResetTriggers(_animator);

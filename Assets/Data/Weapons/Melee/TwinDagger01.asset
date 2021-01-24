@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2860e8b85494ea249bb135f1aa386fa8, type: 3}
+  m_Name: TwinDagger01
+  m_EditorClassIdentifier: 
+  WeaponId: 0
+  WeaponName: Twin Dagger
+  WeaponDescription: Designed by two bro that died during war
+  WeaponIcon: {fileID: 0}
+  WeaponsModel:
+  - {fileID: 4347489364640950502, guid: cf6ac8f3ae4422647b66a568dbd2d096, type: 3}
+  - {fileID: 8087327596469758557, guid: 1d84c628402f6a0469a9be449fa94897, type: 3}
+  WeaponDamages: 0a000000
+  UniformWeaponDamage: 1
+  WeaponAnimationType: 2
+  WeaponAnimator: {fileID: 22100000, guid: e603151a235eda740a4b59ed1f81a1f9, type: 2}
+  WeaponDamageMultiplier: 1
+  WeaponAttackRateMultiplier: 1
+  WeaponCooldownMultiplier: 1
+  WeaponSkills:
+  - {fileID: 11400000, guid: 3a0f9d5283af6f743a45a95ee7b6a2b8, type: 2}
+  - {fileID: 11400000, guid: 5d874f23842bddc479b5a07ae2d3e3ed, type: 2}

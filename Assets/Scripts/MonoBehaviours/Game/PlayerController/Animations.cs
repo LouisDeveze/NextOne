@@ -1,35 +1,101 @@
-﻿
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace NextOne
 {
+    public enum EAnimation
+    {
+        Idle,
+        RunBack,
+        RunFront,
+        StrafeRight,
+        StrafeLeft,
+        TurnRight,
+        TurnLeft,
+        PrimaryAction,
+        SecondaryAction,
+        TertiaryAction,
+        Stunned,
+        GettingUp,
+        Dodge
+    }
+
     public class Animations
     {
-        public static string Idle = "Idle";
-        public static string RunBack = "Run Back";
-        public static string RunFront = "Run Front";
-        public static string StrafeRight = "Strafe Right";
-        public static string StrafeLeft = "Strafe Left";
-        public static string TurnRight = "Turn Right";
-        public static string TurnLeft = "Turn Left";
-        public static string PrimaryAction = "Primary Action";
-        public static string SecondaryAction = "Secondary Action";
-        public static string TertiaryAction = "Tertiary Action";
-        public static string Stunned = "Stunned";
-        public static string GettingUp = "Getting Up";
-        public static string Dodge = "Dodge";
+        public const string IDLE = "Idle";
+        public const string RUNBACK = "Run Back";
+        public const string RUNFRONT = "Run Front";
+        public const string STRAFERIGHT = "Strafe Right";
+        public const string STRAFELEFT = "Strafe Left";
+        public const string TURNRIGHT = "Turn Right";
+        public const string TURNLEFT = "Turn Left";
+        public const string PRIMARYACTION = "Primary Action";
+        public const string SECONDARYACTION = "Secondary Action";
+        public const string TERTIARYACTION = "Tertiary Action";
+        public const string STUNNED = "Stunned";
+        public const string GETTINGUP = "Getting Up";
+        public const string DODGE = "Dodge";
 
+        private static Animations instance;
+
+        private static Dictionary<EAnimation, string> EnumMap;
+
+
+        private static Animations Instance()
+        {
+            if (instance != null) return instance;
+
+            instance = new Animations();
+            instance.SetMap();
+
+            return instance;
+        }
+
+
+        private void SetMap()
+        {
+            EnumMap = new Dictionary<EAnimation, string>
+            {
+                {EAnimation.Idle, IDLE},
+                {EAnimation.RunBack, RUNBACK},
+                {EAnimation.RunFront, RUNFRONT},
+                {EAnimation.StrafeRight, STRAFERIGHT},
+                {EAnimation.StrafeLeft, STRAFELEFT},
+                {EAnimation.TurnRight, TURNRIGHT},
+                {EAnimation.TurnLeft, TURNLEFT},
+                {EAnimation.PrimaryAction, PRIMARYACTION},
+                {EAnimation.SecondaryAction, SECONDARYACTION},
+                {EAnimation.TertiaryAction, TERTIARYACTION},
+                {EAnimation.Stunned, STUNNED},
+                {EAnimation.GettingUp, GETTINGUP},
+                {EAnimation.Dodge, DODGE}
+            };
+        }
+
+        public static string GetStringEquivalent(EAnimation _enum)
+        {
+            if (instance == null)
+                Instance();
+
+            if (EnumMap.TryGetValue(_enum, out var enumEquivalent))
+            {
+                return enumEquivalent;
+            }
+
+            throw new Exception();
+        }
 
         /// <summary>
         /// Utils function to delete
         /// </summary>
-        /// <param name="animator"></param>
-        public static void ResetTriggers(Animator animator)
+        /// <param name="_animator"></param>
+        public static void ResetTriggers(Animator _animator)
         {
-            foreach (AnimatorControllerParameter parameter in animator.parameters)
+            foreach (AnimatorControllerParameter parameter in _animator.parameters)
             {
                 if (parameter.type == AnimatorControllerParameterType.Trigger)
-                    animator.ResetTrigger(parameter.name);
+                    _animator.ResetTrigger(parameter.name);
             }
         }
     }
