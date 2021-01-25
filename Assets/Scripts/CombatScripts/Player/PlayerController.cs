@@ -11,6 +11,9 @@ namespace NextOne
         [SerializeField] private PlayerData PlayerData = null;
         [SerializeField] private Transform CastAnchorPoint = null;
 
+        //Game Context
+        private GameContext ctx;
+
         //Player Stats
         private int HealthPoint;
         private float Velocity;
@@ -28,6 +31,7 @@ namespace NextOne
 
         private GameObject PlayerModel;
         private Rigidbody PlayerRigidbody;
+        private CapsuleCollider PlayerCollider;
         private Animator PlayerAnimator;
 
         //UTILS
@@ -50,6 +54,8 @@ namespace NextOne
 
         private void Start()
         {
+            this.ctx = GameObject.Find("State Manager").GetComponent<GameContext>();
+
             if (PlayerData != null)
                 LoadPlayer(PlayerData);
         }
@@ -57,12 +63,10 @@ namespace NextOne
         private void LoadPlayer(PlayerData _playerData)
         {
             //Load & Configure Player Model 
-            PlayerModel = Instantiate(_playerData.Model);
-            PlayerModel.transform.SetParent(transform);
-            PlayerModel.transform.localPosition = Vector3.zero;
-            PlayerModel.transform.rotation = Quaternion.identity;
+            PlayerModel = Instantiate(_playerData.Model, transform);
 
             PlayerRigidbody = PlayerModel.GetComponent<Rigidbody>();
+            PlayerCollider = PlayerModel.GetComponent<CapsuleCollider>();
             PlayerAnimator = PlayerModel.GetComponent<Animator>();
 
             //Set Player Stats
@@ -219,6 +223,7 @@ namespace NextOne
             PlayerRotationUpdate();
             PlayerWeaponAnimationUpdate();
             PlayerSkillUpdate();
+            PlayerRaycast();
         }
 
 
@@ -229,6 +234,7 @@ namespace NextOne
                 PlayerRigidbody.velocity = movement * Velocity;
         }
 
+        #region Updates
         private void PlayerMovementUpdate()
         {
             //Retrieve Movement Input
@@ -291,7 +297,9 @@ namespace NextOne
                     AttemptSkill(index);
             }
         }
+        #endregion
 
+        #region Animation
         public void CanMove(bool _canMove)
         {
             PlayerCanMove = _canMove;
@@ -317,6 +325,24 @@ namespace NextOne
             PlayerAnimator.SetTrigger(Animations.GetStringEquivalent(_animationName));
         }
 
+        #endregion
+
+        public void PlayerRaycast()
+        {
+            Vector3 playerPos = this.PlayerModel.transform.position + new Vector3(0, 0.1f, 0);
+            Vector3 cameraPos = Camera.main.transform.position;
+            Vector3 dir = (playerPos - cameraPos);
+            dir.Normalize();
+            RaycastHit hit;
+            // Does the ray intersect any objects excluding the player layer
+            if (!Physics.Raycast(cameraPos, dir, out hit, 50))
+            {
+                Debug.Log("No Hit");
+                return;
+            }
+            if (hit.collider == PlayerCollider) this.ctx.playerOccluded = false;
+            else this.ctx.playerOccluded = true;
+        }
 
         //GETTER SETTER
         public GameObject Model => PlayerModel;

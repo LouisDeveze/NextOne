@@ -29,5 +29,13 @@ namespace NextOne
         public PlayerController playerController;
         public GameObject maze;
         #endregion
+
+        #region Materials
+        public Material semiTransparent;
+        #endregion
+
+        #region Logic
+        public bool playerOccluded;
+        #endregion
     }
 }

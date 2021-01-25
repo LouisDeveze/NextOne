@@ -187,6 +187,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6063880550749874156, guid: a28b258aa3d62d8448666ae7bca23b3d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6182993547729792729, guid: a28b258aa3d62d8448666ae7bca23b3d, type: 3}
+      propertyPath: normal.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6182993547729792729, guid: a28b258aa3d62d8448666ae7bca23b3d, type: 3}
+      propertyPath: normal.x
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a28b258aa3d62d8448666ae7bca23b3d, type: 3}
 --- !u!1 &129231658
@@ -763,7 +775,7 @@ GameObject:
   - component: {fileID: 425072121}
   - component: {fileID: 425072120}
   m_Layer: 0
-  m_Name: StateManager
+  m_Name: State Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -807,6 +819,8 @@ MonoBehaviour:
   globalVolume: {fileID: 177311045}
   playerController: {fileID: 373192180}
   maze: {fileID: 28004423}
+  semiTransparent: {fileID: 2100000, guid: 2bbeef4e9ff27d246958d6663cb3f652, type: 2}
+  playerOccluded: 0
 --- !u!114 &425072121
 MonoBehaviour:
   m_ObjectHideFlags: 0
