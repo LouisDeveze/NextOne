@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BaseWeaponsData:
   - {fileID: 11400000, guid: 675ac9f0233738d4d949b96f5d78f094, type: 2}
-  - {fileID: 11400000, guid: 6021f4827ede5ad48b95643022a88a32, type: 2}
+  - {fileID: 11400000, guid: fec99c8fde34ae143b0b356f3cb06f68, type: 2}
   DefaultHolderWeapon: 0
   WeaponSwitchCooldown: 2

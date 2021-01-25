@@ -22,50 +22,34 @@ namespace NextOne
 
         public void AnimateMovement(Animator _animator, Vector3 _movement, float _angle)
         {
-            switch (WeaponAnimation)
-            {
-                case EWeaponAnimation.None:
-                    None();
-                    break;
-                case EWeaponAnimation.OneHandedMelee:
-                    OneHandedMelee();
-                    break;
-                case EWeaponAnimation.TwoHandedMelee:
-                    TwoHandedMelee(_animator, _movement, _angle);
-                    break;
-                case EWeaponAnimation.OneHandedRanged:
-                    OneHandedRanged();
-                    break;
-                case EWeaponAnimation.TwoHandedRanged:
-                    TwoHandedRanged();
-                    break;
-                case EWeaponAnimation.TwoHandedMix:
-                    TwoHandedMix();
-                    break;
-                default:
-                    None();
-                    break;
-            }
+            DefaultAnimation(_animator, _movement, _angle);
+            /*  switch (WeaponAnimation)
+              {
+                  case EWeaponAnimation.None:
+                      None();
+                      break;
+                  case EWeaponAnimation.OneHandedMelee:
+                      OneHandedMelee();
+                      break;
+                  case EWeaponAnimation.TwoHandedMelee:
+                      TwoHandedMelee(_animator, _movement, _angle);
+                      break;
+                  case EWeaponAnimation.OneHandedRanged:
+                      OneHandedRanged();
+                      break;
+                  case EWeaponAnimation.TwoHandedRanged:
+                      TwoHandedRanged();
+                      break;
+                  case EWeaponAnimation.TwoHandedMix:
+                      TwoHandedMix();
+                      break;
+                  default:
+                      None();
+                      break;
+              }*/
         }
 
-        public void SetActive(bool _active)
-        {
-            foreach (var weapon in Weapons)
-            {
-                weapon.Model.SetActive(_active);
-            }
-        }
-
-
-        private void None()
-        {
-        }
-
-        private void OneHandedMelee()
-        {
-        }
-
-        private void TwoHandedMelee(Animator _animator, Vector3 _movement, float _angle)
+        private void DefaultAnimation(Animator _animator, Vector3 _movement, float _angle)
         {
             string trigger = Animations.GetStringEquivalent(EAnimation.Idle);
 
@@ -107,6 +91,28 @@ namespace NextOne
 
             Animations.ResetTriggers(_animator);
             _animator.SetTrigger(trigger);
+        }
+
+        public void SetActive(bool _active)
+        {
+            foreach (var weapon in Weapons)
+            {
+                weapon.Model.SetActive(_active);
+            }
+        }
+
+
+        private void None()
+        {
+        }
+
+        private void OneHandedMelee()
+        {
+        }
+
+        private void TwoHandedMelee(Animator _animator, Vector3 _movement, float _angle)
+        {
+            DefaultAnimation(_animator, _movement, _angle);
         }
 
         private void OneHandedRanged()

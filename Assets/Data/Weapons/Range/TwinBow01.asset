@@ -9,22 +9,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2860e8b85494ea249bb135f1aa386fa8, type: 3}
-  m_Name: Melee00
+  m_Script: {fileID: 11500000, guid: 56f65014bffe5e04488e700f0ae20fbd, type: 3}
+  m_Name: TwinBow01
   m_EditorClassIdentifier: 
-  WeaponId: 0
-  WeaponName: default
-  WeaponDescription: default description
+  WeaponId: 1
+  WeaponName: Twin Bow
+  WeaponDescription: Designed by two bro that died during war
   WeaponIcon: {fileID: 0}
   WeaponsModel:
-  - {fileID: 1000011335475624, guid: 128f20fd9fec12b4e9587d7fd19322b7, type: 3}
-  WeaponDamages: 14000000
+  - {fileID: 4340028580142527672, guid: 11e21b0dfb6afe84fa2e3c47898f892c, type: 3}
+  WeaponDamages: 0a000000
   UniformWeaponDamage: 0
-  WeaponAnimationType: 1
-  WeaponAnimator: {fileID: 0}
+  WeaponAnimationType: 3
+  WeaponAnimator: {fileID: 22100000, guid: e603151a235eda740a4b59ed1f81a1f9, type: 2}
   WeaponDamageMultiplier: 1
   WeaponAttackRateMultiplier: 1
   WeaponCooldownMultiplier: 1
   WeaponSkills:
   - {fileID: 11400000, guid: 3a0f9d5283af6f743a45a95ee7b6a2b8, type: 2}
-  - {fileID: 11400000, guid: a8841ad9966c5ed49afc26415e795879, type: 2}
+  - {fileID: 11400000, guid: 9ff37f66850eafd44a4e7bacb2168c16, type: 2}
+  ProjectileAttachmentPoint: {fileID: 0}

@@ -15,7 +15,7 @@ namespace NextOne
 
         void Start()
         {
-            Player = GetComponent<PlayerController>();
+            OnInitialization();
         }
 
         public abstract void Use(SkillUseParams _useParams);
@@ -23,6 +23,8 @@ namespace NextOne
         protected abstract void OnEffectStart();
 
         protected abstract void OnEffectEnd();
+
+        protected abstract void OnInitialization();
 
         public void Detach()
         {

@@ -35,5 +35,10 @@ namespace NextOne
             Player.SkillInUse = false;
             SkillInUse = false;
         }
+
+        protected override void OnInitialization()
+        {
+            Player = GetComponent<PlayerController>();
+        }
     }
 }
