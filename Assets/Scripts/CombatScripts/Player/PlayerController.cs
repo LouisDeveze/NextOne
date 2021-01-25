@@ -138,7 +138,7 @@ namespace NextOne
 
             //IF CASTING
 
-            var skillParams = new SkillUseParams {Origin = gameObject};
+            var skillParams = new SkillUseParams {Origin = PlayerModel};
             SkillInUse = true;
             Skills[_index].Use(skillParams);
         }
@@ -304,7 +304,6 @@ namespace NextOne
 
         public bool IsAnimationLastAtLeast(float _animationTime, int layer)
         {
-
             return (PlayerAnimator.GetCurrentAnimatorStateInfo(layer).normalizedTime >= _animationTime);
         }
 
@@ -317,9 +316,14 @@ namespace NextOne
         {
             PlayerAnimator.SetTrigger(Animations.GetStringEquivalent(_animationName));
         }
-        
+
 
         //GETTER SETTER
         public GameObject Model => PlayerModel;
+
+        public List<Transform> GetCastPoint()
+        {
+            return Weapons[CurrentWeapon].GetCastPoint();
+        }
     }
 }
