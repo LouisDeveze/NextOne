@@ -1,29 +1,62 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace NextOne
 {
     public class RangedSkillBehavior : BaseSkillBehavior
     {
+        private Transform FirePoint;
+        private SkillUseParams UseParams;
+
+        void Update()
+        {
+            //If Skill In Use
+            if (!SkillInUse) return;
+
+            if (!Player.hasAnimatorPlaying(SkillData.AnimationName, 0)) return;
+
+            if (!Player.IsAnimationLastAtLeast(SkillData.AnimationTime, 0)) return;
+            Debug.Log("Ranged Skill Ended in: " + this.GetInstanceID());
+            OnEffectEnd();
+        }
+
         public override void Use(SkillUseParams _useParams)
         {
-            //Get The Direction Where To Shoot !
-            SkillData.Aim.GetTarget(_useParams);
+            UseParams = _useParams;
+            OnEffectStart();
+        }
 
-            if (!(_useParams.Target is ForwardTarget direction))
+        protected override void OnEffectStart()
+        {
+            //Freeze Player & Play Animation 
+            Player.ResetTriggersAnimator();
+            Player.SetTriggerAnimator(SkillData.AnimationName);
+            Debug.Log("Ranged Skill Animation Triggered in: " +
+                      this.GetInstanceID());
+            Player.SkillInUse = true;
+            SkillInUse = true;
+
+            //Get The Direction Where To Shoot !
+            SkillData.Aim.GetTarget(UseParams);
+
+            if (!(UseParams.Target is ForwardTarget direction))
             {
-                Debug.Log("No Forward Target");
+                Debug.Log("Forward Aiming Not Attached: " + this.GetInstanceID());
                 return;
             }
 
             RangedSkillData rangedSkillData = (RangedSkillData) this.SkillData;
 
+
             GameObject newProjectile = Instantiate(rangedSkillData.ProjectilePrefab,
-                _useParams.Origin.transform.position, Quaternion.identity);
+                FirePoint.position, Quaternion.identity);
             newProjectile.AddComponent<Projectile>();
 
-            //TODO: Use FirePoint
+            Debug.Log("New Projectile: " + newProjectile.GetInstanceID() + " instantiated in: "
+                      + this.GetInstanceID());
+
             Projectile projectile = newProjectile.GetComponent<Projectile>();
-            projectile.Source = _useParams.Origin;
+            projectile.Source = UseParams.Origin;
             projectile.Damage = rangedSkillData.Damage;
             projectile.DestroyDelay = rangedSkillData.Delay;
             projectile.Hit = rangedSkillData.HitPrefab;
@@ -38,7 +71,8 @@ namespace NextOne
             if (rangedSkillData.MuzzlePrefab)
             {
                 var muzzleVfx = Instantiate(rangedSkillData.MuzzlePrefab,
-                    _useParams.Origin.transform.position, Quaternion.identity);
+                    FirePoint.position, Quaternion.identity);
+                Debug.Log("MuzzleFlash Instantiated");
                 var ps = muzzleVfx.GetComponent<ParticleSystem>();
                 if (ps)
                     Destroy(muzzleVfx, ps.main.duration);
@@ -53,21 +87,25 @@ namespace NextOne
             {
                 projectile.PlaySfx(rangedSkillData.CastSfx);
             }
-
-            //Set Motion
-            //projectile.GetComponent<Rigidbody>().AddForce(direction.Direction * RangedSkillData.Velocity);
-        }
-
-        protected override void OnEffectStart()
-        {
         }
 
         protected override void OnEffectEnd()
         {
+            Player.ResetTriggersAnimator();
+            Player.CanMove(false);
+            Player.SkillInUse = false;
+            SkillInUse = false;
         }
 
         protected override void OnInitialization()
         {
+            Player = GetComponent<PlayerController>();
+            //Get First Cast Point
+            //TODO: Handle when two ranged weapon, from which to shoot? =)
+            FirePoint = Player.GetCastPoint()[0];
+            if (!FirePoint)
+                throw new Exception();
+            //Should not occured !
         }
     }
 }

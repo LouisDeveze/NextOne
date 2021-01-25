@@ -142,8 +142,25 @@ namespace NextOne
             set => WeaponsModel = value;
         }
 
+        public Weapon GetWeaponAt(int _index)
+        {
+            if (_index < Weapons.Count)
+                return Weapons[_index];
+            else return null;
+        }
+
         public EWeaponAnimation WeaponAnimation => EWeaponAnimation;
 
         public AnimatorOverrideController WeaponAnimatorOverride => WeaponAnimator;
+        public List<Transform> GetCastPoint()
+        {
+            List<Transform> castPoints = new List<Transform>();
+            foreach (var weapon in Weapons)
+            {
+                castPoints.Add(weapon.GetCastPoint());
+            }
+
+            return castPoints;
+        }
     }
 }
