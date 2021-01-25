@@ -4,10 +4,6 @@ namespace NextOne
 {
     public class MeleeBasicAttackBehavior : BaseSkillBehavior
     {
-        void Start()
-        {
-        }
-
         public override void Use(SkillUseParams _useParams)
         {
             MeleeBasicAttackData meleeBasicAttackData = (MeleeBasicAttackData) this.SkillData;
@@ -36,7 +32,10 @@ namespace NextOne
 
         protected override void OnEffectEnd()
         {
-            throw new System.NotImplementedException();
+        }
+
+        protected override void OnInitialization()
+        {
         }
     }
 }

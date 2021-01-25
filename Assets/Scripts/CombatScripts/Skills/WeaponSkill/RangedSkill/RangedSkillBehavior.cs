@@ -64,7 +64,10 @@ namespace NextOne
 
         protected override void OnEffectEnd()
         {
-            throw new System.NotImplementedException();
+        }
+
+        protected override void OnInitialization()
+        {
         }
     }
 }
