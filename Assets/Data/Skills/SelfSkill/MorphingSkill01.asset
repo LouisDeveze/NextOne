@@ -19,3 +19,4 @@ MonoBehaviour:
   SkillTrigger: {fileID: 11400000, guid: 508dbffac2efe8a43a685d2f3f5378f2, type: 2}
   SkillAnimationTime: 1
   SkillAnimationName: 8
+  AnimationEffectiveChangeTime: 0.5

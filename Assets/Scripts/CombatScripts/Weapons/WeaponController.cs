@@ -9,63 +9,49 @@ namespace NextOne
         private List<Weapon> WeaponsModel = new List<Weapon>();
         private float WeaponDamage;
         private EWeaponAnimation EWeaponAnimation;
+        private AnimatorOverrideController WeaponAnimator;
 
         // Angle in degrees before running animation becomes strafe
         private float thresholdStrafe = .5f;
 
         /// T'as pas le droit de faire un  constructor, utilise start ou une fonction Init
-        public WeaponController(List<Weapon> _weapons, EWeaponAnimation _weaponAnimation)
+        public WeaponController(List<Weapon> _weapons, EWeaponAnimation _weaponAnimation, AnimatorOverrideController controller)
         {
             Weapons = _weapons;
             EWeaponAnimation = _weaponAnimation;
+            WeaponAnimator = controller;
         }
 
         public void AnimateMovement(Animator _animator, Vector3 _movement, float _angle)
         {
-            switch (WeaponAnimation)
-            {
-                case EWeaponAnimation.None:
-                    None();
-                    break;
-                case EWeaponAnimation.OneHandedMelee:
-                    OneHandedMelee();
-                    break;
-                case EWeaponAnimation.TwoHandedMelee:
-                    TwoHandedMelee(_animator, _movement, _angle);
-                    break;
-                case EWeaponAnimation.OneHandedRanged:
-                    OneHandedRanged();
-                    break;
-                case EWeaponAnimation.TwoHandedRanged:
-                    TwoHandedRanged();
-                    break;
-                case EWeaponAnimation.TwoHandedMix:
-                    TwoHandedMix();
-                    break;
-                default:
-                    None();
-                    break;
-            }
+            DefaultAnimation(_animator, _movement, _angle);
+            /*  switch (WeaponAnimation)
+              {
+                  case EWeaponAnimation.None:
+                      None();
+                      break;
+                  case EWeaponAnimation.OneHandedMelee:
+                      OneHandedMelee();
+                      break;
+                  case EWeaponAnimation.TwoHandedMelee:
+                      TwoHandedMelee(_animator, _movement, _angle);
+                      break;
+                  case EWeaponAnimation.OneHandedRanged:
+                      OneHandedRanged();
+                      break;
+                  case EWeaponAnimation.TwoHandedRanged:
+                      TwoHandedRanged();
+                      break;
+                  case EWeaponAnimation.TwoHandedMix:
+                      TwoHandedMix();
+                      break;
+                  default:
+                      None();
+                      break;
+              }*/
         }
 
-        public void SetActive(bool _active)
-        {
-            foreach (var weapon in Weapons)
-            {
-                weapon.Model.SetActive(_active);
-            }
-        }
-
-
-        private void None()
-        {
-        }
-
-        private void OneHandedMelee()
-        {
-        }
-
-        private void TwoHandedMelee(Animator _animator, Vector3 _movement, float _angle)
+        private void DefaultAnimation(Animator _animator, Vector3 _movement, float _angle)
         {
             string trigger = Animations.GetStringEquivalent(EAnimation.Idle);
 
@@ -109,6 +95,28 @@ namespace NextOne
             _animator.SetTrigger(trigger);
         }
 
+        public void SetActive(bool _active)
+        {
+            foreach (var weapon in Weapons)
+            {
+                weapon.Model.SetActive(_active);
+            }
+        }
+
+
+        private void None()
+        {
+        }
+
+        private void OneHandedMelee()
+        {
+        }
+
+        private void TwoHandedMelee(Animator _animator, Vector3 _movement, float _angle)
+        {
+            DefaultAnimation(_animator, _movement, _angle);
+        }
+
         private void OneHandedRanged()
         {
         }
@@ -134,6 +142,25 @@ namespace NextOne
             set => WeaponsModel = value;
         }
 
+        public Weapon GetWeaponAt(int _index)
+        {
+            if (_index < Weapons.Count)
+                return Weapons[_index];
+            else return null;
+        }
+
         public EWeaponAnimation WeaponAnimation => EWeaponAnimation;
+
+        public AnimatorOverrideController WeaponAnimatorOverride => WeaponAnimator;
+        public List<Transform> GetCastPoint()
+        {
+            List<Transform> castPoints = new List<Transform>();
+            foreach (var weapon in Weapons)
+            {
+                castPoints.Add(weapon.GetCastPoint());
+            }
+
+            return castPoints;
+        }
     }
 }

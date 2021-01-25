@@ -28,17 +28,12 @@ namespace NextOne
         private int CurrentCollisionNumber = 0;
         private bool EndOfLife = false;
 
-        public Projectile(GameObject _source, int _projectileDamage,
-            float _projectileDestroyDelay, GameObject _projectileHit)
+        public void OnStart()
         {
-            PSource = _source;
-            ProjectileDamage = _projectileDamage;
-            ProjectileDestroyDelay = _projectileDestroyDelay;
-            Hit = _projectileHit;
+            OnInitialization();
         }
 
-
-        public void OnStart()
+        private void OnInitialization()
         {
             var rb = GetComponent<Rigidbody>();
             rb.constraints = RigidbodyConstraints.FreezeRotation;
@@ -72,9 +67,13 @@ namespace NextOne
         void OnCollisionEnter(Collision _collision)
         {
             var layerCollidedWith = _collision.gameObject.transform.parent.gameObject.layer;
-            if (!Source || layerCollidedWith == Source.layer ||
-                layerCollidedWith == LayerMask.NameToLayer("VFX") ||
-                layerCollidedWith == LayerMask.NameToLayer("Weapons")) return;
+
+            if (!Source)
+                return;
+            if (layerCollidedWith == Source.layer
+                || layerCollidedWith == LayerMask.NameToLayer("VFX")
+                || layerCollidedWith == LayerMask.NameToLayer("Weapons"))
+                return;
 
             CurrentCollisionNumber++;
 
@@ -92,6 +91,7 @@ namespace NextOne
                 Vector3 position = contactPoint.point;
 
                 var hitVfx = Instantiate(Hit, position, rotation) as GameObject;
+                Debug.Log("Hit Instantiated in: " + this.GetInstanceID());
 
                 var ps = hitVfx.GetComponent<ParticleSystem>();
                 //If NO PS directly attached
@@ -117,9 +117,14 @@ namespace NextOne
         {
             var damageableComponent = _collision.gameObject.GetComponentInParent(typeof(IDamageable));
 
+            //If this is  a damageable entity
             if (!damageableComponent) return;
-            if (damageableComponent is EnemyController enemyController)
-                enemyController.TakeDamage(Damage);
+            //If this is an enemy
+            if (!(damageableComponent is EnemyController enemyController)) return;
+
+            enemyController.TakeDamage(Damage);
+            Debug.Log("Projectile: " + this.GetInstanceID()
+                                     + " Damaged: " + enemyController.GetInstanceID());
         }
 
         //Destroy ATTACHED particles

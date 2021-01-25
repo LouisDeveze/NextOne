@@ -20,5 +20,14 @@ namespace NextOne
             tracer.target = this.sm.ctx.playerController.Model.transform;
 
         }
+
+        public override void OnUpdate()
+        {
+            if (this.sm.ctx.animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
+            {
+                this.sm.ctx.animator.SetTrigger("GamePlaying");
+                this.sm.SwitchState((int)GameStates.GamePlaying);
+            }
+        }
     }
 }
