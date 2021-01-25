@@ -9,15 +9,17 @@ namespace NextOne
         private List<Weapon> WeaponsModel = new List<Weapon>();
         private float WeaponDamage;
         private EWeaponAnimation EWeaponAnimation;
+        private AnimatorOverrideController WeaponAnimator;
 
         // Angle in degrees before running animation becomes strafe
         private float thresholdStrafe = .5f;
 
         /// T'as pas le droit de faire un  constructor, utilise start ou une fonction Init
-        public WeaponController(List<Weapon> _weapons, EWeaponAnimation _weaponAnimation)
+        public WeaponController(List<Weapon> _weapons, EWeaponAnimation _weaponAnimation, AnimatorOverrideController controller)
         {
             Weapons = _weapons;
             EWeaponAnimation = _weaponAnimation;
+            WeaponAnimator = controller;
         }
 
         public void AnimateMovement(Animator _animator, Vector3 _movement, float _angle)
@@ -141,5 +143,7 @@ namespace NextOne
         }
 
         public EWeaponAnimation WeaponAnimation => EWeaponAnimation;
+
+        public AnimatorOverrideController WeaponAnimatorOverride => WeaponAnimator;
     }
 }

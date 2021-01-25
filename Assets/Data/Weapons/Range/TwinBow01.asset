@@ -21,7 +21,7 @@ MonoBehaviour:
   WeaponDamages: 0a000000
   UniformWeaponDamage: 0
   WeaponAnimationType: 3
-  WeaponAnimator: {fileID: 22100000, guid: e603151a235eda740a4b59ed1f81a1f9, type: 2}
+  WeaponAnimator: {fileID: 22100000, guid: 9987e26dd1e48044b89d191f11f2d9d3, type: 2}
   WeaponDamageMultiplier: 1
   WeaponAttackRateMultiplier: 1
   WeaponCooldownMultiplier: 1

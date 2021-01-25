@@ -40,10 +40,8 @@ namespace NextOne
         [SerializeField] private List<SkillData> WeaponSkills = new List<SkillData>();
 
         //public GameObject InstantiateWeapon(Transform _parent, Transform _weaponAnchorPoint)
-        public WeaponController InstantiateWeapon(Animator _animator, List<WeaponAnchors> _weaponAnchorsList)
+        public WeaponController InstantiateWeapon(List<WeaponAnchors> _weaponAnchorsList)
         {
-            _animator.runtimeAnimatorController = WeaponAnimator;
-
             var models = new List<Weapon>();
 
             for (var i = 0; i < Models.Count; i++)
@@ -55,7 +53,7 @@ namespace NextOne
                     : new Weapon(model, Damages[i]));
             }
 
-            return new WeaponController(models,WeaponAnimation);
+            return new WeaponController(models,WeaponAnimation, WeaponAnimator);
         }
 
         public int Id => WeaponId;

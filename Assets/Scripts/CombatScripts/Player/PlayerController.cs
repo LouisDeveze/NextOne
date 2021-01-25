@@ -83,11 +83,7 @@ namespace NextOne
 
             foreach (var baseWeaponData in _playerData.WeaponHolder.WeaponsData)
             {
-                Weapons.Add(baseWeaponData.InstantiateWeapon(PlayerAnimator,
-                    new List<WeaponAnchors>(weaponAnchorsArray)));
-                /*Weapons.Add(new WeaponController(
-                    baseWeaponData.InstantiateWeapon(model.transform),
-                    baseWeaponData.DamageMultiplier));*/
+                Weapons.Add(baseWeaponData.InstantiateWeapon(new List<WeaponAnchors>(weaponAnchorsArray)));
             }
 
             //Set Weapon & Skill
@@ -152,6 +148,7 @@ namespace NextOne
         private void ActivateCurrentWeapon()
         {
             Weapons[CurrentWeapon].SetActive(true);
+            PlayerAnimator.runtimeAnimatorController = Weapons[CurrentWeapon].WeaponAnimatorOverride;
             AttachSkills();
         }
 
