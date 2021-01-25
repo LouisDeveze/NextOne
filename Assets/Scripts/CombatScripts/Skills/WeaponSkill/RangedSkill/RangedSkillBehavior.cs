@@ -35,6 +35,7 @@ namespace NextOne
                       this.GetInstanceID());
             Player.SkillInUse = true;
             SkillInUse = true;
+            Player.CanMove(false);
 
             //Get The Direction Where To Shoot !
             SkillData.Aim.GetTarget(UseParams);
@@ -92,7 +93,7 @@ namespace NextOne
         protected override void OnEffectEnd()
         {
             Player.ResetTriggersAnimator();
-            Player.CanMove(false);
+            Player.CanMove(true);
             Player.SkillInUse = false;
             SkillInUse = false;
         }
