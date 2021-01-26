@@ -16,10 +16,10 @@ namespace NextOne
             if (!Player.hasAnimatorPlaying(SkillData.AnimationName, 0)) return;
 
             //Looking for effective weapon changed during animation
-            if (Player.IsAnimationLastAtLeast(((MorphingSkillData) SkillData).EffectiveChangeTime, 0) && !WeaponChanged)
+            if (Player.IsAnimationLastAtLeast(SkillData.EffectiveChangeTime, 0) && !WeaponChanged)
             {
                 Debug.Log("Weapon Changed in: " + this.GetInstanceID());
-                OnEffectiveChange();
+                OnEffectiveUse();
             }
 
             //If Weapon Newly Changed
@@ -73,7 +73,7 @@ namespace NextOne
             Player.SkillInUse = true;
         }
 
-        private void OnEffectiveChange()
+        private void OnEffectiveUse()
         {
             Player.ChangeWeapon();
             WeaponChanged = true;

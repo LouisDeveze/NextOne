@@ -13,6 +13,7 @@ namespace NextOne
         [SerializeField] private SkillTrigger SkillTrigger;
 
         [SerializeField] private float SkillAnimationTime;
+        [SerializeField] private float AnimationEffectiveChangeTime;
         [SerializeField] private EAnimation SkillAnimationName;
 
         protected ISkill Behavior;
@@ -42,5 +43,7 @@ namespace NextOne
         public float AnimationTime => SkillAnimationTime;
 
         public EAnimation AnimationName => SkillAnimationName;
+
+        public float EffectiveChangeTime => AnimationEffectiveChangeTime;
     }
 }

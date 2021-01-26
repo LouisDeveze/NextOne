@@ -7,6 +7,7 @@ namespace NextOne
     {
         private Transform FirePoint;
         private SkillUseParams UseParams;
+        private bool ProjectileShoot = false;
 
         void Update()
         {
@@ -14,6 +15,14 @@ namespace NextOne
             if (!SkillInUse) return;
 
             if (!Player.hasAnimatorPlaying(SkillData.AnimationName, 0)) return;
+
+            //Looking for effective time to shoot
+            if (Player.IsAnimationLastAtLeast(SkillData.EffectiveChangeTime, 0) && !ProjectileShoot)
+            {
+                Debug.Log("Projectile Shoot in: " + this.GetInstanceID());
+                ProjectileShoot = true;
+                OnEffectiveUse();
+            }
 
             if (!Player.IsAnimationLastAtLeast(SkillData.AnimationTime, 0)) return;
             Debug.Log("Ranged Skill Ended in: " + this.GetInstanceID());
@@ -26,17 +35,13 @@ namespace NextOne
             OnEffectStart();
         }
 
-        protected override void OnEffectStart()
+        private void OnEffectiveUse()
         {
-            //Freeze Player & Play Animation 
-            Player.ResetTriggersAnimator();
-            Player.SetTriggerAnimator(SkillData.AnimationName);
-            Debug.Log("Ranged Skill Animation Triggered in: " +
-                      this.GetInstanceID());
-            Player.SkillInUse = true;
-            SkillInUse = true;
-            Player.CanMove(false);
+            ShootProjectile();
+        }
 
+        private void ShootProjectile()
+        {
             //Get The Direction Where To Shoot !
             SkillData.Aim.GetTarget(UseParams);
 
@@ -90,12 +95,25 @@ namespace NextOne
             }
         }
 
+        protected override void OnEffectStart()
+        {
+            //Freeze Player & Play Animation 
+            Player.ResetTriggersAnimator();
+            Player.SetTriggerAnimator(SkillData.AnimationName);
+            Debug.Log("Ranged Skill Animation Triggered in: " +
+                      this.GetInstanceID());
+            Player.SkillInUse = true;
+            SkillInUse = true;
+            Player.CanMove(false);
+        }
+
         protected override void OnEffectEnd()
         {
             Player.ResetTriggersAnimator();
             Player.CanMove(true);
             Player.SkillInUse = false;
             SkillInUse = false;
+            ProjectileShoot = false;
         }
 
         protected override void OnInitialization()

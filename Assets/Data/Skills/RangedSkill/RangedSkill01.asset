@@ -18,6 +18,7 @@ MonoBehaviour:
   SkillAim: {fileID: 11400000, guid: 7d595482430ed304a89e68c2fcc53e13, type: 2}
   SkillTrigger: {fileID: 11400000, guid: 506ba550f14a1954f81a00b6fd8abce3, type: 2}
   SkillAnimationTime: 1
+  AnimationEffectiveChangeTime: 0.5
   SkillAnimationName: 7
   SkillProjectilePrefab: {fileID: 3811656209286473422, guid: 5d4a273e9f0ccb2478c3f6a63a62dca1, type: 3}
   SkillMuzzlePrefab: {fileID: 1922840429244558082, guid: f7aa0f2dd837f6e4a86f59fed3626da8, type: 3}
