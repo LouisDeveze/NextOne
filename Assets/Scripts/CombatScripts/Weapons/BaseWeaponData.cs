@@ -52,7 +52,8 @@ namespace NextOne
                     ? new Weapon(model, Damages[0])
                     : new Weapon(model, Damages[i]));
             }
-
+            
+            
             return new WeaponController(models,WeaponAnimation, WeaponAnimator);
         }
 

@@ -18,6 +18,10 @@ namespace NextOne
             tracer.transform.localRotation = Quaternion.identity;
             //
             tracer.target = this.sm.ctx.playerController.Model.transform;
+            this.sm.ctx.uiManager.GetComponent<Canvas>().renderMode = RenderMode.ScreenSpaceOverlay;
+
+            // Activate Playing UI
+            this.sm.ctx.PlayingScreen.SetActive(true);
 
         }
 

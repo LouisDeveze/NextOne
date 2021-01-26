@@ -17,6 +17,11 @@ namespace NextOne
         public Animator animator;
         public RawImage Electric;
         public GameObject LoadingScreenRoom;
+        public GameObject PlayingScreen;
+        public SkillUI SkillAutoAttackUI;
+        public SkillUI SkillPrimaryUI;
+        public SkillUI SkillSecondaryUI;
+        public SkillUI SkillTertiaryUI;
         #endregion
 
         #region Environment

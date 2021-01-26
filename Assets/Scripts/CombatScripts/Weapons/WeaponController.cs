@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace NextOne
 {
-    public class WeaponController : MonoBehaviour
+    public class WeaponController
     {
         private List<Weapon> WeaponsModel = new List<Weapon>();
         private float WeaponDamage;
