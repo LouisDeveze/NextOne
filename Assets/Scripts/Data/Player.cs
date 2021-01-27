@@ -6,7 +6,7 @@ namespace Assets.Scripts.Data
 {
     public class Player : MonoBehaviour
     {
-
+        public int CharacterID = 0;
         public int season = 1;
         public int episode = 5;
         public int health = 150;
@@ -19,7 +19,8 @@ namespace Assets.Scripts.Data
 
         public void LoadPlayer()
         {
-            PlayerData data =  SaveSystem.LoadPlayer();
+            PlayerSaveData data =  SaveSystem.LoadPlayer();
+            CharacterID = data.CharacterID;
             season = data.season;
             episode = data.episode;
             health = data.health;
