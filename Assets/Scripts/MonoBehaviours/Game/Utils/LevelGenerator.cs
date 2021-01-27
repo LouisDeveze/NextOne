@@ -437,17 +437,14 @@ public class LevelGenerator : MonoBehaviour
     /// <param name="entry"></param>
     /// <param name="exit"></param>
     /// <returns></returns>
-    public List<Point> BFS(Point[,] mapPoints, Point entry, Point exit)
+    public List<Point> BFS(Point[,] map, Point entry, Point exit)
     {
         Queue<Point> queue = new Queue<Point>();
         List<Point> road = new List<Point>();
-        int size = (int)Mathf.Sqrt(mapPoints.Length);
-        Point[,] map = new Point[size, size];
-        //Debug.Log(entry.x + "," + entry.z + " -> " + exit.x + "," + exit.z);
-        for (int x = 0; x < size; x++) for (int z = 0; z < size; z++) map[x, z] = mapPoints[x, z].Clone();
 
         queue.Enqueue(map[entry.x, entry.z]);
         map[entry.x, entry.z].MarkPoint();
+
         while (queue.Count > 0)
         {
             Point temp = queue.Dequeue();
@@ -463,20 +460,20 @@ public class LevelGenerator : MonoBehaviour
                     int z = map[temp.x, temp.z].neighbours[i].z;
                     queue.Enqueue(map[x, z]);
                     map[x, z].MarkPoint();
-                    
+
                     map[temp.neighbours[i].x, temp.neighbours[i].z].prev = map[temp.x, temp.z];
                 }
             }
         }
         Point current = map[exit.x, exit.z];
-        while (current.x != entry.x && current.z != entry.z)
+        while (current.x != entry.x || current.z != entry.z)
         {
             road.Insert(0, current);
             current = current.prev;
             //if (current.x == entry.x && current.z == entry.z) Debug.Log("entry found");
         }
         road.Insert(0, current);
-        road.Insert(0, map[entry.x, entry.z]);
+        //road.Insert(0, map[entry.x, entry.z]);
 
         return road;
     }
@@ -568,11 +565,19 @@ public class LevelGenerator : MonoBehaviour
         {
             for (int i = 1; i < route.Count; i++)
             {
-                //Debug.Log( "points to link : (" + route[i].x + "," + route[i].z + ") -> (" + route[i - 1].x + "," + route[i - 1].z + ")");
-                if (route[i].x > route[i - 1].x) for (int j = route[i - 1].x * (sizeOfChunks + corridor_width); j <= route[i].x * (sizeOfChunks + corridor_width); j++) map[j, (route[i].z * (sizeOfChunks + corridor_width))] = true;
-                if (route[i].x < route[i - 1].x) for (int j = route[i].x * (sizeOfChunks + corridor_width); j <= route[i - 1].x * (sizeOfChunks + corridor_width); j++) map[j, (route[i].z * (sizeOfChunks + corridor_width))] = true;
-                if (route[i].z > route[i - 1].z) for (int j = route[i - 1].z * (sizeOfChunks + corridor_width); j <= route[i].z * (sizeOfChunks + corridor_width); j++) map[(route[i].x * (sizeOfChunks + corridor_width)), j] = true;
-                if (route[i].z < route[i - 1].z) for (int j = route[i].z * (sizeOfChunks + corridor_width); j <= route[i - 1].z * (sizeOfChunks + corridor_width); j++) map[(route[i].x * (sizeOfChunks + corridor_width)), j] = true;
+                
+                //Check that the distance separating the 2 points is 1 or less
+                //Meaning that the 2 points are neighbours
+                bool isNeighbour = true;
+                if (Mathf.Sqrt(Mathf.Pow(route[i].x - route[i - 1].x, 2)) > 1 || Mathf.Sqrt(Mathf.Pow(route[i].z - route[i - 1].z, 2)) > 1) isNeighbour = false;
+                if (isNeighbour)
+                { //*/
+                    //Debug.Log( "points to link : (" + route[i].x + "," + route[i].z + ") -> (" + route[i - 1].x + "," + route[i - 1].z + ")");
+                    if (route[i].x > route[i - 1].x) for (int j = route[i - 1].x * (sizeOfChunks + corridor_width); j <= route[i].x * (sizeOfChunks + corridor_width); j++) map[j, (route[i].z * (sizeOfChunks + corridor_width))] = true;
+                    if (route[i].x < route[i - 1].x) for (int j = route[i].x * (sizeOfChunks + corridor_width); j <= route[i - 1].x * (sizeOfChunks + corridor_width); j++) map[j, (route[i].z * (sizeOfChunks + corridor_width))] = true;
+                    if (route[i].z > route[i - 1].z) for (int j = route[i - 1].z * (sizeOfChunks + corridor_width); j <= route[i].z * (sizeOfChunks + corridor_width); j++) map[(route[i].x * (sizeOfChunks + corridor_width)), j] = true;
+                    if (route[i].z < route[i - 1].z) for (int j = route[i].z * (sizeOfChunks + corridor_width); j <= route[i - 1].z * (sizeOfChunks + corridor_width); j++) map[(route[i].x * (sizeOfChunks + corridor_width)), j] = true;
+                }                
             }
         }        
     }
@@ -731,8 +736,9 @@ public class LevelGenerator : MonoBehaviour
                 }                
             }
         }
-        //for (int x = 0; x < size; x++) for (int z = 0; z < size; z++) for (int i = 0; i < mapOfPoints[x, z].neighbours.Count; i++) Debug.Log("Point (" + mapOfPoints[x, z].x + ", " + mapOfPoints[x, z].z + ") : (" + mapOfPoints[x, z].neighbours[i].x + ", " + mapOfPoints[x, z].neighbours[i].z + ")");
-        
+        //Print all neighbours of all points
+        //for (int x = 0; x < size; x++) for (int z = 0; z < size; z++) for (int i = 0; i < mapOfPoints[x, z].neighbours.Count; i++) Debug.Log("Point (" + mapOfPoints[x, z].x + ", " + mapOfPoints[x, z].z + ") neighbour " + i + " = (" + mapOfPoints[x, z].neighbours[i].x + ", " + mapOfPoints[x, z].neighbours[i].z + ")");
+
         //Call BFS for each door        
         roadList = new List<List<Point>>();
         //GetDoorToLink();
@@ -742,13 +748,15 @@ public class LevelGenerator : MonoBehaviour
             Point entry = new Point(doors[i].gate.x, doors[i].gate.z);
             Point exit = new Point(0,0) ;
             Point[,] map = new Point[mapSize + 1, mapSize + 1];
-            for (int x = 0; x < mapSize + 1; x++) for (int z = 0; z < mapSize + 1; z++) map[x, z] = mapOfPoints[x, z].Clone();  //Copying mapOfPoints into map
+            //Copying mapOfPoints into map
+            for (int x = 0; x < mapSize + 1; x++) for (int z = 0; z < mapSize + 1; z++) map[x, z] = mapOfPoints[x, z].Clone();
+
             //Search and copy the exit door into exit
             exit.x = doors[doors[i].ID_nextDoor].gate.x;
             exit.z = doors[doors[i].ID_nextDoor].gate.z;
             List<Point> t = BFS(map, entry, exit);
             roadList.Add(t);
-            
+            /*
             if (t.Count > 0)
             {
                 string str = i + " BFS entry point (" + entry.x + "," + entry.z + ") exit (" + exit.x + "," + exit.z + ") : ";
@@ -762,16 +770,17 @@ public class LevelGenerator : MonoBehaviour
     }
     private void Start()
     {
-        //Random.seed = 0;
+        int random = Random.Range(0, 999999999);
+        Random.seed = random;
+        Debug.Log(random);
 
-        //Obligatory
+        //Generate the world
         Mapping();
+        SpawnCorridor();
 
         //Optionnal;
         //SpawnPoints();
 
-        //Spawn corridors
-        SpawnCorridor();
 
         Debug.Log("All Clear");
         //Play

@@ -6,6 +6,7 @@ using NextOne;
 [RequireComponent(typeof(MeshRenderer))]
 public class WallCulling : MonoBehaviour
 {
+    private static bool enable = false;
     // The renderer of the mesh
     public MeshRenderer meshRenderer;
     // The normal vector
@@ -26,6 +27,7 @@ public class WallCulling : MonoBehaviour
 
     private void Start()
     {
+        if (!enable) return;
         this.sceneCamera = Camera.main;
         this.materials = meshRenderer.sharedMaterials;
 
@@ -37,6 +39,7 @@ public class WallCulling : MonoBehaviour
 
     void Update()
     {
+        if (!enable) return;
         if(sceneCamera == null) { Debug.LogError("No camera found in the scene"); return; }
 
         Vector3 pos = this.transform.position;
