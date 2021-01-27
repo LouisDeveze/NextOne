@@ -325,7 +325,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 0.99999994}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &1040363325
 GameObject:
@@ -543,6 +543,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1443496293}
   - component: {fileID: 1443496292}
+  - component: {fileID: 1443496294}
   m_Layer: 0
   m_Name: LevelManager
   m_TagString: Rooms
@@ -562,24 +563,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57aa43d2ab29ae94a90d2beb639cd7f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  corridorAll: {fileID: 3077173746587182806, guid: 1f3db709518d95d4ab7fbff7f5c63a9d, type: 3}
-  corridorBT: {fileID: 1288161726443567879, guid: b1ec183902bf246469b4d6bc7412c439, type: 3}
-  corridorBTL: {fileID: 213173035866549384, guid: e312451c28b6ca047b19f85ab8215ea5, type: 3}
-  corridorBTR: {fileID: 5406977201597737067, guid: 9395296a8e84f7946b04965f03990d6a, type: 3}
-  corridorBLR: {fileID: 209274464107945736, guid: 36864542b4de4444cb36a1f30cb736cc, type: 3}
-  corridorBL: {fileID: 5253434648044764895, guid: 7e53f7ca7c4d8044b80c64e8e86b4209, type: 3}
-  corridorBR: {fileID: 3903720753829505015, guid: e365219af3879f546b4006c7a9f52da3, type: 3}
-  corridorTR: {fileID: 9120472675462556094, guid: cf884ec32bd9357458a6a51679719dad, type: 3}
-  corridorTL: {fileID: 7320369848423641232, guid: 2412190781a186d4a890f2f1c0e3e039, type: 3}
-  corridorTLR: {fileID: 3820220837525110579, guid: 38e9e85fb43a1cb42b8a6b2a2b628b20, type: 3}
-  corridorLR: {fileID: 479371404632869484, guid: e26e575ffd821184ba8b674a545a2203, type: 3}
-  mapSize: 50
+  corridorAll: {fileID: 8493815774974636216, guid: 1a63345e3b80e8b4aab27ea80980eec8, type: 3}
+  corridorBT: {fileID: 6202187205502562686, guid: 821e930abd934d340b1fdcc9ad517265, type: 3}
+  corridorBTL: {fileID: 3516963590738500614, guid: d5510bfacbea54d42828684b67e21b21, type: 3}
+  corridorBTR: {fileID: 8326386448301228945, guid: 16db9f61ce3499947b2cb46076fa1a0a, type: 3}
+  corridorBLR: {fileID: 9202835788278605584, guid: 6d103ea1765e37743a5630709f184905, type: 3}
+  corridorBL: {fileID: 7976872176616546977, guid: 106737b4ba75d8a45898c03d688192f4, type: 3}
+  corridorBR: {fileID: 4648162306830038418, guid: f3b9553b8866ff74ea7949aeba5b5af6, type: 3}
+  corridorTR: {fileID: 1765230699417611209, guid: 7266260c5b7ec9341a642baea0eab6ee, type: 3}
+  corridorTL: {fileID: 7477356867712116690, guid: 3fe585ad89e178948955af91cdbf4cc3, type: 3}
+  corridorTLR: {fileID: 415804793690610285, guid: 361725dd7cd87ff4cbeed427c2d3548b, type: 3}
+  corridorLR: {fileID: 8436102592367372979, guid: 8273f1252d1cb9041ae3a6ed695c3027, type: 3}
+  doorT: {fileID: 6656778056307338920, guid: 79f57cd0d0c97ad4294cb266d42009de, type: 3}
+  doorB: {fileID: 706676957278150087, guid: 30c19e4acf3fb0143a44d80277668949, type: 3}
+  doorR: {fileID: 582704317086181081, guid: 141396947644de445acbd477d890c922, type: 3}
+  doorL: {fileID: 5210524470438977486, guid: ce0914e05ad5c07498def5a717ee446b, type: 3}
+  ground: {fileID: 2641737880887523059, guid: f424599a7296bc345adce3eb0a402f69, type: 3}
+  mapSize: 10
+  sizeOfChunks: 10
   spawningAttempt: 20
   roomsPrefabs:
   - {fileID: 3026831949748329839, guid: 889e831e6ac40b54eb2a6a9c0b6c06a9, type: 3}
+  - {fileID: 5089473930810541664, guid: a28b258aa3d62d8448666ae7bca23b3d, type: 3}
+  - {fileID: 4948943524194238220, guid: 97488a9fb68a5c443af9f27c321610f4, type: 3}
+  - {fileID: 576103974053056475, guid: 550fdf38f9d38534a90593dcf4c7082c, type: 3}
+  - {fileID: 9046647037578356859, guid: 86721e17636ea8040902f60fb68a3c36, type: 3}
+  - {fileID: 3293276563706659729, guid: fd53f69761d42f44f89e34735eb28974, type: 3}
+  - {fileID: 5754239469072447771, guid: 036ed6e8feefddc43b8b059c7a879cd1, type: 3}
   roomsSpawned: []
   corridorsSpawned: []
-  doors: []
 --- !u!4 &1443496293
 Transform:
   m_ObjectHideFlags: 0
@@ -594,6 +606,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1443496294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1443496291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 267d004864bf8de4e95661f7451cb3d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1932501426
 GameObject:
   m_ObjectHideFlags: 0
@@ -636,9 +660,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1932501426}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.9172678, y: -0.07954121, z: 5.81527}
+  m_LocalPosition: {x: 8, y: 0, z: 30}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
