@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace NextOne
@@ -22,5 +23,8 @@ namespace NextOne
         #region Elevator
         public float elevatorSpeed = 1;
         #endregion
+
+        public List<PlayerData> AvailablePlayer;
+
     }
 }

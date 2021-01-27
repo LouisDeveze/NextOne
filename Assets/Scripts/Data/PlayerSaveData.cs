@@ -5,8 +5,9 @@ using UnityEngine;
 namespace Assets.Scripts.Data
 {
     [System.Serializable]
-    public class PlayerData
+    public class PlayerSaveData
     {
+        public int CharacterID;
         public int season;
         public int episode;
         public int health;
@@ -14,8 +15,9 @@ namespace Assets.Scripts.Data
         public int charisma;
         public float[] position;
 
-        public PlayerData(Player player)
+        public PlayerSaveData(Player player)
         {
+            CharacterID = player.CharacterID;
             season = player.season;
             episode = player.episode;
             health = player.health;

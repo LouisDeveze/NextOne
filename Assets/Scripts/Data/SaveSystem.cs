@@ -13,12 +13,12 @@ namespace Assets.Scripts.Data
             string path = Application.persistentDataPath + "/player.data";
             FileStream stream = new FileStream(path, FileMode.Create);
 
-            PlayerData data = new PlayerData(player);
+            PlayerSaveData data = new PlayerSaveData(player);
             formatter.Serialize(stream, data);
             stream.Close();
         }
 
-        public static PlayerData LoadPlayer()
+        public static PlayerSaveData LoadPlayer()
         {
             string path = Application.persistentDataPath + "/player.data";
             if (File.Exists(path))
@@ -26,14 +26,14 @@ namespace Assets.Scripts.Data
                 BinaryFormatter formatter = new BinaryFormatter();
                 FileStream stream = new FileStream(path, FileMode.Open);
 
-                PlayerData data = formatter.Deserialize(stream) as PlayerData;
+                PlayerSaveData data = formatter.Deserialize(stream) as PlayerSaveData;
                 stream.Close();
 
                 return data;
             }
             else
             {
-                Debug.LogError("Save FIle not found in" + path);
+                Debug.LogError("Save File not found in" + path);
                 return null;
             }
         }
