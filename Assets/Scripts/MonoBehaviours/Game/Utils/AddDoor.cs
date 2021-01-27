@@ -7,6 +7,6 @@ public class AddDoor : MonoBehaviour
     private LevelGenerator templates;
     private void Start()
     {
-              
+
     }
 }

@@ -52,6 +52,13 @@ namespace NextOne
         private float prevMagnitude = 0;
         // public bool UsingSkill;
 
+        // UI
+        private SkillUI PlayerAutoAttackUI;
+        private SkillUI PlayerPrimaryUI;
+        private SkillUI PlayerSecondaryUI;
+        private SkillUI PlayerTertiaryUI;
+        
+
         private void Start()
         {
             this.ctx = GameObject.Find("State Manager").GetComponent<GameContext>();
@@ -79,10 +86,18 @@ namespace NextOne
             //Set Weapon Stats
             CurrentWeapon = _playerData.WeaponHolder.DefaultWeapon;
 
+            // Get Skill UI and Initialize them
+            PlayerAutoAttackUI = this.ctx.SkillAutoAttackUI;
+            PlayerPrimaryUI = this.ctx.SkillPrimaryUI;
+            PlayerSecondaryUI = this.ctx.SkillSecondaryUI;
+            PlayerTertiaryUI = this.ctx.SkillTertiaryUI;
+
+
             WeaponAnchors[] weaponAnchorsArray = GetComponentsInChildren<WeaponAnchors>();
 
             foreach (var baseWeaponData in _playerData.WeaponHolder.WeaponsData)
             {
+                
                 Weapons.Add(baseWeaponData.InstantiateWeapon(new List<WeaponAnchors>(weaponAnchorsArray)));
             }
 
