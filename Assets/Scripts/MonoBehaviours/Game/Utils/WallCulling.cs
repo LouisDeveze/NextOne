@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using NextOne;
 
 [RequireComponent(typeof(MeshRenderer))]
 public class WallCulling : MonoBehaviour
@@ -12,37 +13,63 @@ public class WallCulling : MonoBehaviour
     // The camera reference used to know player view angle
     private Camera sceneCamera;
 
-    // Treshold = 1.0 for no backface culling
-    // Treshold = 0.0 for full backface culling
-    public static float treshold = 0.1f;
+    private Material[] materials;
+    // Semi Transparent Material
+    private Material[] semiTransparent;
+
+    private GameContext context;
+
+    private bool isTransparent = false;
+
+    public bool debug = false;
 
 
     private void Start()
     {
         this.sceneCamera = Camera.main;
+        this.materials = meshRenderer.sharedMaterials;
+
+        this.context = GameObject.Find("State Manager").GetComponent<GameContext>();
+        Material st = context.semiTransparent;
+        semiTransparent = new Material[materials.Length];
+        for (int i = 0; i < semiTransparent.Length; i++) semiTransparent[i] = st;
     }
 
     void Update()
     {
         if(sceneCamera == null) { Debug.LogError("No camera found in the scene"); return; }
 
-        // View Vector is the vector from the camera to the screen
-        Vector3 vVector = sceneCamera.transform.forward ;
-        // We keep only the 2D representation from an upper view point
-        vVector.y = 0;
-        vVector.Normalize();
-        Vector2 viewVector = new Vector2(vVector.x, vVector.z);
-        //Debug.Log(viewVector);
-        // Calculate the dot product of the view and the normal vector to see
-        // if the wall is seen from behind
-        float dotProduct = Vector2.Dot(viewVector, normal);
-        if(dotProduct == 0) { }
-        // If >0, the wall is seen from the back
-        else if(dotProduct > treshold && meshRenderer.enabled) { meshRenderer.enabled = false; }
-        // if <= 0, the wall is facing the camera
-        else if (dotProduct <= treshold  && !meshRenderer.enabled) { meshRenderer.enabled = true; }
+        Vector3 pos = this.transform.position;
+        Vector3 playerLogicalPos = context.playerController.Model.transform.position;
+        playerLogicalPos.z = 4*Mathf.RoundToInt(playerLogicalPos.z/4);
+        
 
+        bool shouldBeOpaque = true;
+        /* if (context.playerOccluded
+             && (Mathf.Abs(playerLogicalPos.x - pos.x) < 10f)
+             && (Mathf.Abs(playerLogicalPos.z - pos.z) < 2f)
+             ) shouldBeOpaque = false;
+ */
+        // Default for walls seen from behind
+        if (normal.y == 1) shouldBeOpaque = false;
+        // If walls are facing and culling the player
+        else if (context.playerOccluded && normal.y == -1 && playerLogicalPos.z > pos.z) shouldBeOpaque = false;
+        
 
+        if(shouldBeOpaque && isTransparent) { SwitchToOpaque();} 
+        else if(!shouldBeOpaque && !isTransparent) { SwitchToTransparent(); } 
+    }
+
+    public void SwitchToTransparent()
+    {
+        this.meshRenderer.sharedMaterials = semiTransparent;
+        isTransparent = true;
+    }
+
+    public void SwitchToOpaque()
+    {
+        this.meshRenderer.sharedMaterials = materials;
+        isTransparent = false;
     }
 
 }

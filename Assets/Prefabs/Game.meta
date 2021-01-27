@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Prefabs/Game.meta
 guid: bdd1b50446f712346bd9fa8d392f96c4
+=======
+guid: 5721641fcd5a2924c879c47cac5f1bc0
+>>>>>>> VFX:Assets/Data/Anchors.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
