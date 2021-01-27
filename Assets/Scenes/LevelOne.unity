@@ -579,9 +579,9 @@ MonoBehaviour:
   doorR: {fileID: 582704317086181081, guid: 141396947644de445acbd477d890c922, type: 3}
   doorL: {fileID: 5210524470438977486, guid: ce0914e05ad5c07498def5a717ee446b, type: 3}
   ground: {fileID: 2641737880887523059, guid: f424599a7296bc345adce3eb0a402f69, type: 3}
-  mapSize: 20
+  mapSize: 10
   sizeOfChunks: 10
-  spawningAttempt: 400
+  spawningAttempt: 100
   StartingRoom: {fileID: 4081889873987925048, guid: 7335de3e63a142b4c9b28f5ddf9fb355, type: 3}
   FinishRoom: {fileID: 6544369841411910991, guid: 4d370d377e8292b44863d10104f281eb, type: 3}
   roomsPrefabs:
