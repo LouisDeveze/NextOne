@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace NextOne
 {
@@ -13,9 +14,11 @@ namespace NextOne
 
         [SerializeField] private int EnemyHealth = 1;
         [SerializeField] private float EnemyVelocity = 1f;
-        [SerializeField] private int EnemyDamage = 1;
+        [SerializeField] private float EnemyAngularVelocity = 1f;
         [SerializeField] private float EDetectRange = 10f;
 
+        [SerializeField] private List<ScriptableAction> OnEnemyDeathActions = new List<ScriptableAction>();
+        [SerializeField] private List<SkillData> EnemySkillsData = new List<SkillData>();
 
         public int Id => EId;
 
@@ -28,9 +31,12 @@ namespace NextOne
         public int Health => EnemyHealth;
 
         public float Velocity => EnemyVelocity;
-
-        public int Damage => EnemyDamage;
+        public float AngularVelocity => EnemyAngularVelocity;
 
         public float DetectRange => EDetectRange;
+
+        public List<ScriptableAction> OnDeathActions => OnEnemyDeathActions;
+
+        public List<SkillData> SkillsData => EnemySkillsData;
     }
 }

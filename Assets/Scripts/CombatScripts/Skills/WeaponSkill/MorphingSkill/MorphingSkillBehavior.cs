@@ -15,7 +15,7 @@ namespace NextOne
             //If Skill In Use
             if (!SkillInUse) return;
             //If Current Skill Animation
-            if (!Player.hasAnimatorPlaying(GetRandomAnimationName(), 0)) return;
+            if (!Player.HasAnimatorPlaying(GetRandomAnimationName(), 0)) return;
 
             //Looking for effective weapon changed during animation
             if (Player.IsAnimationLastAtLeast(GetRandomEffectiveTime(), 0) && !WeaponChanged)
@@ -44,7 +44,7 @@ namespace NextOne
             Randomize();
             //TODO: Change for an actual cooldown
             // If the Animator is still playing animation from previous weapon
-            if (Player.hasAnimatorPlaying(GetRandomAnimationName(), 0))
+            if (Player.HasAnimatorPlaying(GetRandomAnimationName(), 0))
             {
                 Player.SkillInUse = false;
                 SkillInUse = false;

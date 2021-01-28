@@ -9,7 +9,8 @@ namespace NextOne
     public enum ECastPoint
     {
         Player = 0,
-        Weapons = 1
+        Weapons = 1,
+        Enemy = 2
     }
 
     public class PlayerController : MonoBehaviour, IDamageable
@@ -240,6 +241,7 @@ namespace NextOne
 
         public void Heal(int _healAmount)
         {
+            HealthPoint = Mathf.Clamp(HealthPoint + _healAmount, 0, PlayerData.Health);
         }
 
         //GAME LOGIC
@@ -344,7 +346,7 @@ namespace NextOne
             return (PlayerAnimator.GetCurrentAnimatorStateInfo(layer).normalizedTime >= _animationTime);
         }
 
-        public bool hasAnimatorPlaying(EAnimation animation, int layer)
+        public bool HasAnimatorPlaying(EAnimation animation, int layer)
         {
             return PlayerAnimator.GetCurrentAnimatorStateInfo(layer).IsName(Animations.GetStringEquivalent(animation));
         }
@@ -387,7 +389,7 @@ namespace NextOne
                     return Weapons[CurrentWeapon].GetCastPoint();
             }
 
-            return null;
+            return new List<Transform>();
         }
 
         private List<Transform> GetPlayerCastPoint()

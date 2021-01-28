@@ -16,7 +16,7 @@ namespace NextOne
             //If Skill In Use
             if (!SkillInUse) return;
 
-            if (!Player.hasAnimatorPlaying(GetRandomAnimationName(), 0)) return;
+            if (!Player.HasAnimatorPlaying(GetRandomAnimationName(), 0)) return;
 
             //Looking for effective time to shoot
             if (Player.IsAnimationLastAtLeast(GetRandomEffectiveTime(), 0) && !ProjectileShoot)

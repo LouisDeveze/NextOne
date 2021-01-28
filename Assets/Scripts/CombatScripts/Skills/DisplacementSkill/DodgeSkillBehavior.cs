@@ -13,7 +13,7 @@ namespace NextOne
             // If skill is not in use
             if (!SkillInUse) return;
             // If Animation currently running has not yet transitioned to the Skill One
-            if (!Player.hasAnimatorPlaying(GetRandomAnimationName(), 0)) return;
+            if (!Player.HasAnimatorPlaying(GetRandomAnimationName(), 0)) return;
             // Checking Animation Ended
             if (!Player.IsAnimationLastAtLeast(GetRandomAnimationTime(), 0)) return;
             OnEffectEnd();

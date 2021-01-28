@@ -9,8 +9,8 @@ namespace NextOne
             if (!CanCast())
                 return;
             base.Use(_useParams);
-     
-            
+
+
             Randomize();
             MeleeSkillData meleeBasicAttackData = (MeleeSkillData) this.SkillData;
 
@@ -24,7 +24,7 @@ namespace NextOne
 
             foreach (var target in targets.Enemies)
             {
-                Debug.Log(target.EnemyData.Name + " targeted");
+                Debug.Log(target.Data.Name + " targeted");
                 target.TakeDamage(meleeBasicAttackData.Damage);
                 Debug.Log(" Take " + meleeBasicAttackData.Damage +
                           " has now " + target.EnemyHealth);

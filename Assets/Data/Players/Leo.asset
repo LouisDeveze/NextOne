@@ -20,3 +20,4 @@ MonoBehaviour:
   PlayerVelocity: 7
   PlayerAngularVelocity: 270
   WeaponsHolder: {fileID: 11400000, guid: ba1d26d58bd0960419905e7e46099fb6, type: 2}
+  OnPlayerDeathActions: []

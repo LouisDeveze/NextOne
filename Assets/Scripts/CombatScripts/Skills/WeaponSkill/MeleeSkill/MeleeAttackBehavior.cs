@@ -23,7 +23,7 @@ namespace NextOne
             base.Update();
             if (!SkillInUse) return;
 
-            if (!Player.hasAnimatorPlaying(GetRandomAnimationName(), 0)) return;
+            if (!Player.HasAnimatorPlaying(GetRandomAnimationName(), 0)) return;
 
             if (!Player.IsAnimationLastAtLeast(GetRandomAnimationTime(), 0)) return;
             Debug.Log("Melee Skill Ended in: " + SkillData.Name + " - " + this.GetInstanceID());
