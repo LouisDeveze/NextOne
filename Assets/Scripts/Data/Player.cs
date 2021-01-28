@@ -8,7 +8,7 @@ namespace Assets.Scripts.Data
     {
         public int CharacterID = 0;
         public int season = 1;
-        public int episode = 5;
+        public int episode = 0;
         public int health = 150;
         public int strength = 37;
         public int charisma = 12;

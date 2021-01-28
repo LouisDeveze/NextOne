@@ -14,7 +14,7 @@ namespace NextOne
             if (this.sm.ctx.animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
             {
                 this.sm.ctx.animator.SetTrigger("FadeInToMainTitle");
-                this.sm.SwitchState((int)MenuStates.MainTitle);
+                this.sm.SwitchState((int)MenuStates.GameSelection);
             }   
         }
     }

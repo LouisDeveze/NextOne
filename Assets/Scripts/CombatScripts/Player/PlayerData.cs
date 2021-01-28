@@ -10,8 +10,11 @@ namespace NextOne
         [SerializeField] private string PlayerDescription = "default description";
         [SerializeField] private GameObject PlayerModel;
         [SerializeField] private int PlayerHealth = 1;
+        [SerializeField] private int PlayerStrength = 1;
+        [SerializeField] private int PlayerCharisma = 1;
         [SerializeField] private float PlayerVelocity = 7f;
         [SerializeField] private float PlayerAngularVelocity = 270f;
+        [SerializeField] private Sprite Playerpose = null;
 
 
         [SerializeField] private WeaponHolder WeaponsHolder;
@@ -26,10 +29,16 @@ namespace NextOne
 
         public int Health => PlayerHealth;
 
+        public int Strength => PlayerStrength;
+
+        public int Charisma => PlayerCharisma;
+
         public float Velocity => PlayerVelocity;
 
         public WeaponHolder WeaponHolder => WeaponsHolder;
 
         public float AngularVelocity => PlayerAngularVelocity;
+
+        public Sprite Pose => Playerpose;
     }
 }

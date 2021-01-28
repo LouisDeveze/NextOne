@@ -2,36 +2,48 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SharedData : MonoBehaviour
+namespace NextOne
 {
-
-    // Shared Data Instance Singleton
-    private SharedData instance = null;
-
-
-    #region Shared Data
-    ScriptableObject playerSelected;
-    #endregion
-
-    #region Awake instance
-    void Awake()
+    public class SharedData : MonoBehaviour
     {
 
-        // Create a Don't destroy instance of the Shared data to share it among scenes
-        if (instance == null)
-        {
-            DontDestroyOnLoad(gameObject);
-            instance = this;
-        }
-        else if (instance != this)
-        {
-            Destroy(gameObject);
-        }
-    }
-    #endregion
+        // Shared Data Instance Singleton
+        private static SharedData instance = null;
 
-    /// <summary>
-    /// Returns the instance of the shared data structure
-    /// </summary>
-    public static SharedData Instance { get => Instance; }
+
+        #region Database
+        
+        public List<PlayerData> availablePlayers;
+        public List<BaseWeaponData> availableWeapons;
+        #endregion
+
+        #region Selections
+
+        public PlayerData playerSelected;
+        public BaseWeaponData weaponSelected;
+        #endregion
+
+        #region Awake instance
+        void Awake()
+        {
+
+            // Create a Don't destroy instance of the Shared data to share it among scenes
+            if (instance == null)
+            {
+                DontDestroyOnLoad(gameObject);
+                instance = this;
+            }
+            else if (instance != this)
+            {
+                Destroy(gameObject);
+            }
+        }
+        #endregion
+
+        /// <summary>
+        /// Returns the instance of the shared data structure
+        /// </summary>
+        public static SharedData Instance { get => instance; }
+    }
+
 }

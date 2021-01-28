@@ -10,7 +10,10 @@ namespace NextOne
         OptionState = 2,
         GameSelection = 3,
         CharacterSelection = 4,
-        SaveSelection = 5
+        SaveSelection = 5,
+        WeaponSelection = 6,
+        MenuTeaser = 7,
+        MenuEpisode = 8
     }
 
     class MenuStateMachine : StateMachine<MenuContext>
@@ -23,6 +26,11 @@ namespace NextOne
             this.states.Add((int)MenuStates.MainTitle, new MainTitle(this));
             this.states.Add((int)MenuStates.OptionState, new OptionState(this));
             this.states.Add((int)MenuStates.GameSelection, new GameSelection(this));
+            this.states.Add((int)MenuStates.CharacterSelection, new CharacterSelection(this));
+            this.states.Add((int)MenuStates.SaveSelection, new SaveSelection(this));
+            this.states.Add((int)MenuStates.WeaponSelection, new WeaponSelection(this));
+            this.states.Add((int)MenuStates.MenuTeaser, new MenuTeaser(this));
+            this.states.Add((int)MenuStates.MenuEpisode, new MenuEpisode(this));
 
         }
 

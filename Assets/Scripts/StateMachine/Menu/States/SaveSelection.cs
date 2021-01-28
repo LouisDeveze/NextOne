@@ -3,10 +3,10 @@ using UnityEditor;
 
 namespace NextOne
 {
-     class GameSelection : State<MenuContext>     
+    class SaveSelection : State<MenuContext>
     {
         // Constructor taking the state machine + the state id
-        public GameSelection(StateMachine<MenuContext> stateMachine) : base(stateMachine, (int)MenuStates.GameSelection) { }
+        public SaveSelection(StateMachine<MenuContext> stateMachine) : base(stateMachine, (int)MenuStates.SaveSelection) { }
 
         public override void OnEnter()
         {
@@ -23,13 +23,11 @@ namespace NextOne
         {
             this.sm.ctx.GameSelection.SetActive(false);
             this.sm.ctx.CharacterSelection.SetActive(true);
-            this.sm.SwitchState((int)MenuStates.CharacterSelection);
         }
         public void OnLoadGame()
         {
             this.sm.ctx.GameSelection.SetActive(false);
             this.sm.ctx.SaveSelection.SetActive(true);
-            this.sm.SwitchState((int)MenuStates.SaveSelection);
         }
 
     }

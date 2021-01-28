@@ -14,9 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerId: 0
   PlayerName: Leo
-  PlayerDescription: Leo - Tough guy raised in the street
+  PlayerDescription: Leo is an ex soldier who lost his mother at birth and he has
+    been living with his father until he passed because they couldn't afford drugs
+    to cure his hillness.
   PlayerModel: {fileID: 6185160093452324728, guid: 45e92dc35d017684288b5ebdcfd00667, type: 3}
   PlayerHealth: 100
+  PlayerStrength: 1
+  PlayerCharisma: 1
   PlayerVelocity: 7
   PlayerAngularVelocity: 270
+  Playerpose: {fileID: 21300000, guid: 713a3852505a96e4b9377d6c0fb7d8d8, type: 3}
   WeaponsHolder: {fileID: 11400000, guid: ba1d26d58bd0960419905e7e46099fb6, type: 2}
