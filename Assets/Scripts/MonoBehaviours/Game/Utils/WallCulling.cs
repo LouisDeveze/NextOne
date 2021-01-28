@@ -56,7 +56,7 @@ public class WallCulling : MonoBehaviour
         // Default for walls seen from behind
         if (normal.y == 1) shouldBeOpaque = false;
         // If walls are facing and culling the player
-        else if (context.playerOccluded && normal.y == -1 && playerLogicalPos.z > pos.z) shouldBeOpaque = false;
+        else if (context.playerOccluded && normal.y == -1 && playerLogicalPos.z > pos.z-1) shouldBeOpaque = false;
         
 
         if(shouldBeOpaque && isTransparent) { SwitchToOpaque();} 

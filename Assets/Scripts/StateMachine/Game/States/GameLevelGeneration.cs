@@ -1,4 +1,6 @@
-﻿namespace NextOne
+﻿using UnityEngine;
+
+namespace NextOne
 {
     class GameLevelGeneration : State<GameContext>
     {
@@ -7,11 +9,10 @@
 
         public override void OnEnter()
         {
-            this.sm.ctx.playerController.gameObject.SetActive(true);
-            this.sm.ctx.maze.SetActive(true);
-            this.sm.ctx.playerController.gameObject.SetActive(true);
-            this.sm.ctx.sun.gameObject.SetActive(true);
-            this.sm.ctx.globalVolume.sharedProfile = this.sm.ctx.postProcessProfile;
+            // Generate the Map
+            LevelGenerator level = this.sm.ctx.levelManager.GetComponent<LevelGenerator>();
+            level.Generate();
+            OnPostGeneration();          
             
         }
 
@@ -19,6 +20,19 @@
         {
             this.sm.ctx.animator.SetTrigger("GameFadeIn");
             this.sm.SwitchState((int)GameStates.GameFadeIn);
+        }
+
+        private void OnPostGeneration()
+        {
+            // Post Generation
+            GameObject player = GameObject.Find("Player");
+            if (player == null) Debug.LogError("No PLayer Gameobject found :(");
+            this.sm.ctx.playerController = player.GetComponent<PlayerController>();
+            player.transform.parent = null;
+
+            this.sm.ctx.playerController.gameObject.SetActive(true);
+            this.sm.ctx.sun.gameObject.SetActive(true);
+            this.sm.ctx.globalVolume.sharedProfile = this.sm.ctx.postProcessProfile;
         }
     }
 }

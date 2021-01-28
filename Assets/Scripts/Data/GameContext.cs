@@ -31,8 +31,7 @@ namespace NextOne
         #endregion
 
         #region Objects
-        public PlayerController playerController;
-        public GameObject maze;
+        public PlayerController playerController = null;
         #endregion
 
         #region Materials

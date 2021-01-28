@@ -349,7 +349,7 @@ namespace NextOne
             // Does the ray intersect any objects excluding the player layer
             if (!Physics.Raycast(cameraPos, dir, out hit, 50))
             {
-                Debug.Log("No Hit");
+
                 return;
             }
             if (hit.collider == PlayerCollider) this.ctx.playerOccluded = false;

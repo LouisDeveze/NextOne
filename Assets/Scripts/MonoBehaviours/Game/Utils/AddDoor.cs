@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AddDoor : MonoBehaviour
+namespace NextOne
 {
-    private LevelGenerator templates;
-    private void Start()
+    public class AddDoor : MonoBehaviour
     {
+        private void Start()
+        {
 
+        }
     }
+
 }
