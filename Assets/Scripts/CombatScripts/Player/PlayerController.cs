@@ -14,10 +14,7 @@ namespace NextOne
 
     public class PlayerController : MonoBehaviour, IDamageable
     {
-        //TODO: Game Logic
-
         [SerializeField] private PlayerData PlayerData = null;
-        [SerializeField] private Transform CastAnchorPoint = null;
 
         //Game Context
         private GameContext ctx;
@@ -32,7 +29,6 @@ namespace NextOne
         //Weapon Stats
         private List<WeaponController> Weapons = new List<WeaponController>();
         private int CurrentWeapon = 0;
-        private bool IsCasting = false;
 
         //Skills Script References
         private List<ISkill> Skills = new List<ISkill>();
@@ -43,21 +39,21 @@ namespace NextOne
         private Animator PlayerAnimator;
 
         //UTILS
-        private float distanceFromCamera = 0;
-        private Plane plane = new Plane(Vector3.up, new Vector3(0, 0, 0));
-        private float angularTreshold = 5;
-        private float angle;
+        private float DistanceFromCamera = 0;
+        private Plane WorldPlane = new Plane(Vector3.up, new Vector3(0, 0, 0));
+        private float AngularTreshold = 5;
+        private float Angle;
 
         //MOVEMENT
         // Movement in World Space
-        private Vector3 movement;
+        private Vector3 Movement;
 
         //Movement in Model Space
-        private Vector3 modelMovement;
+        private Vector3 ModelMovement;
 
-        private const float movementSmoother = .4f;
+        private const float MovementSmoother = .4f;
 
-        private float prevMagnitude = 0;
+        private float PrevMagnitude = 0;
         // public bool UsingSkill;
 
         // UI
@@ -65,6 +61,9 @@ namespace NextOne
         private SkillUI PlayerPrimaryUI;
         private SkillUI PlayerSecondaryUI;
         private SkillUI PlayerTertiaryUI;
+
+        //ACTIONS
+        private List<ScriptableAction> OnDeathActions = new List<ScriptableAction>();
 
 
         private void Start()
@@ -94,11 +93,15 @@ namespace NextOne
             //Set Weapon Stats
             CurrentWeapon = _playerData.WeaponHolder.DefaultWeapon;
 
-            // Get Skill UI and Initialize them
+            //Get Skill UI and Initialize them
             PlayerAutoAttackUI = this.ctx.SkillAutoAttackUI;
             PlayerPrimaryUI = this.ctx.SkillPrimaryUI;
             PlayerSecondaryUI = this.ctx.SkillSecondaryUI;
             PlayerTertiaryUI = this.ctx.SkillTertiaryUI;
+
+            //Get Actions
+
+            OnDeathActions = _playerData.OnDeathActions;
 
 
             WeaponAnchors[] weaponAnchorsArray = GetComponentsInChildren<WeaponAnchors>();
@@ -226,6 +229,11 @@ namespace NextOne
         {
             //TODO: Animator | Audio | OnDeathSO
 
+            foreach (var action in OnDeathActions)
+            {
+                action.PerformAction(this.PlayerModel);
+            }
+
             //SceneManager
             return null;
         }
@@ -249,7 +257,7 @@ namespace NextOne
         {
             //Give Directional Smoothed Velocity
             if (PlayerCanMove)
-                PlayerRigidbody.velocity = movement * Velocity;
+                PlayerRigidbody.velocity = Movement * Velocity;
         }
 
         #region Updates
@@ -265,33 +273,33 @@ namespace NextOne
 
             // Calculate smoothed movement
             float magnitude = 0f;
-            if (absoluteMovement > prevMagnitude)
-                magnitude = Mathf.Min(1.0f, prevMagnitude + Time.deltaTime / movementSmoother);
-            else if (absoluteMovement < prevMagnitude)
-                magnitude = Mathf.Max(0f, prevMagnitude - Time.deltaTime / movementSmoother);
+            if (absoluteMovement > PrevMagnitude)
+                magnitude = Mathf.Min(1.0f, PrevMagnitude + Time.deltaTime / MovementSmoother);
+            else if (absoluteMovement < PrevMagnitude)
+                magnitude = Mathf.Max(0f, PrevMagnitude - Time.deltaTime / MovementSmoother);
             else
                 magnitude = absoluteMovement;
 
-            prevMagnitude = magnitude;
+            PrevMagnitude = magnitude;
 
             // Computing movement in world space
-            movement = Vector3.ClampMagnitude(new Vector3(mH, 0, mV), 1.0f) * magnitude;
+            Movement = Vector3.ClampMagnitude(new Vector3(mH, 0, mV), 1.0f) * magnitude;
         }
 
         private void PlayerRotationUpdate()
         {
             //Get the Screen positions of the object
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if (plane.Raycast(ray, out distanceFromCamera))
+            if (WorldPlane.Raycast(ray, out DistanceFromCamera))
             {
-                Vector3 worldPosition = ray.GetPoint(distanceFromCamera);
+                Vector3 worldPosition = ray.GetPoint(DistanceFromCamera);
                 Vector3 toMouse = worldPosition - this.PlayerModel.transform.position;
-                angle = Vector3.SignedAngle(toMouse, this.PlayerModel.transform.forward, Vector3.up);
+                Angle = Vector3.SignedAngle(toMouse, this.PlayerModel.transform.forward, Vector3.up);
 
                 // Calculate Variation Angle
-                float variationAngle = angle > 0 ? Time.deltaTime * AngularVelocity : -Time.deltaTime * AngularVelocity;
-                variationAngle = Mathf.Abs(variationAngle) > Mathf.Abs(angle) ? angle : variationAngle;
-                variationAngle = Mathf.Abs(angle) > angularTreshold ? variationAngle : 0;
+                float variationAngle = Angle > 0 ? Time.deltaTime * AngularVelocity : -Time.deltaTime * AngularVelocity;
+                variationAngle = Mathf.Abs(variationAngle) > Mathf.Abs(Angle) ? Angle : variationAngle;
+                variationAngle = Mathf.Abs(Angle) > AngularTreshold ? variationAngle : 0;
 
                 // Finally Rotate the model
                 this.PlayerModel.transform.Rotate(Vector3.up, -variationAngle);
@@ -300,9 +308,9 @@ namespace NextOne
 
         private void PlayerWeaponAnimationUpdate()
         {
-            modelMovement = PlayerModel.transform.InverseTransformDirection(movement);
+            ModelMovement = PlayerModel.transform.InverseTransformDirection(Movement);
             if (PlayerCanMove)
-                Weapons[CurrentWeapon].AnimateMovement(PlayerAnimator, modelMovement, angle);
+                Weapons[CurrentWeapon].AnimateMovement(PlayerAnimator, ModelMovement, Angle);
         }
 
         private void PlayerSkillUpdate()
@@ -375,7 +383,6 @@ namespace NextOne
             {
                 case ECastPoint.Player:
                     return GetPlayerCastPoint();
-                    break;
                 case ECastPoint.Weapons:
                     return Weapons[CurrentWeapon].GetCastPoint();
             }

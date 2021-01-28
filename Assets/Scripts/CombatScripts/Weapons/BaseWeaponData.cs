@@ -42,9 +42,6 @@ namespace NextOne
 
         [SerializeField] private AnimatorOverrideController WeaponAnimator;
 
-        // Angle in degrees before running animation becomes strafe
-        private float tresholdStrafe = .5f;
-
         [SerializeField] private float WeaponDamageMultiplier = 1f;
         [SerializeField] private float WeaponAttackRateMultiplier = 1f;
         [SerializeField] private float WeaponCooldownMultiplier = 1f;

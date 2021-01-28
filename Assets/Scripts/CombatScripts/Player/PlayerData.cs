@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace NextOne
 {
@@ -16,6 +17,8 @@ namespace NextOne
 
         [SerializeField] private WeaponHolder WeaponsHolder;
 
+        [SerializeField] private List<ScriptableAction> OnPlayerDeathActions = new List<ScriptableAction>();
+
         public int Id => PlayerId;
 
         public string Name => PlayerName;
@@ -31,5 +34,7 @@ namespace NextOne
         public WeaponHolder WeaponHolder => WeaponsHolder;
 
         public float AngularVelocity => PlayerAngularVelocity;
+
+        public List<ScriptableAction> OnDeathActions => OnPlayerDeathActions;
     }
 }
