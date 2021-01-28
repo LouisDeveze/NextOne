@@ -18,8 +18,10 @@ namespace NextOne
                 throw new Exception();
         }
 
-        void Update()
+        protected override void Update()
         {
+            base.Update();
+
             if (!SkillInUse) return;
             if (!Player.hasAnimatorPlaying(GetRandomAnimationName(), 0)) return;
 
@@ -37,10 +39,14 @@ namespace NextOne
 
         public override void Use(SkillUseParams _useParams)
         {
+            if (!CanCast())
+                return;
+            base.Use(_useParams);
+           
+
             UseParams = _useParams;
             Randomize();
-            if (!Player.SkillInUse) return;
-
+            
             Debug.Log("Explosive Skill Used in: " + this.GetInstanceID());
             OnEffectStart();
         }
@@ -90,12 +96,13 @@ namespace NextOne
         protected override void OnEffectStart()
         {
             Player.CanMove(false);
+            Player.SkillInUse = true;
+            SkillInUse = true;
             Player.ResetTriggersAnimator();
             Player.SetTriggerAnimator(GetRandomAnimationName());
             Debug.Log("Explosive Skill Animation Triggered in: " +
                       this.GetInstanceID());
-            Player.SkillInUse = true;
-            SkillInUse = true;
+          
         }
 
         protected override void OnEffectEnd()

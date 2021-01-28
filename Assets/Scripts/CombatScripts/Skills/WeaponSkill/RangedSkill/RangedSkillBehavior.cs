@@ -9,8 +9,10 @@ namespace NextOne
         private SkillUseParams UseParams;
         private bool ProjectileShoot;
 
-        void Update()
+        protected override void Update()
         {
+            base.Update();
+
             //If Skill In Use
             if (!SkillInUse) return;
 
@@ -31,6 +33,12 @@ namespace NextOne
 
         public override void Use(SkillUseParams _useParams)
         {
+            if (!CanCast())
+                return;
+
+            base.Use(_useParams);
+
+
             UseParams = _useParams;
             Randomize();
             OnEffectStart();
@@ -99,14 +107,15 @@ namespace NextOne
 
         protected override void OnEffectStart()
         {
+            Player.SkillInUse = true;
+            SkillInUse = true;
+            Player.CanMove(false);
+
             //Freeze Player & Play Animation 
             Player.ResetTriggersAnimator();
             Player.SetTriggerAnimator(GetRandomAnimationName());
             Debug.Log("Ranged Skill Animation Triggered in: " +
                       this.GetInstanceID());
-            Player.SkillInUse = true;
-            SkillInUse = true;
-            Player.CanMove(false);
         }
 
         protected override void OnEffectEnd()

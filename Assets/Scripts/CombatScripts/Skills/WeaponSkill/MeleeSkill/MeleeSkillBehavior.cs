@@ -6,6 +6,11 @@ namespace NextOne
     {
         public override void Use(SkillUseParams _useParams)
         {
+            if (!CanCast())
+                return;
+            base.Use(_useParams);
+     
+            
             Randomize();
             MeleeSkillData meleeBasicAttackData = (MeleeSkillData) this.SkillData;
 

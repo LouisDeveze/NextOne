@@ -12,11 +12,14 @@ namespace NextOne
         [SerializeField] private String SkillDescription = "default description";
         [SerializeField] private SkillAim SkillAim;
         [SerializeField] private SkillTrigger SkillTrigger;
+        [SerializeField] private float SkillCooldown;
 
         //[SerializeField] private float SkillAnimationTime;
         [SerializeField] private List<float> SkillAnimationTime;
+
         //[SerializeField] private float AnimationEffectiveUseTime;
         [SerializeField] private List<float> AnimationEffectiveUseTime;
+
         //[SerializeField] private EAnimation SkillAnimationName;
         [SerializeField] private List<EAnimation> SkillAnimationName;
 
@@ -50,5 +53,7 @@ namespace NextOne
         public List<EAnimation> AnimationName => SkillAnimationName;
 
         public List<float> EffectiveUseTime => AnimationEffectiveUseTime;
+
+        public float Cooldown => SkillCooldown;
     }
 }

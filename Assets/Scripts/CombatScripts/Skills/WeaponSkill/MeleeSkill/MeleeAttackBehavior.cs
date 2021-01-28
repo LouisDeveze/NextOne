@@ -8,14 +8,19 @@ namespace NextOne
 
         public override void Use(SkillUseParams _useParams)
         {
+            if (!CanCast())
+                return;
+            base.Use(_useParams);
             
+
             UseParams = _useParams;
             Randomize();
             OnEffectStart();
         }
 
-        void Update()
+        protected override void Update()
         {
+            base.Update();
             if (!SkillInUse) return;
 
             if (!Player.hasAnimatorPlaying(GetRandomAnimationName(), 0)) return;
@@ -27,13 +32,13 @@ namespace NextOne
 
         protected override void OnEffectStart()
         {
+            Player.SkillInUse = true;
+            SkillInUse = true;
+            Player.CanMove(false);
             Player.ResetTriggersAnimator();
             Player.ActiveWeaponTrigger(true);
             Player.SetTriggerAnimator(GetRandomAnimationName());
             Debug.Log("Melee Basic Attack in: " + SkillData.Name + " - " + this.GetInstanceID());
-            Player.SkillInUse = true;
-            SkillInUse = true;
-            Player.CanMove(false);
         }
 
         protected override void OnEffectEnd()

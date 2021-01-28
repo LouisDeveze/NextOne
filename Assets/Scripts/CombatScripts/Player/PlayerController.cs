@@ -152,14 +152,13 @@ namespace NextOne
 
         private void AttemptSkill(int _index)
         {
+            //If not using an other skill
             if (SkillInUse)
                 return;
 
-
-            //TODO: check cooldown
-
-            //IF CASTING
-
+            //If can cast skill
+            if (!Skills[_index].CanCast())
+                return;
             var skillParams = new SkillUseParams {Origin = PlayerModel};
             SkillInUse = true;
             Skills[_index].Use(skillParams);
@@ -225,7 +224,7 @@ namespace NextOne
 
         IEnumerator KillPlayer()
         {
-            //TODO: Animator & Audio
+            //TODO: Animator | Audio | OnDeathSO
 
             //SceneManager
             return null;

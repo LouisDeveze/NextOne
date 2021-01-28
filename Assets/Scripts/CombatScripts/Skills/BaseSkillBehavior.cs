@@ -9,15 +9,34 @@ namespace NextOne
         protected PlayerController Player = null;
         protected bool SkillInUse = false;
         private int RandomAnimation;
+        private Cooldown SkillCooldown;
 
         public void SetData(SkillData _skillData)
         {
             this.SkillData = _skillData;
+            this.SkillCooldown = new Cooldown(this.SkillData.Cooldown);
+        }
+
+        protected virtual void Update()
+        {
+            SkillCooldown.UpdateCooldown();
+        }
+
+        public virtual void Use(SkillUseParams _useParams)
+        {
+            Debug.Log("Base Use");
+            SkillCooldown.UseCooldown();
         }
 
         void Start()
         {
             OnInitialization();
+        }
+
+        public bool CanCast()
+        {
+            Debug.Log("In Cast Cast");
+            return SkillCooldown.ReadyToCast;
         }
 
         protected void Randomize()
@@ -44,8 +63,6 @@ namespace NextOne
         {
             return SkillData.EffectiveUseTime[RandomAnimation];
         }
-
-        public abstract void Use(SkillUseParams _useParams);
 
         protected abstract void OnEffectStart();
 

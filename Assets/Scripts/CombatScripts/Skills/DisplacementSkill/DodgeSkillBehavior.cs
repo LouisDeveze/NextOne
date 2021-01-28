@@ -5,8 +5,11 @@ namespace NextOne
 {
     public class DodgeSkillBehavior : BaseSkillBehavior
     {
-        void Update()
+        protected override void Update()
         {
+            //Update CD
+            base.Update();
+
             // If skill is not in use
             if (!SkillInUse) return;
             // If Animation currently running has not yet transitioned to the Skill One
@@ -18,7 +21,13 @@ namespace NextOne
 
         public override void Use(SkillUseParams _useParams)
         {
+            if (!CanCast())
+                return;
+
+            base.Use(_useParams);
+
             SkillInUse = true;
+            Player.SkillInUse = true;
             Player.CanMove(false);
             Randomize();
             OnEffectStart();

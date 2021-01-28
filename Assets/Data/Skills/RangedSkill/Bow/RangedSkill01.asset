@@ -17,6 +17,7 @@ MonoBehaviour:
   SkillDescription: Leo Ranged Basic Attack
   SkillAim: {fileID: 11400000, guid: 7d595482430ed304a89e68c2fcc53e13, type: 2}
   SkillTrigger: {fileID: 11400000, guid: 506ba550f14a1954f81a00b6fd8abce3, type: 2}
+  SkillCooldown: 1
   SkillAnimationTime:
   - 1
   AnimationEffectiveUseTime:

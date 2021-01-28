@@ -8,8 +8,10 @@ namespace NextOne
         private bool WeaponChanged = false;
 
         //CHECK INSTANTATION -> Attach GameObject
-        void Update()
+        protected override void Update()
         {
+            base.Update();
+
             //If Skill In Use
             if (!SkillInUse) return;
             //If Current Skill Animation
@@ -34,6 +36,11 @@ namespace NextOne
 
         public override void Use(SkillUseParams _useParams)
         {
+            if (!CanCast())
+                return;
+
+            base.Use(_useParams);
+
             Randomize();
             //TODO: Change for an actual cooldown
             // If the Animator is still playing animation from previous weapon
