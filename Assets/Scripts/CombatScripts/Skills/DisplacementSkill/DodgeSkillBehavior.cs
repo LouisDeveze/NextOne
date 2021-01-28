@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using Random = System.Random;
 
 namespace NextOne
 {
@@ -9,9 +10,9 @@ namespace NextOne
             // If skill is not in use
             if (!SkillInUse) return;
             // If Animation currently running has not yet transitioned to the Skill One
-            if (!Player.hasAnimatorPlaying(SkillData.AnimationName, 0)) return;
+            if (!Player.hasAnimatorPlaying(GetRandomAnimationName(), 0)) return;
             // Checking Animation Ended
-            if (!Player.IsAnimationLastAtLeast(SkillData.AnimationTime, 0)) return;
+            if (!Player.IsAnimationLastAtLeast(GetRandomAnimationTime(), 0)) return;
             OnEffectEnd();
         }
 
@@ -19,13 +20,14 @@ namespace NextOne
         {
             SkillInUse = true;
             Player.CanMove(false);
+            Randomize();
             OnEffectStart();
         }
 
         protected override void OnEffectStart()
         {
             Player.ResetTriggersAnimator();
-            Player.SetTriggerAnimator(SkillData.AnimationName);
+            Player.SetTriggerAnimator(GetRandomAnimationName());
         }
 
         protected override void OnEffectEnd()
@@ -39,6 +41,11 @@ namespace NextOne
         protected override void OnInitialization()
         {
             Player = GetComponent<PlayerController>();
+        }
+
+        protected override void OnEffectiveUse()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

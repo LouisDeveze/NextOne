@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace NextOne
 {
@@ -7,6 +8,7 @@ namespace NextOne
         protected SkillData SkillData = null;
         protected PlayerController Player = null;
         protected bool SkillInUse = false;
+        private int RandomAnimation;
 
         public void SetData(SkillData _skillData)
         {
@@ -18,6 +20,31 @@ namespace NextOne
             OnInitialization();
         }
 
+        protected void Randomize()
+        {
+            System.Random rdn = new System.Random();
+            Debug.Log("In Randomize - rdn: " +
+                      rdn + "List count: " + SkillData.AnimationName.Count);
+            RandomAnimation = rdn.Next(0, SkillData.AnimationName.Count);
+            Debug.Log("In Randomize - rdn animation: " +
+                      RandomAnimation);
+        }
+
+        protected EAnimation GetRandomAnimationName()
+        {
+            return SkillData.AnimationName[RandomAnimation];
+        }
+
+        protected float GetRandomAnimationTime()
+        {
+            return SkillData.AnimationTime[RandomAnimation];
+        }
+
+        protected float GetRandomEffectiveTime()
+        {
+            return SkillData.EffectiveUseTime[RandomAnimation];
+        }
+
         public abstract void Use(SkillUseParams _useParams);
 
         protected abstract void OnEffectStart();
@@ -25,6 +52,8 @@ namespace NextOne
         protected abstract void OnEffectEnd();
 
         protected abstract void OnInitialization();
+
+        protected abstract void OnEffectiveUse();
 
         public void Detach()
         {

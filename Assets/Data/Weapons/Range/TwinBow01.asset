@@ -18,8 +18,13 @@ MonoBehaviour:
   WeaponIcon: {fileID: 0}
   WeaponsModel:
   - {fileID: 4340028580142527672, guid: 11e21b0dfb6afe84fa2e3c47898f892c, type: 3}
-  WeaponDamages: 0a000000
   UniformWeaponDamage: 0
+  WeaponDamages: 0a000000
+  HasHit: 0
+  UniformWeaponHitPrefab: 0
+  WeaponsHitPrefab: []
+  UniformWeaponHitSfx: 0
+  WeaponsHitSfx: []
   WeaponAnimationType: 3
   WeaponAnimator: {fileID: 22100000, guid: 9987e26dd1e48044b89d191f11f2d9d3, type: 2}
   WeaponDamageMultiplier: 1
@@ -29,3 +34,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3a0f9d5283af6f743a45a95ee7b6a2b8, type: 2}
   - {fileID: 11400000, guid: 9ff37f66850eafd44a4e7bacb2168c16, type: 2}
   - {fileID: 11400000, guid: 5d874f23842bddc479b5a07ae2d3e3ed, type: 2}
+  - {fileID: 11400000, guid: 9c8dce01ba031ff4b92dc9c6d0354bfb, type: 2}

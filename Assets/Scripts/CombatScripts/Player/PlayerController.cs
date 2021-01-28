@@ -1,9 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
+using Debug = UnityEngine.Debug;
 
 namespace NextOne
 {
+    public enum ECastPoint
+    {
+        Player = 0,
+        Weapons = 1
+    }
+
     public class PlayerController : MonoBehaviour, IDamageable
     {
         //TODO: Game Logic
@@ -57,7 +65,7 @@ namespace NextOne
         private SkillUI PlayerPrimaryUI;
         private SkillUI PlayerSecondaryUI;
         private SkillUI PlayerTertiaryUI;
-        
+
 
         private void Start()
         {
@@ -97,7 +105,6 @@ namespace NextOne
 
             foreach (var baseWeaponData in _playerData.WeaponHolder.WeaponsData)
             {
-                
                 Weapons.Add(baseWeaponData.InstantiateWeapon(new List<WeaponAnchors>(weaponAnchorsArray)));
             }
 
@@ -247,6 +254,7 @@ namespace NextOne
         }
 
         #region Updates
+
         private void PlayerMovementUpdate()
         {
             //Retrieve Movement Input
@@ -309,9 +317,11 @@ namespace NextOne
                     AttemptSkill(index);
             }
         }
+
         #endregion
 
         #region Animation
+
         public void CanMove(bool _canMove)
         {
             PlayerCanMove = _canMove;
@@ -352,6 +362,7 @@ namespace NextOne
                 Debug.Log("No Hit");
                 return;
             }
+
             if (hit.collider == PlayerCollider) this.ctx.playerOccluded = false;
             else this.ctx.playerOccluded = true;
         }
@@ -359,9 +370,32 @@ namespace NextOne
         //GETTER SETTER
         public GameObject Model => PlayerModel;
 
-        public List<Transform> GetCastPoint()
+        public List<Transform> GetCastPoint(ECastPoint _eCastPoint)
         {
-            return Weapons[CurrentWeapon].GetCastPoint();
+            switch (_eCastPoint)
+            {
+                case ECastPoint.Player:
+                    return GetPlayerCastPoint();
+                    break;
+                case ECastPoint.Weapons:
+                    return Weapons[CurrentWeapon].GetCastPoint();
+            }
+
+            return null;
+        }
+
+        private List<Transform> GetPlayerCastPoint()
+        {
+            List<Transform> castPoints = new List<Transform>
+            {
+                PlayerModel.GetComponentInChildren<CastPoint>().transform
+            };
+            return castPoints;
+        }
+
+        public void ActiveWeaponTrigger(bool _active)
+        {
+            Weapons[CurrentWeapon].ActiveWeaponTrigger(_active);
         }
     }
 }

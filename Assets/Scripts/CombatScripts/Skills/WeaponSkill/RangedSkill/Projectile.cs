@@ -70,6 +70,7 @@ namespace NextOne
 
             if (!Source)
                 return;
+            
             if (layerCollidedWith == Source.layer
                 || layerCollidedWith == LayerMask.NameToLayer("VFX")
                 || layerCollidedWith == LayerMask.NameToLayer("Weapons"))

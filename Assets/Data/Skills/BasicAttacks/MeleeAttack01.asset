@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11d477697af2a424a996c1a2790b8abd, type: 3}
+  m_Name: MeleeAttack01
+  m_EditorClassIdentifier: 
+  SkillId: 4
+  SkillName: Twinny
+  SkillDescription: Twin Dagger Basic Attack
+  SkillAim: {fileID: 11400000, guid: 8aa75bc5c0d26f94d8d6e091992346a2, type: 2}
+  SkillTrigger: {fileID: 11400000, guid: 506ba550f14a1954f81a00b6fd8abce3, type: 2}
+  SkillAnimationTime:
+  - 1
+  - 1
+  AnimationEffectiveUseTime:
+  - 1
+  - 1
+  SkillAnimationName: 0700000008000000
+  AttackCastPrefab: {fileID: 0}
+  AttackCastSfx: {fileID: 0}

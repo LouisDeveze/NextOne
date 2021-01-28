@@ -7,24 +7,24 @@ namespace NextOne
     {
         private Transform FirePoint;
         private SkillUseParams UseParams;
-        private bool ProjectileShoot = false;
+        private bool ProjectileShoot;
 
         void Update()
         {
             //If Skill In Use
             if (!SkillInUse) return;
 
-            if (!Player.hasAnimatorPlaying(SkillData.AnimationName, 0)) return;
+            if (!Player.hasAnimatorPlaying(GetRandomAnimationName(), 0)) return;
 
             //Looking for effective time to shoot
-            if (Player.IsAnimationLastAtLeast(SkillData.EffectiveChangeTime, 0) && !ProjectileShoot)
+            if (Player.IsAnimationLastAtLeast(GetRandomEffectiveTime(), 0) && !ProjectileShoot)
             {
                 Debug.Log("Projectile Shoot in: " + this.GetInstanceID());
                 ProjectileShoot = true;
                 OnEffectiveUse();
             }
 
-            if (!Player.IsAnimationLastAtLeast(SkillData.AnimationTime, 0)) return;
+            if (!Player.IsAnimationLastAtLeast(GetRandomAnimationTime(), 0)) return;
             Debug.Log("Ranged Skill Ended in: " + this.GetInstanceID());
             OnEffectEnd();
         }
@@ -32,12 +32,8 @@ namespace NextOne
         public override void Use(SkillUseParams _useParams)
         {
             UseParams = _useParams;
+            Randomize();
             OnEffectStart();
-        }
-
-        private void OnEffectiveUse()
-        {
-            ShootProjectile();
         }
 
         private void ShootProjectile()
@@ -95,11 +91,17 @@ namespace NextOne
             }
         }
 
+
+        protected override void OnEffectiveUse()
+        {
+            ShootProjectile();
+        }
+
         protected override void OnEffectStart()
         {
             //Freeze Player & Play Animation 
             Player.ResetTriggersAnimator();
-            Player.SetTriggerAnimator(SkillData.AnimationName);
+            Player.SetTriggerAnimator(GetRandomAnimationName());
             Debug.Log("Ranged Skill Animation Triggered in: " +
                       this.GetInstanceID());
             Player.SkillInUse = true;
@@ -119,9 +121,10 @@ namespace NextOne
         protected override void OnInitialization()
         {
             Player = GetComponent<PlayerController>();
+            ProjectileShoot = false;
             //Get First Cast Point
             //TODO: Handle when two ranged weapon, from which to shoot? =)
-            FirePoint = Player.GetCastPoint()[0];
+            FirePoint = Player.GetCastPoint(ECastPoint.Weapons)[0];
             if (!FirePoint)
                 throw new Exception();
             //Should not occured !
