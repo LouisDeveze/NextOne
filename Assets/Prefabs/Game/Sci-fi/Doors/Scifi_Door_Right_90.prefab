@@ -60,7 +60,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ee7fa9bc2dac1494398817b234f2001d, type: 2}
+  - {fileID: 2100000, guid: f79a9ce20a94e8d498368794403418a3, type: 2}
   - {fileID: 2100000, guid: 4426b7f4378fe2a478c6401eeee993c3, type: 2}
   - {fileID: 2100000, guid: fc1ce16129c0b8d4f825eab37ff3a298, type: 2}
   m_StaticBatchInfo:
@@ -98,3 +98,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   meshRenderer: {fileID: 1184095352897055475}
   normal: {x: 1, y: -1}
+  debug: 0
