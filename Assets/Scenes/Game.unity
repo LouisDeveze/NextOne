@@ -544,6 +544,7 @@ MonoBehaviour:
   playerController: {fileID: 0}
   semiTransparent: {fileID: 2100000, guid: 2bbeef4e9ff27d246958d6663cb3f652, type: 2}
   playerOccluded: 0
+  navMeshSurface: {fileID: 1793256839}
 --- !u!114 &425072121
 MonoBehaviour:
   m_ObjectHideFlags: 0
