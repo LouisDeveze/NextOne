@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.Rendering;
 using UnityEngine.UI;
 
@@ -40,6 +41,12 @@ namespace NextOne
 
         #region Logic
         public bool playerOccluded;
+        #endregion
+
+        #region Navigation
+        internal NavMeshDataInstance navMeshDataInstance;
+        internal NavMeshData navMeshData;
+        public NavMeshSurface navMeshSurface;
         #endregion
     }
 }

@@ -774,7 +774,7 @@ namespace NextOne
 
         public void Generate()
         {
-            int random = Random.Range(0, 999999999);
+            int random = Random.Range(0, int.MaxValue);
             Random.seed = random;
             Debug.Log(random);
             //Generate the world

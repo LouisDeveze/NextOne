@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 288001853694173572}
   - component: {fileID: 883610038657801747}
   - component: {fileID: 312534533188436669}
+  - component: {fileID: -3349654894887494485}
   m_Layer: 0
   m_Name: Button_Support
   m_TagString: Untagged
@@ -82,3 +83,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &-3349654894887494485
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3855206553248732186}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4, y: 20.304813, z: 4}
+  m_Center: {x: 0, y: -9.152407, z: 0}

@@ -32,7 +32,7 @@ namespace NextOne
         private GameObject PlayerModel;
         private Rigidbody PlayerRigidbody;
         private CapsuleCollider PlayerCollider;
-        private Animator PlayerAnimator;
+        public Animator PlayerAnimator;
 
         //UTILS
         private float distanceFromCamera = 0;

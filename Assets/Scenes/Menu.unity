@@ -4649,12 +4649,17 @@ MonoBehaviour:
   loadgameButton: {fileID: 1282379755}
   saveButton: {fileID: 1337215217}
   optionButton: {fileID: 419026429}
+<<<<<<< HEAD
   quitButton: {fileID: 1385349519}
   Play: {fileID: 988627891}
   Menu_saveButton: {fileID: 1337215217}
   Menu_optionButton: {fileID: 419026429}
   Menu_quitButton: {fileID: 125143055}
   Menu_Play: {fileID: 1685486146}
+=======
+  quitButton: {fileID: 125143055}
+  Play: {fileID: 0}
+>>>>>>> 01a9b3bd0cdfca6170434fd358af5699768d2a8d
   BlackMarket: {fileID: 0}
   Character: {fileID: 0}
   Workbench: {fileID: 0}

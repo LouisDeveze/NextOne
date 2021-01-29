@@ -544,6 +544,7 @@ MonoBehaviour:
   playerController: {fileID: 0}
   semiTransparent: {fileID: 2100000, guid: 2bbeef4e9ff27d246958d6663cb3f652, type: 2}
   playerOccluded: 0
+  navMeshSurface: {fileID: 1793256839}
 --- !u!114 &425072121
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1165,6 +1166,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1793256837}
   - component: {fileID: 1793256838}
+  - component: {fileID: 1793256839}
   m_Layer: 0
   m_Name: Level Manager
   m_TagString: Untagged
@@ -1232,8 +1234,43 @@ MonoBehaviour:
   - {fileID: 673006026242178976, guid: 7bca7f52728d0a944b65396374ad145a, type: 3}
   - {fileID: 5754239469072447771, guid: 036ed6e8feefddc43b8b059c7a879cd1, type: 3}
   - {fileID: 9046647037578356859, guid: 86721e17636ea8040902f60fb68a3c36, type: 3}
+  - {fileID: 3733171127189824213, guid: c3dee1505695c1a45b7f58c0e77db18b, type: 3}
+  - {fileID: 7018943032381423646, guid: 4ae53e9d2ceac344fa17480716e38a97, type: 3}
+  - {fileID: 3776574971289555704, guid: 8c2257c0300bc4c488a0f2a06f367c9e, type: 3}
+  - {fileID: 104947976773653383, guid: 3a63e552115055a4c96d67944d9eef9e, type: 3}
+  - {fileID: 4948943524194238220, guid: 97488a9fb68a5c443af9f27c321610f4, type: 3}
+  - {fileID: 576103974053056475, guid: 550fdf38f9d38534a90593dcf4c7082c, type: 3}
   roomsSpawned: []
   corridorsSpawned: []
+--- !u!114 &1793256839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1793256836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AgentTypeID: 0
+  m_CollectObjects: 2
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 1
+  m_DefaultArea: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_BuildHeightMesh: 0
+  m_NavMeshData: {fileID: 0}
 --- !u!114 &1944428462 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5349662129146777093, guid: 7ded121f28654a84dbef9b52de369934, type: 3}

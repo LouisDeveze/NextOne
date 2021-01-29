@@ -36,8 +36,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8399499804145355208}
   - component: {fileID: -7647547504832686605}
-  - component: {fileID: 1421422215873831381}
-  - component: {fileID: 7222740794824353814}
   m_Layer: 0
   m_Name: Door_270
   m_TagString: Door
@@ -72,32 +70,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2, y: 2, z: 2}
+  m_Size: {x: 4, y: 2, z: 4}
   m_Center: {x: 0, y: 1, z: 0}
---- !u!114 &1421422215873831381
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8740305285539735548}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38b143aa4a77e894f83d5697135b4dd1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &7222740794824353814
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8740305285539735548}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3cad37a70fe572448b5fef7c5db6a939, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &9145395013819506548
 PrefabInstance:
   m_ObjectHideFlags: 0
