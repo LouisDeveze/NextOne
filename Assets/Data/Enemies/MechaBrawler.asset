@@ -15,10 +15,11 @@ MonoBehaviour:
   EId: 0
   EnemyName: Mecha Brawler
   EnemyDescription: Mecha with excellent melee capacity
-  EnemyModel: {fileID: 3641678398877113495, guid: 3528a7a9ce6589f4b9cd53ca9a9cdc97, type: 3}
+  EnemyModel: {fileID: 729170247712246974, guid: 982edbc7212deac4ea317dfc22341ad6, type: 3}
   EnemyHealth: 100
   EnemyVelocity: 10
   EnemyAngularVelocity: 1
   EDetectRange: 50
+  EAttackRange: 5
   OnEnemyDeathActions: []
   EnemySkillsData: []

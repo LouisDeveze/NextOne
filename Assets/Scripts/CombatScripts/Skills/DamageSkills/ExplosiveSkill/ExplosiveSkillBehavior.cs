@@ -11,9 +11,9 @@ namespace NextOne
 
         protected override void OnInitialization()
         {
-            Player = GetComponent<PlayerController>();
+            SourceController = GetComponent<PlayerController>();
             ProjectileShoot = false;
-            FirePoint = Player.GetCastPoint(ECastPoint.Player)[0];
+            FirePoint = SourceController.GetCastPoint(ECastPoint.Player)[0];
             if (!FirePoint)
                 throw new Exception();
         }
@@ -23,16 +23,16 @@ namespace NextOne
             base.Update();
 
             if (!SkillInUse) return;
-            if (!Player.HasAnimatorPlaying(GetRandomAnimationName(), 0)) return;
+            if (!SourceController.HasAnimatorPlaying(GetRandomAnimationName(), 0)) return;
 
-            if (Player.IsAnimationLastAtLeast(GetRandomEffectiveTime(), 0) && !ProjectileShoot)
+            if (SourceController.IsAnimationLastAtLeast(GetRandomEffectiveTime(), 0) && !ProjectileShoot)
             {
                 Debug.Log("Explosive Shoot in: " + this.GetInstanceID());
                 ProjectileShoot = true;
                 OnEffectiveUse();
             }
 
-            if (!Player.IsAnimationLastAtLeast(GetRandomAnimationTime(), 0)) return;
+            if (!SourceController.IsAnimationLastAtLeast(GetRandomAnimationTime(), 0)) return;
             Debug.Log("Explosive Skill Ended in: " + this.GetInstanceID());
             OnEffectEnd();
         }
@@ -95,11 +95,11 @@ namespace NextOne
 
         protected override void OnEffectStart()
         {
-            Player.CanMove(false);
-            Player.SkillInUse = true;
+            SourceController.CanMove(false);
+            SourceController.SkillInUse = true;
             SkillInUse = true;
-            Player.ResetTriggersAnimator();
-            Player.SetTriggerAnimator(GetRandomAnimationName());
+            SourceController.ResetTriggersAnimator();
+            SourceController.SetTriggerAnimator(GetRandomAnimationName());
             Debug.Log("Explosive Skill Animation Triggered in: " +
                       this.GetInstanceID());
           
@@ -109,9 +109,9 @@ namespace NextOne
         {
             Debug.Log("Explosive Skill Ended: " +
                       this.GetInstanceID());
-            Player.ResetTriggersAnimator();
-            Player.CanMove(true);
-            Player.SkillInUse = false;
+            SourceController.ResetTriggersAnimator();
+            SourceController.CanMove(true);
+            SourceController.SkillInUse = false;
             SkillInUse = false;
             ProjectileShoot = false;
         }

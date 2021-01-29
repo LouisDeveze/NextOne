@@ -16,17 +16,17 @@ namespace NextOne
             //If Skill In Use
             if (!SkillInUse) return;
 
-            if (!Player.HasAnimatorPlaying(GetRandomAnimationName(), 0)) return;
+            if (!SourceController.HasAnimatorPlaying(GetRandomAnimationName(), 0)) return;
 
             //Looking for effective time to shoot
-            if (Player.IsAnimationLastAtLeast(GetRandomEffectiveTime(), 0) && !ProjectileShoot)
+            if (SourceController.IsAnimationLastAtLeast(GetRandomEffectiveTime(), 0) && !ProjectileShoot)
             {
                 Debug.Log("Projectile Shoot in: " + this.GetInstanceID());
                 ProjectileShoot = true;
                 OnEffectiveUse();
             }
 
-            if (!Player.IsAnimationLastAtLeast(GetRandomAnimationTime(), 0)) return;
+            if (!SourceController.IsAnimationLastAtLeast(GetRandomAnimationTime(), 0)) return;
             Debug.Log("Ranged Skill Ended in: " + this.GetInstanceID());
             OnEffectEnd();
         }
@@ -107,33 +107,33 @@ namespace NextOne
 
         protected override void OnEffectStart()
         {
-            Player.SkillInUse = true;
+            SourceController.SkillInUse = true;
             SkillInUse = true;
-            Player.CanMove(false);
+            SourceController.CanMove(false);
 
             //Freeze Player & Play Animation 
-            Player.ResetTriggersAnimator();
-            Player.SetTriggerAnimator(GetRandomAnimationName());
+            SourceController.ResetTriggersAnimator();
+            SourceController.SetTriggerAnimator(GetRandomAnimationName());
             Debug.Log("Ranged Skill Animation Triggered in: " +
                       this.GetInstanceID());
         }
 
         protected override void OnEffectEnd()
         {
-            Player.ResetTriggersAnimator();
-            Player.CanMove(true);
-            Player.SkillInUse = false;
+            SourceController.ResetTriggersAnimator();
+            SourceController.CanMove(true);
+            SourceController.SkillInUse = false;
             SkillInUse = false;
             ProjectileShoot = false;
         }
 
         protected override void OnInitialization()
         {
-            Player = GetComponent<PlayerController>();
+            SourceController = GetComponent<PlayerController>();
             ProjectileShoot = false;
             //Get First Cast Point
             //TODO: Handle when two ranged weapon, from which to shoot? =)
-            FirePoint = Player.GetCastPoint(ECastPoint.Weapons)[0];
+            FirePoint = SourceController.GetCastPoint(ECastPoint.Weapons)[0];
             if (!FirePoint)
                 throw new Exception();
             //Should not occured !

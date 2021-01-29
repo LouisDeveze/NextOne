@@ -1,4 +1,5 @@
 ﻿using System;
+using NextOne.Controllers;
 using UnityEngine;
 
 namespace NextOne
@@ -6,7 +7,7 @@ namespace NextOne
     public abstract class BaseSkillBehavior : MonoBehaviour, ISkill
     {
         protected SkillData SkillData = null;
-        protected PlayerController Player = null;
+        protected EntityController SourceController = null;
         protected bool SkillInUse = false;
         private int RandomAnimation;
         private Cooldown SkillCooldown;

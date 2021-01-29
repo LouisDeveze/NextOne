@@ -15,10 +15,10 @@ namespace NextOne
             //If Skill In Use
             if (!SkillInUse) return;
             //If Current Skill Animation
-            if (!Player.HasAnimatorPlaying(GetRandomAnimationName(), 0)) return;
+            if (!SourceController.HasAnimatorPlaying(GetRandomAnimationName(), 0)) return;
 
             //Looking for effective weapon changed during animation
-            if (Player.IsAnimationLastAtLeast(GetRandomEffectiveTime(), 0) && !WeaponChanged)
+            if (SourceController.IsAnimationLastAtLeast(GetRandomEffectiveTime(), 0) && !WeaponChanged)
             {
                 Debug.Log("Weapon Changed in: " + this.GetInstanceID());
                 OnEffectiveUse();
@@ -27,7 +27,7 @@ namespace NextOne
             //If Weapon Newly Changed
             if (!WeaponChanged) return;
             //If Change Animation Completed
-            if (!Player.IsAnimationLastAtLeast(GetRandomAnimationTime(), 0)) return;
+            if (!SourceController.IsAnimationLastAtLeast(GetRandomAnimationTime(), 0)) return;
             Debug.Log("Morphing Skill Ended in: " + this.GetInstanceID());
             //End Animation
             OnEffectEnd();
@@ -44,27 +44,27 @@ namespace NextOne
             Randomize();
             //TODO: Change for an actual cooldown
             // If the Animator is still playing animation from previous weapon
-            if (Player.HasAnimatorPlaying(GetRandomAnimationName(), 0))
+            if (SourceController.HasAnimatorPlaying(GetRandomAnimationName(), 0))
             {
-                Player.SkillInUse = false;
+                SourceController.SkillInUse = false;
                 SkillInUse = false;
                 return;
             }
 
-            SkillInUse = Player.AttemptWeaponChange();
+            SkillInUse = ((PlayerController) SourceController).AttemptWeaponChange();
 
             if (!SkillInUse) return;
 
             Debug.Log("Morphing Skill Used in: " + this.GetInstanceID());
-            Player.CanMove(false);
+            SourceController.CanMove(false);
             OnEffectStart();
         }
 
         protected override void OnInitialization()
         {
             Debug.Log("Morphing Skill Initialization in: " + this.GetInstanceID());
-            Player = GetComponent<PlayerController>();
-            SkillInUse = Player.SkillInUse;
+            SourceController = GetComponent<PlayerController>();
+            SkillInUse = SourceController.SkillInUse;
             WeaponChanged = this.SkillInUse;
             //If Instantiated while Skill In use 
             // -> The player just changed weapon
@@ -73,26 +73,26 @@ namespace NextOne
         protected override void OnEffectStart()
         {
             //Animation Related
-            Player.ResetTriggersAnimator();
-            Player.SetTriggerAnimator(GetRandomAnimationName());
+            SourceController.ResetTriggersAnimator();
+            SourceController.SetTriggerAnimator(GetRandomAnimationName());
             Debug.Log("Morphing Animation Triggered in: " + this.GetInstanceID());
             SkillInUse = true;
-            Player.SkillInUse = true;
+            SourceController.SkillInUse = true;
         }
 
         protected override void OnEffectiveUse()
         {
-            Player.ChangeWeapon();
+            ((PlayerController) SourceController).ChangeWeapon();
             WeaponChanged = true;
         }
 
         protected override void OnEffectEnd()
         {
-            Player.ResetTriggersAnimator();
-            Player.CanMove(true);
+            SourceController.ResetTriggersAnimator();
+            SourceController.CanMove(true);
             WeaponChanged = false;
             SkillInUse = false;
-            Player.SkillInUse = false;
+            SourceController.SkillInUse = false;
         }
     }
 }

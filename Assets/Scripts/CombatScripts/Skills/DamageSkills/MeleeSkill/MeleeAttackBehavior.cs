@@ -11,7 +11,7 @@ namespace NextOne
             if (!CanCast())
                 return;
             base.Use(_useParams);
-            
+
 
             UseParams = _useParams;
             Randomize();
@@ -23,36 +23,36 @@ namespace NextOne
             base.Update();
             if (!SkillInUse) return;
 
-            if (!Player.HasAnimatorPlaying(GetRandomAnimationName(), 0)) return;
+            if (!SourceController.HasAnimatorPlaying(GetRandomAnimationName(), 0)) return;
 
-            if (!Player.IsAnimationLastAtLeast(GetRandomAnimationTime(), 0)) return;
+            if (!SourceController.IsAnimationLastAtLeast(GetRandomAnimationTime(), 0)) return;
             Debug.Log("Melee Skill Ended in: " + SkillData.Name + " - " + this.GetInstanceID());
             OnEffectEnd();
         }
 
         protected override void OnEffectStart()
         {
-            Player.SkillInUse = true;
+            SourceController.SkillInUse = true;
             SkillInUse = true;
-            Player.CanMove(false);
-            Player.ResetTriggersAnimator();
-            Player.ActiveWeaponTrigger(true);
-            Player.SetTriggerAnimator(GetRandomAnimationName());
+            SourceController.CanMove(false);
+            SourceController.ResetTriggersAnimator();
+            ((PlayerController) SourceController).ActiveWeaponTrigger(true);
+            SourceController.SetTriggerAnimator(GetRandomAnimationName());
             Debug.Log("Melee Basic Attack in: " + SkillData.Name + " - " + this.GetInstanceID());
         }
 
         protected override void OnEffectEnd()
         {
-            Player.ActiveWeaponTrigger(false);
-            Player.ResetTriggersAnimator();
-            Player.CanMove(true);
-            Player.SkillInUse = false;
+            ((PlayerController) SourceController).ActiveWeaponTrigger(false);
+            SourceController.ResetTriggersAnimator();
+            SourceController.CanMove(true);
+            SourceController.SkillInUse = false;
             SkillInUse = false;
         }
 
         protected override void OnInitialization()
         {
-            Player = GetComponent<PlayerController>();
+            SourceController = GetComponent<PlayerController>();
         }
 
         protected override void OnEffectiveUse()

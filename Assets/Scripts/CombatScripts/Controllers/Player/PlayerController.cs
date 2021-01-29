@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
+using NextOne.Controllers;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
 
@@ -13,7 +14,7 @@ namespace NextOne
         Enemy = 2
     }
 
-    public class PlayerController : MonoBehaviour, IDamageable
+    public class PlayerController : EntityController
     {
         [SerializeField] private PlayerData PlayerData = null;
 
@@ -25,7 +26,6 @@ namespace NextOne
         private float Velocity;
         private float AngularVelocity;
         private bool PlayerCanMove = true;
-        public bool SkillInUse = false;
 
         //Weapon Stats
         private List<WeaponController> Weapons = new List<WeaponController>();
@@ -217,7 +217,7 @@ namespace NextOne
         //STAT RELATED
         //HEALTH RELATED
 
-        public void TakeDamage(int _damageTaken)
+        public override void TakeDamage(int _damageTaken)
         {
             HealthPoint = Mathf.Clamp(HealthPoint - _damageTaken, 0, PlayerData.Health);
             if (HealthPoint <= 0)
@@ -266,7 +266,6 @@ namespace NextOne
 
         private void PlayerMovementUpdate()
         {
-            //Retrieve Movement Input
             float mH = Input.GetAxisRaw("Horizontal");
             float mV = Input.GetAxisRaw("Vertical");
 
@@ -322,7 +321,7 @@ namespace NextOne
             for (var index = 0; index < list.Count; index++)
             {
                 var skill = list[index];
-                if (skill.Trigger.IsTriggered())
+                if (skill.Trigger.IsTriggered(new SkillUseParams()))
                     AttemptSkill(index);
             }
         }
@@ -331,27 +330,27 @@ namespace NextOne
 
         #region Animation
 
-        public void CanMove(bool _canMove)
+        public override void CanMove(bool _canMove)
         {
             PlayerCanMove = _canMove;
         }
 
-        public void ResetTriggersAnimator()
+        public override void ResetTriggersAnimator()
         {
             Animations.ResetTriggers(PlayerAnimator);
         }
 
-        public bool IsAnimationLastAtLeast(float _animationTime, int layer)
+        public override bool IsAnimationLastAtLeast(float _animationTime, int layer)
         {
             return (PlayerAnimator.GetCurrentAnimatorStateInfo(layer).normalizedTime >= _animationTime);
         }
 
-        public bool HasAnimatorPlaying(EAnimation animation, int layer)
+        public override bool HasAnimatorPlaying(EAnimation animation, int layer)
         {
             return PlayerAnimator.GetCurrentAnimatorStateInfo(layer).IsName(Animations.GetStringEquivalent(animation));
         }
 
-        public void SetTriggerAnimator(EAnimation _animationName)
+        public override void SetTriggerAnimator(EAnimation _animationName)
         {
             PlayerAnimator.SetTrigger(Animations.GetStringEquivalent(_animationName));
         }
@@ -379,7 +378,7 @@ namespace NextOne
         //GETTER SETTER
         public GameObject Model => PlayerModel;
 
-        public List<Transform> GetCastPoint(ECastPoint _eCastPoint)
+        public override List<Transform> GetCastPoint(ECastPoint _eCastPoint)
         {
             switch (_eCastPoint)
             {
