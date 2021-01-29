@@ -1232,6 +1232,12 @@ MonoBehaviour:
   - {fileID: 673006026242178976, guid: 7bca7f52728d0a944b65396374ad145a, type: 3}
   - {fileID: 5754239469072447771, guid: 036ed6e8feefddc43b8b059c7a879cd1, type: 3}
   - {fileID: 9046647037578356859, guid: 86721e17636ea8040902f60fb68a3c36, type: 3}
+  - {fileID: 3733171127189824213, guid: c3dee1505695c1a45b7f58c0e77db18b, type: 3}
+  - {fileID: 7018943032381423646, guid: 4ae53e9d2ceac344fa17480716e38a97, type: 3}
+  - {fileID: 3776574971289555704, guid: 8c2257c0300bc4c488a0f2a06f367c9e, type: 3}
+  - {fileID: 104947976773653383, guid: 3a63e552115055a4c96d67944d9eef9e, type: 3}
+  - {fileID: 4948943524194238220, guid: 97488a9fb68a5c443af9f27c321610f4, type: 3}
+  - {fileID: 576103974053056475, guid: 550fdf38f9d38534a90593dcf4c7082c, type: 3}
   roomsSpawned: []
   corridorsSpawned: []
 --- !u!114 &1944428462 stripped
