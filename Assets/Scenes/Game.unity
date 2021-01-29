@@ -1165,6 +1165,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1793256837}
   - component: {fileID: 1793256838}
+  - component: {fileID: 1793256839}
   m_Layer: 0
   m_Name: Level Manager
   m_TagString: Untagged
@@ -1240,6 +1241,35 @@ MonoBehaviour:
   - {fileID: 576103974053056475, guid: 550fdf38f9d38534a90593dcf4c7082c, type: 3}
   roomsSpawned: []
   corridorsSpawned: []
+--- !u!114 &1793256839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1793256836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AgentTypeID: 0
+  m_CollectObjects: 2
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 1
+  m_DefaultArea: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_BuildHeightMesh: 0
+  m_NavMeshData: {fileID: 0}
 --- !u!114 &1944428462 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5349662129146777093, guid: 7ded121f28654a84dbef9b52de369934, type: 3}

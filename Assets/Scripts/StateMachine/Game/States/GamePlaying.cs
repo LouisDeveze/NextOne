@@ -4,6 +4,5 @@
     {
         // Constructor taking the state machine + the state id
         public GamePlaying(StateMachine<GameContext> stateMachine) : base(stateMachine, (int)GameStates.GamePlaying) { }
-
     }
 }
