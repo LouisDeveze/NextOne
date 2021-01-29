@@ -22,7 +22,7 @@ namespace NextOne
         // Option button callback
         public void OnOptionButtonClicked()
         {
-            this.sm.SwitchState((int)MenuStates.OptionState);
+            this.sm.SwitchState((int)MenuStates.OptionSelection);
         }
     }
 }

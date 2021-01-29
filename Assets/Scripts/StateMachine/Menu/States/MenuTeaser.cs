@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using UnityEditor;
-using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace NextOne
@@ -15,6 +14,7 @@ namespace NextOne
             this.sm.ctx.Play.onClick.AddListener(OnPlay);
             this.sm.ctx.optionButton.onClick.AddListener(OnOption);
             this.sm.ctx.saveButton.onClick.AddListener(OnSave);
+            this.sm.ctx.quitButton.onClick.AddListener(OnQuit);
 
         }
         public override void OnExit()
@@ -22,6 +22,7 @@ namespace NextOne
             this.sm.ctx.Play.onClick.RemoveListener(OnPlay);
             this.sm.ctx.optionButton.onClick.RemoveListener(OnOption);
             this.sm.ctx.saveButton.onClick.RemoveListener(OnSave);
+            this.sm.ctx.quitButton.onClick.RemoveListener(OnQuit);
            
         }
 
@@ -41,6 +42,10 @@ namespace NextOne
 
         }
 
+        public void OnQuit()
+        {
+            Application.Quit();
+        }
 
     }
 }

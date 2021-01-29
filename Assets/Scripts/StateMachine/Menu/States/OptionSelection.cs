@@ -8,10 +8,10 @@ using UnityEngine;
 namespace NextOne
 {
     // Example state using Data contained by Menu COntext
-    class OptionState : State<MenuContext>
+    class OptionSelection : State<MenuContext>
     {
         // Constructor taking the state machine + the state id
-        public OptionState(StateMachine<MenuContext> stateMachine) : base(stateMachine, (int)MenuStates.OptionState) { }
+        public OptionSelection(StateMachine<MenuContext> stateMachine) : base(stateMachine, (int)MenuStates.OptionSelection) { }
 
         public override void OnEnter()
         {

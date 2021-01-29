@@ -26,7 +26,12 @@ namespace NextOne
         public Button quitButton;
         public Button Play;
 
-       
+        public Button Menu_saveButton;
+        public Button Menu_optionButton;
+        public Button Menu_quitButton;
+        public Button Menu_Play;
+
+
 
         public Button BlackMarket;
         public Button Character;
@@ -46,6 +51,7 @@ namespace NextOne
         public GameObject WeaponSelection;
         public GameObject MenuTeaser;
         public GameObject MenuEpisode;
+        public GameObject OptionSelection;
         #endregion
 
 

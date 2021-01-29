@@ -11,22 +11,24 @@ namespace NextOne
 
         public override void OnEnter()
         {
-            this.sm.ctx.Play.onClick.AddListener(OnPlay);
+            this.sm.ctx.Menu_Play.onClick.AddListener(OnPlay);
             this.sm.ctx.Workbench.onClick.AddListener(OnWorkbench);
             this.sm.ctx.Character.onClick.AddListener(OnCharacter);
             this.sm.ctx.BlackMarket.onClick.AddListener(OnBlackMarket);
-            this.sm.ctx.optionButton.onClick.AddListener(OnOption);
-            this.sm.ctx.saveButton.onClick.AddListener(OnSave);
+            this.sm.ctx.Menu_optionButton.onClick.AddListener(OnOption);
+            this.sm.ctx.Menu_saveButton.onClick.AddListener(OnSave);
+            this.sm.ctx.Menu_quitButton.onClick.AddListener(OnQuit);
 
         }
         public override void OnExit()
         {
-            this.sm.ctx.Play.onClick.RemoveListener(OnPlay);
+            this.sm.ctx.Menu_Play.onClick.RemoveListener(OnPlay);
             this.sm.ctx.Workbench.onClick.RemoveListener(OnWorkbench);
             this.sm.ctx.Character.onClick.RemoveListener(OnCharacter);
             this.sm.ctx.BlackMarket.onClick.RemoveListener(OnBlackMarket);
-            this.sm.ctx.optionButton.onClick.RemoveListener(OnOption);
-            this.sm.ctx.saveButton.onClick.RemoveListener(OnSave);
+            this.sm.ctx.Menu_optionButton.onClick.RemoveListener(OnOption);
+            this.sm.ctx.Menu_saveButton.onClick.RemoveListener(OnSave);
+            this.sm.ctx.Menu_quitButton.onClick.RemoveListener(OnQuit);
         }
 
         public void OnPlay()
@@ -37,7 +39,7 @@ namespace NextOne
 
         public void OnOption()
         {
-
+            this.sm.ctx.OptionSelection.SetActive(true);
         }
 
         public void OnWorkbench()
@@ -55,6 +57,10 @@ namespace NextOne
         public void OnSave()
         {
 
+        }
+        public void OnQuit()
+        {
+            Application.Quit();
         }
 
     }
