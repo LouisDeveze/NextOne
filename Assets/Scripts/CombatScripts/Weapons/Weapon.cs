@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace NextOne
 {
-    public class Weapon : MonoBehaviour
+    public class Weapon 
     {
         private GameObject WeaponModel;
         private int WeaponDamage;
@@ -78,16 +78,15 @@ namespace NextOne
                 }
 
 
-                GameObject hitVfx = Instantiate(Hit.ElementAt(rndHit), position, rotation);
-                Debug.Log("Hit Instantiated in weapon: " + this.GetInstanceID());
+                GameObject hitVfx = GameObject.Instantiate(Hit.ElementAt(rndHit), position, rotation);
                 ParticleSystem ps = hitVfx.GetComponent<ParticleSystem>();
                 if (!ps)
                 {
                     var psChild = hitVfx.transform.GetChild(0).GetComponent<ParticleSystem>();
-                    Destroy(hitVfx, psChild.main.duration);
+                    GameObject.Destroy(hitVfx, psChild.main.duration);
                 }
                 else
-                    Destroy(hitVfx, ps.main.duration);
+                    GameObject.Destroy(hitVfx, ps.main.duration);
             }
 
             if (HitSfx.Count() > 0)
@@ -116,13 +115,11 @@ namespace NextOne
             if (!(damageableComponent is EnemyController enemyController)) return;
 
             enemyController.TakeDamage(Damage);
-            Debug.Log("Projectile: " + this.GetInstanceID()
-                                     + " Damaged: " + enemyController.GetInstanceID());
         }
 
         private void PlaySfx(AudioClip _audioClip)
         {
-            GetComponent<AudioSource>().PlayOneShot(_audioClip);
+            //GetComponent<AudioSource>().PlayOneShot(_audioClip);
         }
 
         public void ActiveTrigger(bool _active)
