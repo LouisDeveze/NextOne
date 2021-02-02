@@ -15,6 +15,7 @@ namespace NextOne
         [SerializeField] private int EnemyHealth = 1;
         [SerializeField] private float EnemyVelocity = 1f;
         [SerializeField] private float EnemyAngularVelocity = 1f;
+        [SerializeField] private float EAvoidanceRange = 10f;
         [SerializeField] private float EDetectRange = 10f;
         [SerializeField] private float EAttackRange = 5f;
 
@@ -34,8 +35,8 @@ namespace NextOne
         public float Velocity => EnemyVelocity;
         public float AngularVelocity => EnemyAngularVelocity;
 
+        public float AvoidanceRange => EAvoidanceRange;
         public float DetectRange => EDetectRange;
-        //TODO -> Inside Skill ...
         public float AttackRange => EAttackRange;
 
         public List<ScriptableAction> OnDeathActions => OnEnemyDeathActions;

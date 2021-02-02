@@ -130,6 +130,8 @@ namespace NextOne
         protected override void OnInitialization()
         {
             SourceController = GetComponent<PlayerController>();
+            if (!SourceController)
+                SourceController = GetComponent<EnemyController>();
             ProjectileShoot = false;
             //Get First Cast Point
             //TODO: Handle when two ranged weapon, from which to shoot? =)

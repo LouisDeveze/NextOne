@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using NextOne.Controllers;
 using UnityEngine;
 using UnityEngine.AI;
 
 namespace NextOne
 {
-    [RequireComponent(typeof(UnityEngine.AI.NavMeshAgent))]
-    [RequireComponent(typeof(PlayerController))]
     public class EnemyController : EntityController
     {
         [SerializeField] private EnemyData EnemyData = null;
@@ -32,6 +31,7 @@ namespace NextOne
         private NavMeshAgent EntityAgent;
         private Transform EntityToTarget;
 
+        [NotNull] public GameObject PlayerSpawner;
         private PlayerController Player;
 
         private Animator EnemyAnimator;
@@ -54,11 +54,7 @@ namespace NextOne
         {
             this.ctx = GameObject.Find("State Manager").GetComponent<GameContext>();
 
-            EntityAgent = GetComponentInChildren<UnityEngine.AI.NavMeshAgent>();
-            Player = GetComponent<PlayerController>();
-
-            EntityAgent.updateRotation = false;
-            EntityAgent.updatePosition = true;
+            Player = PlayerSpawner.gameObject.GetComponent<PlayerController>();
 
             //Nav Agent Set Up
 
@@ -74,9 +70,17 @@ namespace NextOne
             EnemyCollider = EnemyModel.GetComponent<CapsuleCollider>();
             EnemyAnimator = EnemyModel.GetComponent<Animator>();
 
+            EntityAgent = EnemyModel.GetComponent<NavMeshAgent>();
+            EntityAgent.updateRotation = false;
+            EntityAgent.updatePosition = true;
+
             //Set Enemy Stats
-            EnemyAngularVelocity = _enemyData.AngularVelocity;
-            EnemyVelocity = _enemyData.Velocity;
+            // EnemyAngularVelocity = _enemyData.AngularVelocity;
+            EntityAgent.angularSpeed = _enemyData.AngularVelocity;
+            //  EnemyVelocity = _enemyData.Velocity;
+            EntityAgent.speed = _enemyData.Velocity;
+
+            EntityAgent.radius = _enemyData.AvoidanceRange;
 
             //Set Components
             AttachComponents();
@@ -173,30 +177,8 @@ namespace NextOne
 
             Agent.SetDestination(ToTarget.position);
 
-            if (Agent.remainingDistance > Agent.stoppingDistance)
-            {
-                Movement = Agent.desiredVelocity;
-                Move(Movement);
-            }
-            else
-            {
-                if (GetComponent<EnemyController>())
-                {
-                    Agent.velocity = Vector3.zero;
-                }
-
-                Movement = Vector3.zero;
-                Move(Vector3.zero);
-            }
-        }
-
-        private void Move(Vector3 _move)
-        {
-            if (_move.magnitude > 1f) _move.Normalize();
-            _move = transform.InverseTransformDirection(_move);
-
-            Movement = _move * EnemyVelocity;
-            EnemyRigidbody.velocity = Movement;
+            if (Agent.remainingDistance > Agent.stoppingDistance) Agent.velocity = Agent.desiredVelocity;
+            else if (GetComponent<EnemyController>()) Agent.velocity = Vector3.zero;
         }
 
 

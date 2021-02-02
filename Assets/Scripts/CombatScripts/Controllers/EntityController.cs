@@ -14,6 +14,7 @@ namespace NextOne.Controllers
         public abstract void CanMove(bool _b);
         public abstract void ResetTriggersAnimator();
         public abstract void SetTriggerAnimator(EAnimation _getRandomAnimationName);
+        //TODO: remove abstract -> implement the function
         public abstract List<Transform> GetCastPoint(ECastPoint _weapons);
     }
 }

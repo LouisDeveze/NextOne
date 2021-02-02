@@ -43,7 +43,6 @@ namespace NextOne
 
         protected override void OnEffectEnd()
         {
-            ((PlayerController) SourceController).ActiveWeaponTrigger(false);
             SourceController.ResetTriggersAnimator();
             SourceController.CanMove(true);
             SourceController.SkillInUse = false;
@@ -53,6 +52,8 @@ namespace NextOne
         protected override void OnInitialization()
         {
             SourceController = GetComponent<PlayerController>();
+            if (!SourceController)
+                SourceController = GetComponent<EnemyController>();
         }
 
         protected override void OnEffectiveUse()

@@ -64,6 +64,8 @@ namespace NextOne
         {
             Debug.Log("Morphing Skill Initialization in: " + this.GetInstanceID());
             SourceController = GetComponent<PlayerController>();
+            if (!SourceController)
+                SourceController = GetComponent<EnemyController>();
             SkillInUse = SourceController.SkillInUse;
             WeaponChanged = this.SkillInUse;
             //If Instantiated while Skill In use 

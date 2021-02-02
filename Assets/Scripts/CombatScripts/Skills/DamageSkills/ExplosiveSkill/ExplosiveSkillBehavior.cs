@@ -12,6 +12,8 @@ namespace NextOne
         protected override void OnInitialization()
         {
             SourceController = GetComponent<PlayerController>();
+            if (!SourceController)
+                SourceController = GetComponent<EnemyController>();
             ProjectileShoot = false;
             FirePoint = SourceController.GetCastPoint(ECastPoint.Player)[0];
             if (!FirePoint)

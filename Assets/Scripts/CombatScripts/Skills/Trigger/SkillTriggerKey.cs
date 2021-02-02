@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace NextOne
 {
-    [CreateAssetMenu(fileName = "Skill Trigger Key", menuName = "Next One/Skills/Skill Trigger Key")]
+    [CreateAssetMenu(fileName = "Skill Trigger Key", menuName = "Next One/Skills/Triggers/Skill Trigger Key")]
     public class SkillTriggerKey : SkillTrigger
     {
         public KeyCode KeyCode;
