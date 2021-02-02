@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements.Experimental;
 
@@ -11,9 +12,16 @@ namespace NextOne
         [SerializeField] private String SkillDescription = "default description";
         [SerializeField] private SkillAim SkillAim;
         [SerializeField] private SkillTrigger SkillTrigger;
+        [SerializeField] private float SkillCooldown;
 
-        [SerializeField] private float SkillAnimationTime;
-        [SerializeField] private EAnimation SkillAnimationName;
+        //[SerializeField] private float SkillAnimationTime;
+        [SerializeField] private List<float> SkillAnimationTime;
+
+        //[SerializeField] private float AnimationEffectiveUseTime;
+        [SerializeField] private List<float> AnimationEffectiveUseTime;
+
+        //[SerializeField] private EAnimation SkillAnimationName;
+        [SerializeField] private List<EAnimation> SkillAnimationName;
 
         protected ISkill Behavior;
 
@@ -39,8 +47,13 @@ namespace NextOne
 
         public SkillTrigger Trigger => SkillTrigger;
 
-        public float AnimationTime => SkillAnimationTime;
+        public List<float> AnimationTime => SkillAnimationTime;
 
-        public EAnimation AnimationName => SkillAnimationName;
+        //public EAnimation AnimationName => SkillAnimationName;
+        public List<EAnimation> AnimationName => SkillAnimationName;
+
+        public List<float> EffectiveUseTime => AnimationEffectiveUseTime;
+
+        public float Cooldown => SkillCooldown;
     }
 }

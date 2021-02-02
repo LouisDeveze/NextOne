@@ -102,7 +102,15 @@ namespace NextOne
                 weapon.Model.SetActive(_active);
             }
         }
-
+        
+        public void ActiveWeaponTrigger(bool _active)
+        {
+            foreach (var weapon in Weapons)
+            {
+                weapon.ActiveTrigger(_active);
+            }
+        }
+        
 
         private void None()
         {
@@ -162,5 +170,7 @@ namespace NextOne
 
             return castPoints;
         }
+
+   
     }
 }

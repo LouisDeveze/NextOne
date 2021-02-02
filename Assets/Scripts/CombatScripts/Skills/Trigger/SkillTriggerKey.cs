@@ -8,7 +8,7 @@ namespace NextOne
     {
         public KeyCode KeyCode;
 
-        public override bool IsTriggered()
+        public override bool IsTriggered(SkillUseParams _useParams)
         {
             return Input.GetKeyDown(KeyCode);
         }

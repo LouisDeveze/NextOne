@@ -5,5 +5,6 @@
         void Use(SkillUseParams _useParams);
 
         void Detach();
+        bool CanCast();
     }
 }
