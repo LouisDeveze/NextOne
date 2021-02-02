@@ -21,17 +21,26 @@ namespace NextOne
         [SerializeField] private string WeaponDescription = "default description";
         [SerializeField] private Sprite WeaponIcon;
         [SerializeField] private List<GameObject> WeaponsModel = new List<GameObject>();
-        [SerializeField] private List<int> WeaponDamages = new List<int>();
         [SerializeField] private bool UniformWeaponDamage = false;
+        [SerializeField] private List<int> WeaponDamages = new List<int>();
+
+        [SerializeField] private bool HasHit = false;
+        [SerializeField] private bool UniformWeaponHitPrefab = false;
+
+        //[SerializeField] private List<List<GameObject>> WeaponsHitPrefab = new List<List<GameObject>>();
+        [SerializeField] private List<Lister<GameObject>> WeaponsHitPrefab = new List<Lister<GameObject>>();
+
+        [SerializeField] private bool UniformWeaponHitSfx = false;
+
+        //[SerializeField] private List<List<AudioClip>> WeaponsHitSfx = new List<List<AudioClip>>();
+        [SerializeField] private List<Lister<AudioClip>> WeaponsHitSfx = new List<Lister<AudioClip>>();
+
 
         // [SerializeField] private List<AnchorData> WeaponsAnchor = new List<AnchorData>();
 
         [SerializeField] private EWeaponAnimation WeaponAnimationType;
 
         [SerializeField] private AnimatorOverrideController WeaponAnimator;
-
-        // Angle in degrees before running animation becomes strafe
-        private float tresholdStrafe = .5f;
 
         [SerializeField] private float WeaponDamageMultiplier = 1f;
         [SerializeField] private float WeaponAttackRateMultiplier = 1f;
@@ -48,13 +57,69 @@ namespace NextOne
             {
                 var model = Instantiate(Models[i], _weaponAnchorsList[i].transform);
                 model.SetActive(false);
-                models.Add(UniformDamage
-                    ? new Weapon(model, Damages[0])
-                    : new Weapon(model, Damages[i]));
+
+                if (!HasHit)
+                {
+                    models.Add(UniformDamage ? new Weapon(model, Damages[0]) : new Weapon(model, Damages[i]));
+                }
+                else
+                {
+                    //If Same damage for all weapons
+                    if (UniformDamage)
+                    {
+                        //If Same VFX for all weapons
+                        if (UniformWeaponHitPrefab)
+                        {
+                            if (WeaponsHitSfx.Count > 0)
+                                //If Same SFX for all weapons
+                                models.Add(UniformWeaponHitSfx
+                                    ? new Weapon(model, Damages[0], WeaponsHitPrefab[0], WeaponsHitSfx[0])
+                                    : new Weapon(model, Damages[0], WeaponsHitPrefab[0], WeaponsHitSfx[i]));
+                            else
+                                models.Add(new Weapon(model, Damages[0], WeaponsHitPrefab[0]));
+                        }
+                        //If not same vfx for all weapons
+                        else
+                        {
+                            if (WeaponsHitSfx.Count > 0)
+                                //If Same SFX for all weapons
+                                models.Add(UniformWeaponHitSfx
+                                    ? new Weapon(model, Damages[0], WeaponsHitPrefab[i], WeaponsHitSfx[0])
+                                    : new Weapon(model, Damages[0], WeaponsHitPrefab[i], WeaponsHitSfx[i]));
+                            else
+                                models.Add(new Weapon(model, Damages[0], WeaponsHitPrefab[i]));
+                        }
+                    }
+                    //If not same dmg for all weapons
+                    else
+                    {
+                        //If Same VFX for both weapons
+                        if (UniformWeaponHitPrefab)
+                        {
+                            if (WeaponsHitSfx.Count > 0)
+                                //If Same SFX for both weapons
+                                models.Add(UniformWeaponHitSfx
+                                    ? new Weapon(model, Damages[i], WeaponsHitPrefab[0], WeaponsHitSfx[0])
+                                    : new Weapon(model, Damages[i], WeaponsHitPrefab[0], WeaponsHitSfx[i]));
+                            else
+                                models.Add(new Weapon(model, Damages[i], WeaponsHitPrefab[0]));
+                        }
+                        //If not same vfx for both weapons
+                        else
+                        {
+                            if (WeaponsHitSfx.Count > 0)
+                                //If Same SFX for both weapons
+                                models.Add(UniformWeaponHitSfx
+                                    ? new Weapon(model, Damages[i], WeaponsHitPrefab[i], WeaponsHitSfx[0])
+                                    : new Weapon(model, Damages[i], WeaponsHitPrefab[i], WeaponsHitSfx[i]));
+                            else
+                                models.Add(new Weapon(model, Damages[i], WeaponsHitPrefab[i]));
+                        }
+                    }
+                }
             }
-            
-            
-            return new WeaponController(models,WeaponAnimation, WeaponAnimator);
+
+            return new WeaponController(models, WeaponAnimation, WeaponAnimator);
         }
 
         public int Id => WeaponId;

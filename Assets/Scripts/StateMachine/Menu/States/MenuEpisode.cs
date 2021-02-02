@@ -44,19 +44,19 @@ namespace NextOne
 
         public void OnWorkbench()
         {
-
+            Debug.Log("OnWorkbench");
         }
         public void OnCharacter()
         {
-
+            Debug.Log("Character");
         }
         public void OnBlackMarket()
         {
-
+            Debug.Log("BlackMarket");
         }
         public void OnSave()
         {
-
+            Debug.Log("Save");
         }
         public void OnQuit()
         {

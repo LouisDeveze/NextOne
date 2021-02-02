@@ -64,7 +64,8 @@ namespace NextOne
     }
 
     public class NoTarget : Target
-    { }
+    {
+    }
 
     public class SelfTarget : Target
     {

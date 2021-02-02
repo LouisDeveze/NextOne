@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b78318ab08b86064d8bc9f2634527fd9, type: 3}
+  m_Name: MechaSlash01
+  m_EditorClassIdentifier: 
+  SkillId: 6
+  SkillName: Mecha Slash
+  SkillDescription: The Mecha Brawler slash its target
+  SkillAim: {fileID: 11400000, guid: 727480f6f0dbe894e95ee8790276e552, type: 2}
+  SkillTrigger: {fileID: 11400000, guid: e3b0403647e2dcf489930178baf4195e, type: 2}
+  SkillCooldown: 5
+  SkillAnimationTime:
+  - 1
+  AnimationEffectiveUseTime:
+  - 1
+  SkillAnimationName: 09000000
+  SkillDamage: 25
+  SkillCastVfx: {fileID: 7620627392249321950, guid: 43cfc3708ddbe4645b20fe17273056e8, type: 3}
+  SkillCastSfx: {fileID: 0}
+  SkillHitVfx: {fileID: 0}
+  SkillHitSfx: {fileID: 0}

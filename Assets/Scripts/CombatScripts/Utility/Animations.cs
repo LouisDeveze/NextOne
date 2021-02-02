@@ -14,6 +14,7 @@ namespace NextOne
         TurnRight,
         TurnLeft,
         AutoAttack,
+        AutoAttackTwo,
         PrimaryAction,
         SecondaryAction,
         TertiaryAction,
@@ -32,6 +33,7 @@ namespace NextOne
         public const string TURNRIGHT = "Turn Right";
         public const string TURNLEFT = "Turn Left";
         public const string AUTOATTACK = "Auto Attack";
+        public const string AUTOATTACKTWO = "Auto Attack Two";
         public const string PRIMARYACTION = "Primary Action";
         public const string SECONDARYACTION = "Secondary Action";
         public const string TERTIARYACTION = "Tertiary Action";
@@ -67,6 +69,7 @@ namespace NextOne
                 {EAnimation.TurnRight, TURNRIGHT},
                 {EAnimation.TurnLeft, TURNLEFT},
                 {EAnimation.AutoAttack, AUTOATTACK},
+                {EAnimation.AutoAttackTwo, AUTOATTACKTWO},
                 {EAnimation.PrimaryAction, PRIMARYACTION},
                 {EAnimation.SecondaryAction, SECONDARYACTION},
                 {EAnimation.TertiaryAction, TERTIARYACTION},
