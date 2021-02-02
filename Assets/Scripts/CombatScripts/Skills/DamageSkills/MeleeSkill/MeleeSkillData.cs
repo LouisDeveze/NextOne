@@ -6,6 +6,10 @@ namespace NextOne
     public class MeleeSkillData : SkillData
     {
         [SerializeField] private int SkillDamage;
+        [SerializeField] private GameObject SkillCastVfx;
+        [SerializeField] private AudioClip SkillCastSfx;
+        [SerializeField] private GameObject SkillHitVfx;
+        [SerializeField] private AudioClip SkillHitSfx;
 
         public override ISkill AttachComponentTo(GameObject _gameObjectToAttachTo)
         {
@@ -17,5 +21,10 @@ namespace NextOne
         }
 
         public int Damage => SkillDamage;
+
+        public GameObject CastVfx => SkillCastVfx;
+        public GameObject HitVfx => SkillHitVfx;
+        public AudioClip CastSfx => SkillCastSfx;
+        public AudioClip HitSfx => SkillHitSfx;
     }
 }

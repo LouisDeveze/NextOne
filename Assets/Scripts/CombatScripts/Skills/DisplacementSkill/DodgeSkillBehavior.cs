@@ -50,6 +50,8 @@ namespace NextOne
         protected override void OnInitialization()
         {
             SourceController = GetComponent<PlayerController>();
+            if (!SourceController)
+                SourceController = GetComponent<EnemyController>();
         }
 
         protected override void OnEffectiveUse()
