@@ -7,9 +7,9 @@ public class SkillUI : MonoBehaviour
 {
 
     [SerializeField] private string index = "Skill";
-    [SerializeField] private RawImage image;
-    [SerializeField] private RawImage progress;
-    [SerializeField] private Text control;
+    [SerializeField] private RawImage image = null;
+    [SerializeField] private RawImage progress = null;
+    [SerializeField] private Text control = null;
 
 
     // Set Pogress 

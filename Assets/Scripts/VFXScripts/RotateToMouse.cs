@@ -6,12 +6,12 @@ public class RotateToMouse : MonoBehaviour
 {
     public float maximumLength;
 
-    private bool use2D;
+    private bool use2D = false;
     private Ray rayMouse;
     private Vector3 pos;
     private Vector3 direction;
     private Quaternion rotation;
-    private Camera camera;
+    private Camera cam = null;
     private WaitForSeconds updateTime = new WaitForSeconds(.1f);
 
     public void StartUpdateRay()
@@ -21,7 +21,7 @@ public class RotateToMouse : MonoBehaviour
 
     IEnumerator UpdateRay()
     {
-        if (camera != null)
+        if (cam != null)
         {
             if (use2D)
             {
@@ -40,7 +40,7 @@ public class RotateToMouse : MonoBehaviour
                 RaycastHit hit;
                 //Get the position of the mouse
                 var mousePos = Input.mousePosition;
-                rayMouse = camera.ScreenPointToRay(mousePos);
+                rayMouse = cam.ScreenPointToRay(mousePos);
                 //Check if there's a collider at the current position
                 if (Physics.Raycast(rayMouse.origin, rayMouse.direction, out hit, maximumLength))
                 {
@@ -76,7 +76,7 @@ public class RotateToMouse : MonoBehaviour
 
     public void setCamera(Camera camera)
     {
-        this.camera = camera;
+        this.cam = camera;
     }
 
     public Vector3 getDirection()
