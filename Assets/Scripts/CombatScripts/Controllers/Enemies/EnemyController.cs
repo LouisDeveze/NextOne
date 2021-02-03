@@ -200,13 +200,14 @@ namespace NextOne
         public override void TakeDamage(int _damageTaken)
         {
             EnemyHealthPoint = Mathf.Clamp(EnemyHealth - _damageTaken, 0, EnemyData.Health);
+            Debug.Log("Current Health point:" + EnemyHealth);
             if (EnemyHealth <= 0)
             {
-                StartCoroutine(KillEnemy());
+                KillEnemy();
             }
         }
 
-        IEnumerator KillEnemy()
+        void KillEnemy()
         {
             //TODO: Animator | Audio | OnDeathSO
 
@@ -215,8 +216,7 @@ namespace NextOne
                 action.PerformAction(this.EnemyModel);
             }
 
-            Destroy(this);
-            return null;
+            Destroy(this.gameObject);
         }
 
         public void Heal(int _healthAmount)
@@ -270,7 +270,7 @@ namespace NextOne
             {
                 Animations.ResetTriggers(EnemyAnimator);
                 EnemyAnimator.SetTrigger(Animations.GetStringEquivalent(EAnimation.GettingUp));
-                Debug.Log("Mecha Activated: " + this.GetInstanceID());
+                //Debug.Log("Mecha Activated: " + this.GetInstanceID());
             }
             else
             {
@@ -304,7 +304,7 @@ namespace NextOne
                 if (!Activated) return;
                 trigger = Animations.GetStringEquivalent(EAnimation.Idle);
             }
-            
+
             Animations.ResetTriggers(_entityAnimator);
             _entityAnimator.SetTrigger(trigger);
         }

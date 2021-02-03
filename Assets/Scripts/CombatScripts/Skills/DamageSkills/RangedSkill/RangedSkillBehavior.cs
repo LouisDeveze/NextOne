@@ -92,15 +92,13 @@ namespace NextOne
                     var ve = muzzleVfx.GetComponent<VisualEffect>();
                     if (ve)
                     {
-                       Destroy(muzzleVfx,.5f); 
+                        Destroy(muzzleVfx, .5f);
                     }
                     else
                     {
-                        
                         var psChild = muzzleVfx.transform.GetChild(0).GetComponent<ParticleSystem>();
                         Destroy(muzzleVfx, psChild.main.duration);
                     }
-                    
                 }
             }
 

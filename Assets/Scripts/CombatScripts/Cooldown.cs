@@ -12,7 +12,7 @@ namespace NextOne
         public Cooldown(float _skillCooldown)
         {
             this.SkillCooldown = _skillCooldown;
-            Debug.Log("Cooldown Constructor: " + SkillCooldown);
+          //  Debug.Log("Cooldown Constructor: " + SkillCooldown);
             this.Timer = _skillCooldown;
             this.SkillReadyToCast = true;
             this.CooldownTimerStarted = false;
@@ -21,10 +21,10 @@ namespace NextOne
 
         public void UseCooldown()
         {
-            Debug.Log("Use CD before check");
+          //  Debug.Log("Use CD before check");
             if (!SkillReadyToCast) return;
 
-            Debug.Log("USE CD After Check");
+           // Debug.Log("USE CD After Check");
             CooldownTimerStarted = true;
             SkillReadyToCast = false;
         }
@@ -33,10 +33,10 @@ namespace NextOne
         {
             if (!CooldownTimerStarted) return;
             Timer -= Time.deltaTime;
-            Debug.Log("Timer: " + Timer);
+          //  Debug.Log("Timer: " + Timer);
 
             if (!(Timer <= 0f)) return;
-            Debug.Log("Timer Reached: Reset Timer");
+         //   Debug.Log("Timer Reached: Reset Timer");
             ResetTimer();
             SkillReadyToCast = true;
         }

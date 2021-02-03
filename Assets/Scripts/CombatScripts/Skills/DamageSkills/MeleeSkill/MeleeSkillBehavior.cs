@@ -21,7 +21,6 @@ namespace NextOne
 
         protected override void Update()
         {
-            
             //TODO: Overlap for player ! :)
             base.Update();
             if (!SkillInUse) return;
@@ -74,7 +73,7 @@ namespace NextOne
         protected override void OnEffectiveUse()
         {
             MeleeSkillData meleeSkillData = (MeleeSkillData) SkillData;
-           
+
             if (meleeSkillData.CastVfx)
             {
                 GameObject meleeCast = Instantiate(meleeSkillData.CastVfx, FirePoint.position, Quaternion.identity);

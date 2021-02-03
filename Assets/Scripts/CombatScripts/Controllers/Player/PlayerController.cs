@@ -258,13 +258,14 @@ namespace NextOne
         public override void TakeDamage(int _damageTaken)
         {
             HealthPoint = Mathf.Clamp(HealthPoint - _damageTaken, 0, PlayerData.Health);
+            Debug.Log("Current Health point:" + HealthPoint);
             if (HealthPoint <= 0)
             {
-                StartCoroutine(KillPlayer());
+                KillPlayer();
             }
         }
 
-        IEnumerator KillPlayer()
+        void KillPlayer()
         {
             //TODO: Animator | Audio | OnDeathSO
 
@@ -273,8 +274,6 @@ namespace NextOne
                 action.PerformAction(this.PlayerModel);
             }
 
-            //SceneManager
-            return null;
         }
 
         public void Heal(int _healAmount)

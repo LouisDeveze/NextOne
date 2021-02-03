@@ -6,6 +6,8 @@ namespace NextOne
 {
     public class WeaponController
     {
+        //ATTACH WEAPON
+        private List<GameObject> weaponsGO = new List<GameObject>();
         private List<Weapon> WeaponsModel = new List<Weapon>();
         private float WeaponDamage;
         private EWeaponAnimation EWeaponAnimation;

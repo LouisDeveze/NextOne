@@ -16,7 +16,7 @@ namespace NextOne
         [SerializeField] private float SkillRadius;
 
         [SerializeField] public float SourceID;
-        
+
 
         [SerializeField] private float ExplosionDelay;
         private bool HasExploded = false;
@@ -47,10 +47,10 @@ namespace NextOne
             HasExploded = true;
             //INSTANTIATE VFX GRAPH EFFECT
             GameObject go = Instantiate(ExplosionEffect, transform.position, transform.rotation);
-            Destroy(this.gameObject,.1f);
+            Destroy(this.gameObject, .1f);
             VisualEffect explosionEffect = go.GetComponent<VisualEffect>();
             explosionEffect.Play();
-            
+
             //TODO: CHECK VFX EVENT BLA BLA BLA
             SkillUseParams skillUseParams = new SkillUseParams {Origin = this.gameObject, Radius = SkillRadius};
             //Get Enemies within range of explosion
@@ -66,8 +66,7 @@ namespace NextOne
                 }
             }
 
-            Destroy(go,2);
-
+            Destroy(go, 2);
         }
 
         public GameObject Source

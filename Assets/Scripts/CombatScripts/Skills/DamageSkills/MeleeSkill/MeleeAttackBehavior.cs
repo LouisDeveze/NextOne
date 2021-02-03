@@ -47,6 +47,7 @@ namespace NextOne
             SourceController.CanMove(true);
             SourceController.SkillInUse = false;
             SkillInUse = false;
+            ((PlayerController) SourceController).ActiveWeaponTrigger(false);
         }
 
         protected override void OnInitialization()

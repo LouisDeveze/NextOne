@@ -25,9 +25,9 @@ MonoBehaviour:
   UniformWeaponHitPrefab: 0
   WeaponsHitPrefab:
   - list:
-    - {fileID: 8618535328794114036, guid: b872c5ae62a41cb4d909e17491ed891e, type: 3}
+    - {fileID: 2451973663758564139, guid: 970a893455041404480422ef0094e719, type: 3}
   - list:
-    - {fileID: 1160433202427606645, guid: 9375cabc3108b034dab73ffe6f0a41c0, type: 3}
+    - {fileID: 6766051552129730907, guid: fe1b017b8484d7f4fb4c89b6842c3318, type: 3}
   UniformWeaponHitSfx: 0
   WeaponsHitSfx: []
   WeaponAnimationType: 2

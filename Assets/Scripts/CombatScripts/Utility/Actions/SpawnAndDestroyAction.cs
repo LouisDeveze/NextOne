@@ -8,12 +8,13 @@ namespace NextOne
     {
         [SerializeField] private List<GameObject> ObjectsToSpawnAndDestroys;
         [SerializeField] private float DestroyDelay;
+        [SerializeField] private Vector3 Offset;
 
         public override void PerformAction(GameObject _gameObject)
         {
             foreach (GameObject objectAction in ObjectsToSpawnAndDestroys)
             {
-                GameObject clone = Instantiate(objectAction, _gameObject.transform.position,
+                GameObject clone = Instantiate(objectAction, _gameObject.transform.position + Offset,
                     _gameObject.transform.rotation);
                 Destroy(clone, DestroyDelay);
             }
