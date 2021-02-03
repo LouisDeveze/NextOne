@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 863ca2f57ab779c439d39842241bd50e, type: 3}
   m_Name: MechaDeath
   m_EditorClassIdentifier: 
-  ObjectsToSpawnAndDestroys: []
-  DestroyDelay: 0
+  ObjectsToSpawnAndDestroys:
+  - {fileID: 2451973663758564139, guid: 970a893455041404480422ef0094e719, type: 3}
+  DestroyDelay: 0.5
+  Offset: {x: 0, y: 1.5, z: 0}

@@ -63,6 +63,8 @@ namespace NextOne
         private SkillUI PlayerSecondaryUI;
         private SkillUI PlayerTertiaryUI;
 
+        private LifeBarUI PlayerLifeBarUI;
+
         //ACTIONS
         private List<ScriptableAction> OnDeathActions = new List<ScriptableAction>();
 
@@ -99,6 +101,11 @@ namespace NextOne
             PlayerPrimaryUI = this.ctx.SkillPrimaryUI;
             PlayerSecondaryUI = this.ctx.SkillSecondaryUI;
             PlayerTertiaryUI = this.ctx.SkillTertiaryUI;
+
+            PlayerLifeBarUI = this.ctx.LifeBarUI;
+
+            PlayerLifeBarUI.SetPlayerName(_playerData.Name);
+            PlayerLifeBarUI.SetLife(_playerData.Health, _playerData.Health, true);
 
             //Get Actions
 
@@ -259,6 +266,7 @@ namespace NextOne
         {
             HealthPoint = Mathf.Clamp(HealthPoint - _damageTaken, 0, PlayerData.Health);
             Debug.Log("Current Health point:" + HealthPoint);
+            PlayerLifeBarUI.SetLife(HealthPoint, PlayerData.Health, false);
             if (HealthPoint <= 0)
             {
                 KillPlayer();
@@ -273,7 +281,6 @@ namespace NextOne
             {
                 action.PerformAction(this.PlayerModel);
             }
-
         }
 
         public void Heal(int _healAmount)

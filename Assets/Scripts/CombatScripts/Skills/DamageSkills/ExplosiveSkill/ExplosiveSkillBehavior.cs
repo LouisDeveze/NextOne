@@ -87,7 +87,7 @@ namespace NextOne
 
             //TODO: FIX POSITION
             newExplosive.GetComponent<Rigidbody>()
-                .AddForce(direction.Direction * explosiveSkillData.ThrowForce);
+                .velocity = direction.Direction * explosiveSkillData.ThrowForce;
         }
 
         protected override void OnEffectiveUse()

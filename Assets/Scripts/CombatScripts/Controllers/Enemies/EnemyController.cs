@@ -82,8 +82,8 @@ namespace NextOne
             EntityAgent.angularSpeed = _enemyData.AngularVelocity;
             //  EnemyVelocity = _enemyData.Velocity;
             EntityAgent.speed = _enemyData.Velocity;
-
             EntityAgent.radius = _enemyData.AvoidanceRange;
+            EntityAgent.stoppingDistance = _enemyData.StoppingDistance;
 
             //Set Components
             AttachComponents();
@@ -153,7 +153,8 @@ namespace NextOne
 
             ActivateMecha();
 
-            ToTarget = Activated ? Player.Model.transform : transform;
+            //ToTarget = Activated ? Player.Model.transform : transform;
+            ToTarget = Player.Model.transform;
 
             if (!Activated)
                 return;
@@ -168,9 +169,13 @@ namespace NextOne
         private void EnemySkillUpdate()
         {
             float distanceToPlayer = Vector3.Distance(Player.Model.transform.position, EnemyModel.transform.position);
-
             var list = EnemyData.SkillsData;
-            SkillUseParams useParams = new SkillUseParams {DistanceToPlayer = distanceToPlayer};
+            
+            SkillUseParams useParams = new SkillUseParams
+            {
+                DistanceToPlayer = distanceToPlayer,
+                DetectRange = EnemyData.AttackRange
+            };
 
             for (var index = 0; index < list.Count; index++)
             {
@@ -328,6 +333,7 @@ namespace NextOne
             {
                 EnemyModel.GetComponentInChildren<CastPoint>().transform
             };
+            Debug.Log("LIST CAST POINT ENEMY" + GetInstanceID());
             return castPoints;
         }
 

@@ -28,6 +28,6 @@ MonoBehaviour:
   SkillProjectilePrefab: {fileID: 3811656209286473422, guid: 5d4a273e9f0ccb2478c3f6a63a62dca1, type: 3}
   SkillExplosionEffect: {fileID: 5637836648534966505, guid: 07bbbf5e823880747981f26dc68f0671, type: 3}
   SkillExplosionSfx: {fileID: 0}
-  SkillExplosionDamage: 10
+  SkillExplosionDamage: 20
   SkillExplosionDelay: 2
-  SkillThrowForce: 100
+  SkillThrowForce: 10

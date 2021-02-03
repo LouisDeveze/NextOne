@@ -8,6 +8,7 @@ namespace NextOne
         private Target SUPTarget;
         private float SUPRadius;
         private float SUPDistanceToPlayer;
+        public float SUPDetectRange;
 
 
         public GameObject Origin
@@ -32,6 +33,12 @@ namespace NextOne
         {
             get => SUPDistanceToPlayer;
             set => SUPDistanceToPlayer = value;
+        }
+
+        public float DetectRange
+        {
+            get => SUPDetectRange;
+            set => SUPDetectRange = value;
         }
     }
 }

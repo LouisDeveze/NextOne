@@ -18,6 +18,7 @@ namespace NextOne
         [SerializeField] private float EAvoidanceRange = 10f;
         [SerializeField] private float EDetectRange = 10f;
         [SerializeField] private float EAttackRange = 5f;
+        [SerializeField] private float EStoppingDistance = 1.8f;
 
         [SerializeField] private List<ScriptableAction> OnEnemyDeathActions = new List<ScriptableAction>();
         [SerializeField] private List<SkillData> EnemySkillsData = new List<SkillData>();
@@ -42,5 +43,8 @@ namespace NextOne
         public List<ScriptableAction> OnDeathActions => OnEnemyDeathActions;
 
         public List<SkillData> SkillsData => EnemySkillsData;
+
+        public float StoppingDistance => EStoppingDistance;
+
     }
 }

@@ -23,6 +23,7 @@ namespace NextOne
         public SkillUI SkillPrimaryUI = null;
         public SkillUI SkillSecondaryUI = null;
         public SkillUI SkillTertiaryUI = null;
+        public LifeBarUI LifeBarUI = null;
 
         public GameObject PauseScreen = null;
         public Button Resume = null;

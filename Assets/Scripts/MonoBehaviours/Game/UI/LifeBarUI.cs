@@ -13,22 +13,16 @@ public class LifeBarUI : MonoBehaviour
     private float percent;
     [SerializeField] private float ghostSpeed = .2f;
 
-    private float test = 3000;
-    private void Start()
-    {
-        SetLife(3000, 3000, true);
-    }
-
     // Update is called once per frame
     void Update()
     {
         // Animate Ghost Percent;
-        if(HealthBarGhost.rectTransform.anchorMax.x > HealthBarGhost.rectTransform.anchorMin.x) {
+        if (HealthBarGhost.rectTransform.anchorMax.x > HealthBarGhost.rectTransform.anchorMin.x)
+        {
             float x = HealthBarGhost.rectTransform.anchorMax.x - (Time.deltaTime * ghostSpeed);
             x = Mathf.Max(x, HealthBarGhost.rectTransform.anchorMin.x);
             HealthBarGhost.rectTransform.anchorMax = new Vector2(x, HealthBarGhost.rectTransform.anchorMax.y);
         }
-        
     }
 
     /// <summary>
@@ -40,12 +34,12 @@ public class LifeBarUI : MonoBehaviour
     /// <param name="instant"></param>
     public void SetLife(float newLife, float maxLife, bool instant)
     {
-        newLife = newLife >= 0 ? (newLife <= maxLife ? newLife: maxLife): 0;
+        newLife = newLife >= 0 ? (newLife <= maxLife ? newLife : maxLife) : 0;
 
         this.HealthText.text = newLife.ToString() + " / " + maxLife;
 
         // Calculate Percent
-        float percent = (float)newLife / (float)maxLife;
+        float percent = (float) newLife / (float) maxLife;
 
         // Set Health Bar
         Vector2 anchor = new Vector2(percent, this.HealthBar.rectTransform.anchorMax.y);
@@ -56,8 +50,10 @@ public class LifeBarUI : MonoBehaviour
 
         anchor.y = this.HealthBarGhost.rectTransform.anchorMin.y;
         this.HealthBarGhost.rectTransform.anchorMin = anchor;
-        
     }
 
-    public void SetPlayerName(string text) { this.PlayerName.text = text; }
+    public void SetPlayerName(string text)
+    {
+        this.PlayerName.text = text;
+    }
 }

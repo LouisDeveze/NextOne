@@ -11,6 +11,8 @@ namespace NextOne
 
         public override void Use(SkillUseParams _useParams)
         {
+            Debug.Log("Melee Skill Use: " + SkillData.Name + " - " + this.GetInstanceID());
+
             if (!CanCast())
                 return;
             base.Use(_useParams);
@@ -30,7 +32,6 @@ namespace NextOne
             //Looking for effective weapon changed during animation
             if (SourceController.IsAnimationLastAtLeast(GetRandomEffectiveTime(), 0) && !Cast)
             {
-                Debug.Log("Weapon Changed in: " + this.GetInstanceID());
                 OnEffectiveUse();
             }
 
