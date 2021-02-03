@@ -10,6 +10,7 @@ namespace NextOne
         [SerializeField] private int SkillId = 0;
         [SerializeField] private String SkillName = "default";
         [SerializeField] private String SkillDescription = "default description";
+        [SerializeField] private Texture SkillIcon;
         [SerializeField] private SkillAim SkillAim;
         [SerializeField] private SkillTrigger SkillTrigger;
         [SerializeField] private float SkillCooldown;
@@ -55,5 +56,7 @@ namespace NextOne
         public List<float> EffectiveUseTime => AnimationEffectiveUseTime;
 
         public float Cooldown => SkillCooldown;
+
+        public Texture Icon => SkillIcon;
     }
 }

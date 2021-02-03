@@ -12,6 +12,12 @@ namespace NextOne
             return _distanceToPlayer.DistanceToPlayer <= DetectRange;
         }
 
+        public override string KeyCodeToString()
+        {
+            throw new System.NotImplementedException();
+        }
+
+
         public float DetectRange => TriggerDetectRange;
     }
 }

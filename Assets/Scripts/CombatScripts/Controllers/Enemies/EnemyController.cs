@@ -31,7 +31,6 @@ namespace NextOne
         private NavMeshAgent EntityAgent;
         private Transform EntityToTarget;
 
-        [NotNull] public GameObject PlayerSpawner;
         private PlayerController Player;
 
         private Animator EnemyAnimator;
@@ -44,17 +43,21 @@ namespace NextOne
         //Movement in Model Space
         private Vector3 ModelMovement;
 
+        Vector3 CurrentFacing = Vector3.zero;
+        Vector3 LastFacing = Vector3.zero;
+
+        //Activate status
+        private bool Activated = false;
+
         //ACTIONS
         private List<ScriptableAction> OnDeathActions = new List<ScriptableAction>();
-        private float Angle;
-        private float thresholdStrafe = .5f;
 
 
         private void Start()
         {
             this.ctx = GameObject.Find("State Manager").GetComponent<GameContext>();
 
-            Player = PlayerSpawner.gameObject.GetComponent<PlayerController>();
+            Player = ctx.playerController;
 
             //Nav Agent Set Up
 
@@ -71,7 +74,7 @@ namespace NextOne
             EnemyAnimator = EnemyModel.GetComponent<Animator>();
 
             EntityAgent = EnemyModel.GetComponent<NavMeshAgent>();
-            EntityAgent.updateRotation = false;
+            EntityAgent.updateRotation = true;
             EntityAgent.updatePosition = true;
 
             //Set Enemy Stats
@@ -97,8 +100,6 @@ namespace NextOne
 
             //Get actions
             OnDeathActions = _enemyData.OnDeathActions;
-
-            //Set Nav Agent Speed
         }
 
         //COMPONENT RELATED
@@ -146,9 +147,18 @@ namespace NextOne
 
         private void Update()
         {
-            float distanceToPlayer = Vector3.Distance(Player.transform.position, transform.position);
+            float distanceToPlayer = Vector3.Distance(Player.Model.transform.position, EnemyModel.transform.position);
 
-            ToTarget = distanceToPlayer <= EnemyData.DetectRange ? Player.transform : transform;
+            Activated = distanceToPlayer <= EnemyData.DetectRange;
+
+            ActivateMecha();
+
+            ToTarget = Activated ? Player.Model.transform : transform;
+
+            if (!Activated)
+                return;
+
+            CurrentFacing = EnemyModel.transform.forward;
 
             EnemyMovementUpdate();
             EntityAnimationUpdate();
@@ -157,7 +167,7 @@ namespace NextOne
 
         private void EnemySkillUpdate()
         {
-            float distanceToPlayer = Vector3.Distance(Player.transform.position, transform.position);
+            float distanceToPlayer = Vector3.Distance(Player.Model.transform.position, EnemyModel.transform.position);
 
             var list = EnemyData.SkillsData;
             SkillUseParams useParams = new SkillUseParams {DistanceToPlayer = distanceToPlayer};
@@ -177,8 +187,7 @@ namespace NextOne
 
             Agent.SetDestination(ToTarget.position);
 
-            if (Agent.remainingDistance > Agent.stoppingDistance) Agent.velocity = Agent.desiredVelocity;
-            else if (GetComponent<EnemyController>()) Agent.velocity = Vector3.zero;
+            Agent.velocity = Agent.remainingDistance > Agent.stoppingDistance ? Agent.desiredVelocity : Vector3.zero;
         }
 
 
@@ -206,7 +215,7 @@ namespace NextOne
                 action.PerformAction(this.EnemyModel);
             }
 
-            //SceneManager
+            Destroy(this);
             return null;
         }
 
@@ -243,42 +252,48 @@ namespace NextOne
 
         private void EntityAnimationUpdate()
         {
-            ModelMovement = EnemyModel.transform.InverseTransformDirection(Movement);
-            if (EnemyCanMove)
-                AnimateMovement(EnemyAnimator, ModelMovement, Angle);
+            if (!EnemyCanMove)
+                return;
+
+            float currentAngularVelocity =
+                Vector3.Angle(CurrentFacing, LastFacing) / Time.deltaTime; //degrees per second
+
+            LastFacing = CurrentFacing;
+
+            float velocity = EntityAgent.velocity.magnitude / EntityAgent.speed;
+            AnimateMovement(EnemyAnimator, Vector3.forward * velocity, currentAngularVelocity);
+        }
+
+        private void ActivateMecha()
+        {
+            if (Activated)
+            {
+                Animations.ResetTriggers(EnemyAnimator);
+                EnemyAnimator.SetTrigger(Animations.GetStringEquivalent(EAnimation.GettingUp));
+                Debug.Log("Mecha Activated: " + this.GetInstanceID());
+            }
+            else
+            {
+                Animations.ResetTriggers(EnemyAnimator);
+                EnemyAnimator.SetTrigger(Animations.GetStringEquivalent(EAnimation.Idle));
+            }
         }
 
         private void AnimateMovement(Animator _entityAnimator, Vector3 _movement, float _angle)
         {
-            string trigger = Animations.GetStringEquivalent(EAnimation.Idle);
+            string trigger;
 
-
-            // If movement in right is superior to the Strafe threshold, Strafe Right
-            if (_movement.x > thresholdStrafe)
-            {
-                trigger = Animations.GetStringEquivalent(EAnimation.StrafeRight);
-            }
-            // If movement in Left is superior to the Strafe threshold, Strafe Left
-            else if (_movement.x < -thresholdStrafe)
-            {
-                trigger = Animations.GetStringEquivalent(EAnimation.StrafeLeft);
-            }
             // Else check the movement in Z to now if player is running backward or frontward
-            else if (_movement.z > 0)
+            if (_movement.z > 0)
             {
                 trigger = Animations.GetStringEquivalent(EAnimation.RunFront);
             }
-            // Else check the movement in Z to now if player is running backward or frontward
-            else if (_movement.z < 0)
-            {
-                trigger = Animations.GetStringEquivalent(EAnimation.RunBack);
-            }
-            else if (_movement.magnitude == 0 && _angle < -10)
+            else if (_movement.magnitude == 0 && _angle < -1)
             {
                 trigger = Animations.GetStringEquivalent(EAnimation.TurnRight);
             }
             // Else if idle and turning a lot
-            else if (_movement.magnitude == 0 && _angle > 10)
+            else if (_movement.magnitude == 0 && _angle > 1)
             {
                 trigger = Animations.GetStringEquivalent(EAnimation.TurnLeft);
             }
@@ -307,19 +322,22 @@ namespace NextOne
 
         private List<Transform> GetEnemyCastPoint()
         {
-            //TODO: implement function
-            return new List<Transform>();
+            List<Transform> castPoints = new List<Transform>
+            {
+                EnemyModel.GetComponentInChildren<CastPoint>().transform
+            };
+            return castPoints;
         }
 
         void OnDrawGizmos()
         {
             // Draw attack sphere 
             Gizmos.color = new Color(255f, 0, 0, .5f);
-            Gizmos.DrawWireSphere(transform.position, EnemyData.AttackRange);
+            Gizmos.DrawWireSphere(EnemyModel.transform.position, EnemyData.AttackRange);
 
             // Draw chase sphere 
             Gizmos.color = new Color(0, 0, 255, .5f);
-            Gizmos.DrawWireSphere(transform.position, EnemyData.DetectRange);
+            Gizmos.DrawWireSphere(EnemyModel.transform.position, EnemyData.DetectRange);
         }
 
         public int EnemyHealth => EnemyHealthPoint;

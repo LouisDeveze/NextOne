@@ -28,12 +28,7 @@ public class LifeBarUI : MonoBehaviour
             x = Mathf.Max(x, HealthBarGhost.rectTransform.anchorMin.x);
             HealthBarGhost.rectTransform.anchorMax = new Vector2(x, HealthBarGhost.rectTransform.anchorMax.y);
         }
-
-        if (Input.GetKeyDown(KeyCode.I))
-        {
-            test -= 750;
-            SetLife(test, 3000, false);
-        }
+        
     }
 
     /// <summary>

@@ -12,5 +12,10 @@ namespace NextOne
         {
             return Input.GetKeyDown(KeyCode);
         }
+
+        public override string KeyCodeToString()
+        {
+            return KeyCode.ToString();
+        }
     }
 }

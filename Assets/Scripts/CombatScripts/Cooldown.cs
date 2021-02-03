@@ -48,5 +48,7 @@ namespace NextOne
         }
 
         public bool ReadyToCast => SkillReadyToCast;
+
+        public float CurrentCooldown => Timer;
     }
 }

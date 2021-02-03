@@ -21,6 +21,8 @@ namespace NextOne
         protected virtual void Update()
         {
             SkillCooldown.UpdateCooldown();
+            if(SourceController is PlayerController playerController)
+                playerController.SetProgress(SkillData.AnimationName[0],SkillCooldown.CurrentCooldown,SkillData.Cooldown);
         }
 
         public virtual void Use(SkillUseParams _useParams)

@@ -36,7 +36,7 @@ MonoBehaviour:
   WeaponAttackRateMultiplier: 1
   WeaponCooldownMultiplier: 1
   WeaponSkills:
-  - {fileID: 11400000, guid: 3a0f9d5283af6f743a45a95ee7b6a2b8, type: 2}
-  - {fileID: 11400000, guid: 5d874f23842bddc479b5a07ae2d3e3ed, type: 2}
   - {fileID: 11400000, guid: 85b0379d8efff244db654a0c2ad418d3, type: 2}
+  - {fileID: 11400000, guid: 3a0f9d5283af6f743a45a95ee7b6a2b8, type: 2}
   - {fileID: 11400000, guid: b6791119817539841bdfa2bc3b89056d, type: 2}
+  - {fileID: 11400000, guid: 5d874f23842bddc479b5a07ae2d3e3ed, type: 2}

@@ -173,8 +173,46 @@ namespace NextOne
         private void ActivateCurrentWeapon()
         {
             Weapons[CurrentWeapon].SetActive(true);
+            ActivateUI();
             PlayerAnimator.runtimeAnimatorController = Weapons[CurrentWeapon].WeaponAnimatorOverride;
             AttachSkills();
+        }
+
+        private void ActivateUI()
+        {
+            var list = PlayerData.WeaponHolder.GetWeaponDataAt(CurrentWeapon).Skills;
+
+            PlayerAutoAttackUI.setImage(list[0].Icon);
+            PlayerAutoAttackUI.setControl(list[0].Trigger.KeyCodeToString());
+            PlayerPrimaryUI.setImage(list[1].Icon);
+            PlayerPrimaryUI.setControl(list[1].Trigger.KeyCodeToString());
+            PlayerSecondaryUI.setImage(list[2].Icon);
+            PlayerSecondaryUI.setControl(list[2].Trigger.KeyCodeToString());
+            PlayerTertiaryUI.gameObject.SetActive(false);
+            //PlayerTertiaryUI.setImage(list[3].Icon);
+        }
+
+        public void SetProgress(EAnimation _animationType, float _current, float _max)
+        {
+            float progress = _current / _max;
+            switch (_animationType)
+            {
+                case EAnimation.AutoAttack:
+                    PlayerAutoAttackUI.setProgress(progress);
+                    break;
+                case EAnimation.AutoAttackTwo:
+                    PlayerAutoAttackUI.setProgress(progress);
+                    break;
+                case EAnimation.PrimaryAction:
+                    PlayerPrimaryUI.setProgress(progress);
+                    break;
+                case EAnimation.SecondaryAction:
+                    PlayerSecondaryUI.setProgress(progress);
+                    break;
+                case EAnimation.TertiaryAction:
+                    PlayerSecondaryUI.setProgress(progress);
+                    break;
+            }
         }
 
         private void DeactivateUnfocusedWeapon()
@@ -291,20 +329,19 @@ namespace NextOne
         {
             //Get the Screen positions of the object
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if (WorldPlane.Raycast(ray, out DistanceFromCamera))
-            {
-                Vector3 worldPosition = ray.GetPoint(DistanceFromCamera);
-                Vector3 toMouse = worldPosition - this.PlayerModel.transform.position;
-                Angle = Vector3.SignedAngle(toMouse, this.PlayerModel.transform.forward, Vector3.up);
+            if (!WorldPlane.Raycast(ray, out DistanceFromCamera)) return;
 
-                // Calculate Variation Angle
-                float variationAngle = Angle > 0 ? Time.deltaTime * AngularVelocity : -Time.deltaTime * AngularVelocity;
-                variationAngle = Mathf.Abs(variationAngle) > Mathf.Abs(Angle) ? Angle : variationAngle;
-                variationAngle = Mathf.Abs(Angle) > AngularTreshold ? variationAngle : 0;
+            Vector3 worldPosition = ray.GetPoint(DistanceFromCamera);
+            Vector3 toMouse = worldPosition - this.PlayerModel.transform.position;
+            Angle = Vector3.SignedAngle(toMouse, this.PlayerModel.transform.forward, Vector3.up);
 
-                // Finally Rotate the model
-                this.PlayerModel.transform.Rotate(Vector3.up, -variationAngle);
-            }
+            // Calculate Variation Angle
+            float variationAngle = Angle > 0 ? Time.deltaTime * AngularVelocity : -Time.deltaTime * AngularVelocity;
+            variationAngle = Mathf.Abs(variationAngle) > Mathf.Abs(Angle) ? Angle : variationAngle;
+            variationAngle = Mathf.Abs(Angle) > AngularTreshold ? variationAngle : 0;
+
+            // Finally Rotate the model
+            PlayerModel.transform.Rotate(Vector3.up, -variationAngle);
         }
 
         private void PlayerWeaponAnimationUpdate()
@@ -367,7 +404,6 @@ namespace NextOne
             // Does the ray intersect any objects excluding the player layer
             if (!Physics.Raycast(cameraPos, dir, out hit, 50))
             {
-
                 return;
             }
 
