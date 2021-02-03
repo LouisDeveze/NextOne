@@ -550,6 +550,7 @@ MonoBehaviour:
   SkillPrimaryUI: {fileID: 1710226176}
   SkillSecondaryUI: {fileID: 1121025085}
   SkillTertiaryUI: {fileID: 1944428462}
+  LifeBarUI: {fileID: 949088938}
   PauseScreen: {fileID: 978887073}
   Resume: {fileID: 1225105970}
   GiveUp: {fileID: 2091268675}
@@ -581,6 +582,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7424011991893191792, guid: 7ded121f28654a84dbef9b52de369934, type: 3}
   m_PrefabInstance: {fileID: 1578725858}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &949088938 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6078787887359488841, guid: 7ded121f28654a84dbef9b52de369934, type: 3}
+  m_PrefabInstance: {fileID: 1578725858}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9cdf0b5ecc5b854497be3e256cbb2af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &978887073 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5837047517019477274, guid: 719ffbdf3b17aae43ad6169900b18607, type: 3}

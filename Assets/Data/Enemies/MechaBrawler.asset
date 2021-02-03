@@ -20,9 +20,9 @@ MonoBehaviour:
   EnemyVelocity: 5
   EnemyAngularVelocity: 180
   EAvoidanceRange: 2.5
-  EDetectRange: 15
+  EDetectRange: 10
   EAttackRange: 2.5
+  EStoppingDistance: 1.7
   OnEnemyDeathActions:
   - {fileID: 11400000, guid: c13654e7a2f9a60478a18668620b0bdc, type: 2}
-  EnemySkillsData:
-  - {fileID: 11400000, guid: 30970887a82d9c34aa86c5316beacd14, type: 2}
+  EnemySkillsData: []

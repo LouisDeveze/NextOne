@@ -198,7 +198,7 @@ Material:
     - _IridescenceMask: 1
     - _IridescenceThickness: 1
     - _LinkDetailsWithBase: 1
-    - _MaskOffset: 0
+    - _MaskOffset: -0.9948955
     - _MaterialID: 1
     - _Metallic: 0
     - _NormalMapSpace: 0
