@@ -299,10 +299,12 @@ namespace NextOne
             }
             // Idle triggered when there are no movement
             else
+
             {
+                if (!Activated) return;
                 trigger = Animations.GetStringEquivalent(EAnimation.Idle);
             }
-
+            
             Animations.ResetTriggers(_entityAnimator);
             _entityAnimator.SetTrigger(trigger);
         }

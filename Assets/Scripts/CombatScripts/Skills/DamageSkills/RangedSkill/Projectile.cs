@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.VFX;
 
 namespace NextOne
 {
@@ -70,7 +71,7 @@ namespace NextOne
 
             if (!Source)
                 return;
-            
+
             if (layerCollidedWith == Source.layer
                 || layerCollidedWith == LayerMask.NameToLayer("VFX")
                 || layerCollidedWith == LayerMask.NameToLayer("Weapons"))
@@ -98,11 +99,21 @@ namespace NextOne
                 //If NO PS directly attached
                 if (!ps)
                 {
-                    var psChild = hitVfx.transform.GetChild(0).GetComponent<ParticleSystem>();
-                    Destroy(hitVfx, psChild.main.duration);
+                    var ve = hitVfx.GetComponent<VisualEffect>();
+                    ve.Play();
+
+                    if (ve)
+                    {
+                        Destroy(hitVfx.gameObject, DestroyDelay);
+                    }
+                    else
+                    {
+                        var psChild = hitVfx.transform.GetChild(0).GetComponent<ParticleSystem>();
+                        Destroy(hitVfx.gameObject, psChild.main.duration);
+                    }
                 }
                 else
-                    Destroy(hitVfx, ps.main.duration);
+                    Destroy(hitVfx.gameObject, ps.main.duration);
             }
 
             if (HitSfx)
@@ -112,6 +123,7 @@ namespace NextOne
 
             if (EndOfLife)
                 StartCoroutine(DestroyParticle(.5f));
+            //Destroy(gameObject);
         }
 
         private void DamageIfDamageable(Collision _collision)

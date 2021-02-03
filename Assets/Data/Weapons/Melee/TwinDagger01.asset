@@ -19,9 +19,9 @@ MonoBehaviour:
   WeaponsModel:
   - {fileID: 4347489364640950502, guid: cf6ac8f3ae4422647b66a568dbd2d096, type: 3}
   - {fileID: 8087327596469758557, guid: 1d84c628402f6a0469a9be449fa94897, type: 3}
-  UniformWeaponDamage: 1
+  UniformWeaponDamage: 0
   WeaponDamages: 0a0000000f000000
-  HasHit: 0
+  HasHit: 1
   UniformWeaponHitPrefab: 0
   WeaponsHitPrefab:
   - list:
@@ -37,6 +37,6 @@ MonoBehaviour:
   WeaponCooldownMultiplier: 1
   WeaponSkills:
   - {fileID: 11400000, guid: 85b0379d8efff244db654a0c2ad418d3, type: 2}
-  - {fileID: 11400000, guid: 3a0f9d5283af6f743a45a95ee7b6a2b8, type: 2}
+  - {fileID: 11400000, guid: 9066b2f2eb1d6e54abdb7c56d221e7cf, type: 2}
   - {fileID: 11400000, guid: b6791119817539841bdfa2bc3b89056d, type: 2}
   - {fileID: 11400000, guid: 5d874f23842bddc479b5a07ae2d3e3ed, type: 2}

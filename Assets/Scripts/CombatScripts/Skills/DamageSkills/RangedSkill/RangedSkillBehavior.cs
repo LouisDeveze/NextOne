@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.VFX;
 
 namespace NextOne
 {
@@ -88,8 +89,18 @@ namespace NextOne
                     Destroy(muzzleVfx, ps.main.duration);
                 else
                 {
-                    var psChild = muzzleVfx.transform.GetChild(0).GetComponent<ParticleSystem>();
-                    Destroy(muzzleVfx, psChild.main.duration);
+                    var ve = muzzleVfx.GetComponent<VisualEffect>();
+                    if (ve)
+                    {
+                       Destroy(muzzleVfx,.5f); 
+                    }
+                    else
+                    {
+                        
+                        var psChild = muzzleVfx.transform.GetChild(0).GetComponent<ParticleSystem>();
+                        Destroy(muzzleVfx, psChild.main.duration);
+                    }
+                    
                 }
             }
 

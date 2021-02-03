@@ -183,7 +183,7 @@ namespace NextOne
             var list = PlayerData.WeaponHolder.GetWeaponDataAt(CurrentWeapon).Skills;
 
             PlayerAutoAttackUI.setImage(list[0].Icon);
-            PlayerAutoAttackUI.setControl(list[0].Trigger.KeyCodeToString());
+            PlayerAutoAttackUI.setControl("");
             PlayerPrimaryUI.setImage(list[1].Icon);
             PlayerPrimaryUI.setControl(list[1].Trigger.KeyCodeToString());
             PlayerSecondaryUI.setImage(list[2].Icon);
@@ -429,10 +429,13 @@ namespace NextOne
 
         private List<Transform> GetPlayerCastPoint()
         {
-            List<Transform> castPoints = new List<Transform>
+            List<Transform> castPoints = new List<Transform>();
+
+            foreach (var castPoint in PlayerModel.GetComponentsInChildren<CastPoint>())
             {
-                PlayerModel.GetComponentInChildren<CastPoint>().transform
-            };
+                castPoints.Add(castPoint.transform);
+            }
+
             return castPoints;
         }
 

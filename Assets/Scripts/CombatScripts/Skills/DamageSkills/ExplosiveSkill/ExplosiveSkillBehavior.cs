@@ -15,7 +15,7 @@ namespace NextOne
             if (!SourceController)
                 SourceController = GetComponent<EnemyController>();
             ProjectileShoot = false;
-            FirePoint = SourceController.GetCastPoint(ECastPoint.Player)[0];
+            FirePoint = SourceController.GetCastPoint(ECastPoint.Player)[1];
             if (!FirePoint)
                 throw new Exception();
         }

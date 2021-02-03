@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1b8197bd8679ab74c98c280021166c09, type: 3}
-  m_Name: MorphingSkill01
+  m_Name: MorphingSkill02
   m_EditorClassIdentifier: 
   SkillId: 0
   SkillName: Morphing
   SkillDescription: Change your current weapon state
-  SkillIcon: {fileID: 2800000, guid: 9ed1cd5408db59f4daa3a15bc7ad6191, type: 3}
+  SkillIcon: {fileID: 2800000, guid: 5a5e5abd06d612f40accc4d0fa195dc3, type: 3}
   SkillAim: {fileID: 11400000, guid: 727480f6f0dbe894e95ee8790276e552, type: 2}
   SkillTrigger: {fileID: 11400000, guid: 508dbffac2efe8a43a685d2f3f5378f2, type: 2}
   SkillCooldown: 5

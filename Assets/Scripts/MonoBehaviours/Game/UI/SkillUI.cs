@@ -15,7 +15,7 @@ public class SkillUI : MonoBehaviour
     public void setProgress(float percent)
     {
         percent = percent > 1 ? 1 : (percent < 0 ? 0 : percent);
-        this.progress.rectTransform.anchorMax = new Vector2(progress.rectTransform.anchorMax.y, percent);
+        this.progress.rectTransform.anchorMax = new Vector2(progress.rectTransform.anchorMax.x, 1-percent);
     }
 
     // Change the picture

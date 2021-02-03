@@ -16,18 +16,13 @@ namespace NextOne
         [SerializeField] private float SkillRadius;
 
         [SerializeField] public float SourceID;
-
-
-        private VisualEffect ProjectileVisualEffect;
+        
 
         [SerializeField] private float ExplosionDelay;
         private bool HasExploded = false;
 
         void Start()
         {
-            //GetTheVisualEffect
-            ProjectileVisualEffect = this.GetComponent<VisualEffect>();
-            ProjectileVisualEffect.Play();
         }
 
         void Update()
@@ -52,7 +47,7 @@ namespace NextOne
             HasExploded = true;
             //INSTANTIATE VFX GRAPH EFFECT
             GameObject go = Instantiate(ExplosionEffect, transform.position, transform.rotation);
-            ProjectileVisualEffect.Stop();
+            Destroy(this.gameObject,.1f);
             VisualEffect explosionEffect = go.GetComponent<VisualEffect>();
             explosionEffect.Play();
             
@@ -72,8 +67,7 @@ namespace NextOne
             }
 
             Destroy(go,2);
-            Destroy(this.gameObject);
-            
+
         }
 
         public GameObject Source

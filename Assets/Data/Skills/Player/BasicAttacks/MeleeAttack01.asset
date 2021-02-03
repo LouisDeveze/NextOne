@@ -15,6 +15,7 @@ MonoBehaviour:
   SkillId: 4
   SkillName: Twinny
   SkillDescription: Twin Dagger Basic Attack
+  SkillIcon: {fileID: 2800000, guid: 399be189006f4a04288caa3dc27cbc54, type: 3}
   SkillAim: {fileID: 11400000, guid: 8aa75bc5c0d26f94d8d6e091992346a2, type: 2}
   SkillTrigger: {fileID: 11400000, guid: 506ba550f14a1954f81a00b6fd8abce3, type: 2}
   SkillCooldown: 1
