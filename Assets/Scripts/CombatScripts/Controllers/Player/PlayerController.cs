@@ -400,8 +400,10 @@ namespace NextOne
             Vector3 dir = (playerPos - cameraPos);
             dir.Normalize();
             RaycastHit hit;
+            Ray ray = new Ray(cameraPos, dir);
+            int layerMask = ~LayerMask.GetMask("Weapons");
             // Does the ray intersect any objects excluding the player layer
-            if (!Physics.Raycast(cameraPos, dir, out hit, 50))
+            if (!Physics.Raycast(ray, out hit, 50, layerMask))
             {
                 return;
             }

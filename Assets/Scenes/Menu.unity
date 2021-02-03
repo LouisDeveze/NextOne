@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.6781907, g: 0.6781907, b: 0.6781907, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3015,7 +3015,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3269892181657026837, guid: 236855efa6ef64c4c99de74ecda8f9fa, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -11.374008
+      value: -11.374023
       objectReference: {fileID: 0}
     - target: {fileID: 3269892181657026837, guid: 236855efa6ef64c4c99de74ecda8f9fa, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -9389,9 +9389,9 @@ MonoBehaviour:
   availablePlayers:
   - {fileID: 11400000, guid: 8357d5ebf203af54abb79c7816bf151d, type: 2}
   availableWeapons:
-  - {fileID: 11400000, guid: 6021f4827ede5ad48b95643022a88a32, type: 2}
-  - {fileID: 11400000, guid: 675ac9f0233738d4d949b96f5d78f094, type: 2}
   - {fileID: 11400000, guid: fec99c8fde34ae143b0b356f3cb06f68, type: 2}
+  - {fileID: 11400000, guid: fec99c8fde34ae143b0b356f3cb06f68, type: 2}
+  - {fileID: 11400000, guid: 675ac9f0233738d4d949b96f5d78f094, type: 2}
   playerSelected: {fileID: 0}
   weaponSelected: {fileID: 0}
 --- !u!4 &1864261734
@@ -11863,10 +11863,10 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6697786736931263833}
-  m_LocalRotation: {x: -0, y: -0.7518398, z: -0, w: 0.65934587}
-  m_LocalPosition: {x: -1.32, y: -0.06, z: 0.1}
-  m_LocalScale: {x: 0.4018669, y: 0.6697781, z: 0.6697782}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8575021948546221939}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: -97.5, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

@@ -15,14 +15,21 @@ namespace NextOne
         #endregion
 
         #region UI
-        public Animator animator;
-        public RawImage Electric;
-        public GameObject LoadingScreenRoom;
-        public GameObject PlayingScreen;
-        public SkillUI SkillAutoAttackUI;
-        public SkillUI SkillPrimaryUI;
-        public SkillUI SkillSecondaryUI;
-        public SkillUI SkillTertiaryUI;
+        public Animator animator = null;
+        public RawImage Electric = null;
+        public GameObject LoadingScreenRoom = null;
+        public GameObject PlayingScreen = null;
+        public SkillUI SkillAutoAttackUI = null;
+        public SkillUI SkillPrimaryUI = null;
+        public SkillUI SkillSecondaryUI = null;
+        public SkillUI SkillTertiaryUI = null;
+
+        public GameObject PauseScreen = null;
+        public Button Resume = null;
+        public Button GiveUp = null;
+        public Button QuitGame = null;
+        public Button NextSeason = null;
+        public Button QuitOnDeath = null;
         #endregion
 
         #region Environment

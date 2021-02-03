@@ -5,10 +5,10 @@ using UnityEngine.UI;
 
 public class LifeBarUI : MonoBehaviour
 {
-    [SerializeField] private Text PlayerName;
-    [SerializeField] private Text HealthText;
-    [SerializeField] private RawImage HealthBar;
-    [SerializeField] private RawImage HealthBarGhost;
+    [SerializeField] private Text PlayerName = null;
+    [SerializeField] private Text HealthText = null;
+    [SerializeField] private RawImage HealthBar = null;
+    [SerializeField] private RawImage HealthBarGhost = null;
 
     private float percent;
     [SerializeField] private float ghostSpeed = .2f;
@@ -58,4 +58,6 @@ public class LifeBarUI : MonoBehaviour
         this.HealthBarGhost.rectTransform.anchorMin = anchor;
         
     }
+
+    public void SetPlayerName(string text) { this.PlayerName.text = text; }
 }
