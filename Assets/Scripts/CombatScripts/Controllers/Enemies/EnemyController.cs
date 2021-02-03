@@ -43,8 +43,8 @@ namespace NextOne
         //Movement in Model Space
         private Vector3 ModelMovement;
 
-        Vector3 CurrentFacing = Vector3.zero;
-        Vector3 LastFacing = Vector3.zero;
+        private float AngleToPlayer = 0f;
+        private float velocityMagnitude = 0f;
 
         //Activate status
         private bool Activated = false;
@@ -158,8 +158,7 @@ namespace NextOne
 
             if (!Activated)
                 return;
-
-            CurrentFacing = EnemyModel.transform.forward;
+            
 
             EnemyMovementUpdate();
             EntityAnimationUpdate();
@@ -187,6 +186,33 @@ namespace NextOne
 
         private void EnemyMovementUpdate()
         {
+
+            velocityMagnitude = EntityAgent.velocity.magnitude / EntityAgent.speed;
+
+            if (velocityMagnitude == 0)
+            {
+                Vector3 toPlayer = this.Player.Model.transform.position - this.EnemyModel.transform.position;
+                AngleToPlayer = Vector3.SignedAngle(toPlayer, this.EnemyModel.transform.forward, Vector3.up);
+            }
+                
+
+            // Calculate Variation Angle
+            float variationAngle = AngleToPlayer > 0 ? Time.deltaTime * Agent.angularSpeed : -Time.deltaTime * Agent.angularSpeed;
+            variationAngle = Mathf.Abs(variationAngle) > Mathf.Abs(AngleToPlayer) ? AngleToPlayer : variationAngle;
+            variationAngle = Mathf.Abs(AngleToPlayer) > 10 ? variationAngle : 0;
+
+            // If the skill attack is in use, we don't won't our friend to rotate so
+            if(SkillInUse)
+            {
+                Agent.updateRotation = false;
+                AngleToPlayer = 0;
+                variationAngle = 0;
+            }else { Agent.updateRotation = true; }
+
+            // Finally Rotate the model
+            if(velocityMagnitude == 0)
+                EnemyModel.transform.Rotate(Vector3.up, -variationAngle);
+
             if (!ToTarget)
                 return;
 
@@ -260,13 +286,8 @@ namespace NextOne
             if (!EnemyCanMove)
                 return;
 
-            float currentAngularVelocity =
-                Vector3.Angle(CurrentFacing, LastFacing) / Time.deltaTime; //degrees per second
 
-            LastFacing = CurrentFacing;
-
-            float velocity = EntityAgent.velocity.magnitude / EntityAgent.speed;
-            AnimateMovement(EnemyAnimator, Vector3.forward * velocity, currentAngularVelocity);
+            AnimateMovement(EnemyAnimator, Vector3.forward * velocityMagnitude, AngleToPlayer);
         }
 
         private void ActivateMecha()
@@ -293,12 +314,12 @@ namespace NextOne
             {
                 trigger = Animations.GetStringEquivalent(EAnimation.RunFront);
             }
-            else if (_movement.magnitude == 0 && _angle < -1)
+            else if (_movement.magnitude == 0 && _angle < -10)
             {
                 trigger = Animations.GetStringEquivalent(EAnimation.TurnRight);
             }
             // Else if idle and turning a lot
-            else if (_movement.magnitude == 0 && _angle > 1)
+            else if (_movement.magnitude == 0 && _angle > 10)
             {
                 trigger = Animations.GetStringEquivalent(EAnimation.TurnLeft);
             }
