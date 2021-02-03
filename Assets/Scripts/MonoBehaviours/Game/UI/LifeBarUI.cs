@@ -63,4 +63,6 @@ public class LifeBarUI : MonoBehaviour
         this.HealthBarGhost.rectTransform.anchorMin = anchor;
         
     }
+
+    public void SetPlayerName(string text) { this.PlayerName.text = text; }
 }

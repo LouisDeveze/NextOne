@@ -11,6 +11,7 @@ namespace NextOne
         GameFadeIn = 2,
         GamePlaying = 3,
         GameDeath = 4,
+        GamePause = 5,
     }
 
     class GameStateMachine : StateMachine<GameContext>
@@ -23,7 +24,8 @@ namespace NextOne
             this.states.Add((int)GameStates.GameLevelGeneration, new GameLevelGeneration(this));
             this.states.Add((int)GameStates.GameFadeIn, new GameFadeIn(this));
             this.states.Add((int)GameStates.GamePlaying, new GamePlaying(this));
-            //this.states.Add((int)GameStates.GameDeath, new GameDeath(this));
+            this.states.Add((int)GameStates.GameDeath, new GameDeath(this));
+            this.states.Add((int)GameStates.GamePause, new GamePause(this));
 
         }
 
