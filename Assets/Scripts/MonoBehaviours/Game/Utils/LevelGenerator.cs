@@ -757,16 +757,6 @@ namespace NextOne
                 exit.z = doors[doors[i].ID_nextDoor].gate.z;
                 List<Point> t = BFS(map, entry, exit);
                 roadList.Add(t);
-                /*
-                if (t.Count > 0)
-                {
-                    string str = i + " BFS entry point (" + entry.x + "," + entry.z + ") exit (" + exit.x + "," + exit.z + ") : ";
-                    for (int j = 0; j < t.Count; j++)
-                    {
-                        str += "(" + t[j].x + "," + t[j].z + ") ";
-                    }
-                    Debug.Log(str);
-                } //*/
             }
         }
 
@@ -774,9 +764,16 @@ namespace NextOne
 
         public void Generate()
         {
-            int random = Random.Range(0, int.MaxValue);
-            Random.seed = random;
-            Debug.Log(random);
+            string[] lines = System.IO.File.ReadAllLines(@"Assets\Scripts\MonoBehaviours\Game\Utils\ListOfSeed.txt");
+            int[] seeds = new int[lines.Length];
+            for (int i = 0; i < lines.Length; i++) seeds[i] = (int)System.Int64.Parse(lines[i]);   //Debug.Log(lines[i]); 
+
+            int random = Random.Range(0, seeds.Length);
+            Random.seed = seeds[random];
+            //Random.seed = random;
+            Debug.Log(seeds[random]);
+            //Debug.Log(random);
+
             //Generate the world
             Mapping();
             SpawnCorridor();
