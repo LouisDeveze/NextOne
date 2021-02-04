@@ -1,5 +1,7 @@
 ﻿using System;
+using Assets.Scripts.Data;
 using UnityEngine;
+using UnityEngine.UIElements.Experimental;
 
 namespace NextOne
 {
@@ -19,11 +21,11 @@ namespace NextOne
 
             UseParams = _useParams;
             Randomize();
+            OnEffectStart();
         }
 
         protected override void Update()
         {
-            //TODO: Overlap for player ! :)
             base.Update();
             if (!SkillInUse) return;
 
@@ -46,9 +48,30 @@ namespace NextOne
             SkillInUse = true;
             SourceController.CanMove(false);
             SourceController.ResetTriggersAnimator();
-            ((PlayerController) SourceController).ActiveWeaponTrigger(true);
+            if (SourceController is PlayerController playerController)
+                playerController.ActiveWeaponTrigger(true);
+            else ((EnemyController) SourceController).ActiveClawsTrigger(true);
+
+
             SourceController.SetTriggerAnimator(GetRandomAnimationName());
             Debug.Log("Melee Basic Attack in: " + SkillData.Name + " - " + this.GetInstanceID());
+
+            /////FROM ON EFFECTIVE USE
+            /*   MeleeSkillData meleeSkillData = (MeleeSkillData) SkillData;
+   
+               if (meleeSkillData.CastVfx)
+               {
+                   GameObject meleeCast = Instantiate(meleeSkillData.CastVfx, FirePoint.position, Quaternion.identity);
+                   Debug.Log("Melee Skill Instantiated");
+                   ParticleSystem ps = meleeCast.GetComponent<ParticleSystem>();
+                   if (ps)
+                       Destroy(meleeCast, ps.main.duration);
+                   else
+                   {
+                       ParticleSystem psChild = meleeCast.transform.GetChild(0).GetComponent<ParticleSystem>();
+                       Destroy(meleeCast, psChild.main.duration);
+                   }
+               }*/
         }
 
         protected override void OnEffectEnd()
@@ -58,6 +81,10 @@ namespace NextOne
             SourceController.SkillInUse = false;
             SkillInUse = false;
             Cast = false;
+            
+            if (SourceController is PlayerController playerController)
+                playerController.ActiveWeaponTrigger(false);
+            else ((EnemyController) SourceController).ActiveClawsTrigger(false);
         }
 
         protected override void OnInitialization()
@@ -73,6 +100,7 @@ namespace NextOne
 
         protected override void OnEffectiveUse()
         {
+/*
             MeleeSkillData meleeSkillData = (MeleeSkillData) SkillData;
 
             if (meleeSkillData.CastVfx)
@@ -87,7 +115,7 @@ namespace NextOne
                     ParticleSystem psChild = meleeCast.transform.GetChild(0).GetComponent<ParticleSystem>();
                     Destroy(meleeCast, psChild.main.duration);
                 }
-            }
+            }*/
 
             //Cast Instantiation
             Cast = true;

@@ -38,7 +38,6 @@ namespace NextOne
 
         public bool CanCast()
         {
-            Debug.Log("In Can Cast");
             return SkillCooldown.ReadyToCast;
         }
 

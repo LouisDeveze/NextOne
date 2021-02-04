@@ -17,11 +17,10 @@ namespace NextOne
                 this.sm.SwitchState((int)GameStates.GamePause);
             }
 
-            if (/*Died*/Input.GetKeyDown(KeyCode.N))
+            if (this.sm.ctx.playerController.Health <= 0)
             {
                 this.sm.ctx.animator.SetTrigger("DeathScreen");
                 this.sm.SwitchState((int)GameStates.GameDeath);
-                
             }
         }
     }

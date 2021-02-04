@@ -16,16 +16,17 @@ MonoBehaviour:
   SkillName: Mecha Slash
   SkillDescription: The Mecha Brawler slash its target
   SkillIcon: {fileID: 0}
-  SkillAim: {fileID: 11400000, guid: 727480f6f0dbe894e95ee8790276e552, type: 2}
+  SkillAim: {fileID: 11400000, guid: 9392e6487d186de4fb3005670740073b, type: 2}
   SkillTrigger: {fileID: 11400000, guid: e3b0403647e2dcf489930178baf4195e, type: 2}
-  SkillCooldown: 5
+  SkillCooldown: 3
   SkillAnimationTime:
   - 1
   AnimationEffectiveUseTime:
-  - 0
+  - 1
   SkillAnimationName: 07000000
-  SkillDamage: 25
+  SkillDamage: 5
   SkillCastVfx: {fileID: 7620627392249321950, guid: 43cfc3708ddbe4645b20fe17273056e8, type: 3}
   SkillCastSfx: {fileID: 0}
   SkillHitVfx: {fileID: 0}
   SkillHitSfx: {fileID: 0}
+  SkillRadius: 2

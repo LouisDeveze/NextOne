@@ -180,6 +180,7 @@ GameObject:
   - component: {fileID: 3985718273836389947}
   - component: {fileID: 6497503264704167189}
   - component: {fileID: 8535374423960390481}
+  - component: {fileID: 6165206237109983878}
   m_Layer: 10
   m_Name: CastPoint
   m_TagString: Untagged
@@ -224,8 +225,20 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2, y: 1, z: 1}
-  m_Center: {x: -0.5, y: -0.3, z: 0}
+  m_Size: {x: 2.5, y: 1, z: 1}
+  m_Center: {x: -1, y: -0.3, z: 0}
+--- !u!114 &6165206237109983878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1290659097019570123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 423a3ee49c1783e43aa36cdae1f7739d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1441666954908862249
 GameObject:
   m_ObjectHideFlags: 0
@@ -837,6 +850,7 @@ GameObject:
   - component: {fileID: 1033340322161874190}
   - component: {fileID: 230550424795530118}
   - component: {fileID: 7794217496012814462}
+  - component: {fileID: 3878034488906624244}
   m_Layer: 10
   m_Name: CastPoint
   m_TagString: Untagged
@@ -881,8 +895,20 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2, y: 1, z: 1}
-  m_Center: {x: 0.5, y: -0.3, z: 0}
+  m_Size: {x: 2.5, y: 1, z: 1}
+  m_Center: {x: 1, y: -0.3, z: 0}
+--- !u!114 &3878034488906624244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7144450190918299242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 423a3ee49c1783e43aa36cdae1f7739d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7153844475934320061
 GameObject:
   m_ObjectHideFlags: 0

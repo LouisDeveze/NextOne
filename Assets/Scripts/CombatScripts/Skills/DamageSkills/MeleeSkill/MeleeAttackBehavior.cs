@@ -36,7 +36,9 @@ namespace NextOne
             SkillInUse = true;
             SourceController.CanMove(false);
             SourceController.ResetTriggersAnimator();
-            ((PlayerController) SourceController).ActiveWeaponTrigger(true);
+            if (SourceController is PlayerController playerController)
+                playerController.ActiveWeaponTrigger(true);
+            else ((EnemyController) SourceController).ActiveClawsTrigger(true);
             SourceController.SetTriggerAnimator(GetRandomAnimationName());
             Debug.Log("Melee Basic Attack in: " + SkillData.Name + " - " + this.GetInstanceID());
         }
@@ -47,7 +49,9 @@ namespace NextOne
             SourceController.CanMove(true);
             SourceController.SkillInUse = false;
             SkillInUse = false;
-            ((PlayerController) SourceController).ActiveWeaponTrigger(false);
+            if (SourceController is PlayerController playerController)
+                playerController.ActiveWeaponTrigger(false);
+            else ((EnemyController) SourceController).ActiveClawsTrigger(false);
         }
 
         protected override void OnInitialization()

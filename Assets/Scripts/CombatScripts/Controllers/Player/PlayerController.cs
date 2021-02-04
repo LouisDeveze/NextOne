@@ -67,6 +67,7 @@ namespace NextOne
 
         //ACTIONS
         private List<ScriptableAction> OnDeathActions = new List<ScriptableAction>();
+        public int Health => HealthPoint;
 
 
         private void Start()

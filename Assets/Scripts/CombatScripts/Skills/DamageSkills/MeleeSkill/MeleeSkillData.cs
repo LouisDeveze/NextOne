@@ -10,6 +10,7 @@ namespace NextOne
         [SerializeField] private AudioClip SkillCastSfx;
         [SerializeField] private GameObject SkillHitVfx;
         [SerializeField] private AudioClip SkillHitSfx;
+        [SerializeField] private float SkillRadius;
 
         public override ISkill AttachComponentTo(GameObject _gameObjectToAttachTo)
         {
@@ -26,5 +27,7 @@ namespace NextOne
         public GameObject HitVfx => SkillHitVfx;
         public AudioClip CastSfx => SkillCastSfx;
         public AudioClip HitSfx => SkillHitSfx;
+
+        public float Radius => SkillRadius;
     }
 }

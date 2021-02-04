@@ -60,7 +60,40 @@ namespace NextOne
             TargetEnemies.Add(_enemy);
         }
 
+
         public List<EnemyController> Enemies => TargetEnemies;
+    }
+
+
+    public class PlayerTarget : Target
+    {
+        public List<PlayerController> TargetPlayer;
+
+        public PlayerTarget(GameObject _origin, List<PlayerController> _player)
+        {
+            TargetPlayer = _player;
+            Origin = _origin;
+        }
+
+        public PlayerTarget(GameObject _origin)
+        {
+            TargetPlayer = new List<PlayerController>();
+            Origin = _origin;
+        }
+
+        public PlayerTarget(GameObject _origin, PlayerController _enemy)
+        {
+            TargetPlayer = new List<PlayerController>() {_enemy};
+            Origin = _origin;
+        }
+
+        public void AddTarget(PlayerController _enemy)
+        {
+            TargetPlayer.Add(_enemy);
+        }
+
+
+        public List<PlayerController> Player => TargetPlayer;
     }
 
     public class NoTarget : Target

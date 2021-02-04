@@ -46,12 +46,24 @@ namespace NextOne
         private float AngleToPlayer = 0f;
         private float velocityMagnitude = 0f;
 
+        private bool once = false;
+
         //Activate status
         private bool Activated = false;
 
         //ACTIONS
         private List<ScriptableAction> OnDeathActions = new List<ScriptableAction>();
 
+        private ClawCollider ClawColliderRight;
+        private ClawCollider ClawColliderLeft;
+
+        //TODO: Active Trigger
+
+        public void ActiveClawsTrigger(bool _active)
+        {
+            ClawColliderRight.ActiveTrigger(_active);
+            ClawColliderLeft.ActiveTrigger(_active);
+        }
 
         private void Start()
         {
@@ -88,11 +100,12 @@ namespace NextOne
             //Set Components
             AttachComponents();
 
+            //Set Behavior
+            AttachInitialBehavior();
+
             //Set Skills
             AttachInitialSkills();
 
-            //Set Behavior
-            AttachInitialBehavior();
 
             //Set Enemy Stats
             EnemyHealthPoint = _enemyData.Health;
@@ -111,6 +124,16 @@ namespace NextOne
 
         private void AttachInitialBehavior()
         {
+            //Attach Claws
+
+            ClawCollider[] colliders = EnemyModel.GetComponentsInChildren<ClawCollider>();
+
+            ClawColliderRight = colliders[0];
+            ClawColliderLeft = colliders[1];
+
+            ClawColliderLeft.Damage = ((MeleeSkillData) EnemyData.SkillsData[0]).Damage;
+
+            ClawColliderRight.Damage = ((MeleeSkillData) EnemyData.SkillsData[0]).Damage;
         }
 
         private void AttachInitialSkills()
@@ -151,6 +174,7 @@ namespace NextOne
 
             Activated = distanceToPlayer <= EnemyData.DetectRange;
 
+
             ActivateMecha();
 
             //ToTarget = Activated ? Player.Model.transform : transform;
@@ -158,7 +182,6 @@ namespace NextOne
 
             if (!Activated)
                 return;
-            
 
             EnemyMovementUpdate();
             EntityAnimationUpdate();
@@ -169,13 +192,14 @@ namespace NextOne
         {
             float distanceToPlayer = Vector3.Distance(Player.Model.transform.position, EnemyModel.transform.position);
             var list = EnemyData.SkillsData;
-            
+
             SkillUseParams useParams = new SkillUseParams
             {
                 DistanceToPlayer = distanceToPlayer,
                 DetectRange = EnemyData.AttackRange
             };
 
+            if (Player.Health <= 0) return;
             for (var index = 0; index < list.Count; index++)
             {
                 var skill = list[index];
@@ -186,7 +210,6 @@ namespace NextOne
 
         private void EnemyMovementUpdate()
         {
-
             velocityMagnitude = EntityAgent.velocity.magnitude / EntityAgent.speed;
 
             if (velocityMagnitude == 0)
@@ -194,31 +217,44 @@ namespace NextOne
                 Vector3 toPlayer = this.Player.Model.transform.position - this.EnemyModel.transform.position;
                 AngleToPlayer = Vector3.SignedAngle(toPlayer, this.EnemyModel.transform.forward, Vector3.up);
             }
-                
+
 
             // Calculate Variation Angle
-            float variationAngle = AngleToPlayer > 0 ? Time.deltaTime * Agent.angularSpeed : -Time.deltaTime * Agent.angularSpeed;
+            float variationAngle = AngleToPlayer > 0
+                ? Time.deltaTime * Agent.angularSpeed
+                : -Time.deltaTime * Agent.angularSpeed;
             variationAngle = Mathf.Abs(variationAngle) > Mathf.Abs(AngleToPlayer) ? AngleToPlayer : variationAngle;
             variationAngle = Mathf.Abs(AngleToPlayer) > 10 ? variationAngle : 0;
 
             // If the skill attack is in use, we don't won't our friend to rotate so
-            if(SkillInUse)
+            if (SkillInUse)
             {
+                Agent.enabled = false;
                 Agent.updateRotation = false;
+                Agent.updatePosition = false;
                 AngleToPlayer = 0;
                 variationAngle = 0;
-            }else { Agent.updateRotation = true; }
+            }
+            else
+            {
+                Agent.enabled = true;
+                Agent.updateRotation = true;
+                Agent.updatePosition = true;
+            }
 
             // Finally Rotate the model
-            if(velocityMagnitude == 0)
+            if (velocityMagnitude == 0)
                 EnemyModel.transform.Rotate(Vector3.up, -variationAngle);
 
             if (!ToTarget)
                 return;
 
-            Agent.SetDestination(ToTarget.position);
-
-            Agent.velocity = Agent.remainingDistance > Agent.stoppingDistance ? Agent.desiredVelocity : Vector3.zero;
+            if (Agent.enabled)
+                Agent.SetDestination(ToTarget.position);
+            if (Agent.enabled)
+                Agent.velocity = Agent.remainingDistance > Agent.stoppingDistance
+                    ? Agent.desiredVelocity
+                    : Vector3.zero;
         }
 
 
@@ -292,17 +328,12 @@ namespace NextOne
 
         private void ActivateMecha()
         {
-            if (Activated)
-            {
-                Animations.ResetTriggers(EnemyAnimator);
-                EnemyAnimator.SetTrigger(Animations.GetStringEquivalent(EAnimation.GettingUp));
-                //Debug.Log("Mecha Activated: " + this.GetInstanceID());
-            }
-            else
-            {
-                Animations.ResetTriggers(EnemyAnimator);
-                EnemyAnimator.SetTrigger(Animations.GetStringEquivalent(EAnimation.Idle));
-            }
+            if (!Activated || once) return;
+
+            Animations.ResetTriggers(EnemyAnimator);
+            EnemyAnimator.SetTrigger(Animations.GetStringEquivalent(EAnimation.GettingUp));
+            //Debug.Log("Mecha Activated: " + this.GetInstanceID());
+            once = true;
         }
 
         private void AnimateMovement(Animator _entityAnimator, Vector3 _movement, float _angle)
@@ -348,6 +379,7 @@ namespace NextOne
             return new List<Transform>();
         }
 
+
         private List<Transform> GetEnemyCastPoint()
         {
             List<Transform> castPoints = new List<Transform>
@@ -357,6 +389,7 @@ namespace NextOne
             Debug.Log("LIST CAST POINT ENEMY" + GetInstanceID());
             return castPoints;
         }
+
 
         void OnDrawGizmos()
         {
